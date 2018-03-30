@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Bootstrap Dashboard by Bootstrapious.com</title>
+    <title>CT249</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
@@ -37,32 +37,36 @@
         <div class="sidenav-header d-flex align-items-center justify-content-center">
           <!-- User Info-->
           <div class="sidenav-header-inner text-center"><img src="img/avatar-1.jpg" alt="person" class="img-fluid rounded-circle">
-            <h2 class="h5">Anderson Hardy</h2><span>Web Developer</span>
+            <h2 class="h5">Software Development Work </h2>
           </div>
           <!-- Small Brand information, appears on minimized sidebar-->
-          <div class="sidenav-header-logo"><a href="index.html" class="brand-small text-center"> <strong>B</strong><strong class="text-primary">D</strong></a></div>
+          <div class="sidenav-header-logo"><a href="index.php" class="brand-small text-center"> <strong>B</strong><strong class="text-primary">D</strong></a></div>
         </div>
         <!-- Sidebar Navigation Menus-->
         <div class="main-menu">
           <h5 class="sidenav-heading">Main</h5>
           <ul id="side-main-menu" class="side-menu list-unstyled">                  
-            <li><a href="index.html"> <i class="icon-home"></i>Home                             </a></li>
-            <li><a href="forms.html"> <i class="icon-form"></i>Forms                             </a></li>
-            <li><a href="charts.html"> <i class="fa fa-bar-chart"></i>Charts                             </a></li>
-            <li><a href="tables.html"> <i class="icon-grid"></i>Tables                             </a></li>
-            <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Example dropdown </a>
-              <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
+            <li><a href="index.php"> <i class="icon-home"></i>Home                             </a></li>
+            <li><a href="forms.html"> <i class="fa fa-clipboard"></i>Grade</a></li>
+            <li><a href="charts.html"> <i class="	fa fa-briefcase"></i>Class</a></li>
+            <li><a href="tables.html"> <i class="fa fa-child"></i>Student</a></li>
+            <li><a href="#"> <i class="fa fa-fort-awesome"></i>Department</a></li>
+            <li><a href="#"> <i class="fa fa-institution"></i>Position</a></li>
+            <li><a href="#"> <i class="fa fa-group"></i>Personnel</a></li>
+            <li><a href="#"> <i class="fa fa-cogs"></i>Role</a></li>
+            <!-- <li><a href="#" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Example dropdown </a> -->
+              <!-- <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
                 <li><a href="#">Page</a></li>
                 <li><a href="#">Page</a></li>
                 <li><a href="#">Page</a></li>
-              </ul>
-            </li>
-            <li><a href="login.html"> <i class="icon-interface-windows"></i>Login page                             </a></li>
-            <li> <a href="#"> <i class="icon-mail"></i>Demo
-                <div class="badge badge-warning">6 New</div></a></li>
+              </ul> -->
+            <!-- </li> -->
+            <!-- <li><a href="login.php"> <i class="icon-interface-windows"></i>Login page                             </a></li>
+            <li> <a href="#"> <i class="icon-user"></i>Role
+                <div class="badge badge-warning">6 New</div></a></li> -->
           </ul>
         </div>
-        <div class="admin-menu">
+        <!-- <div class="admin-menu">
           <h5 class="sidenav-heading">Second menu</h5>
           <ul id="side-admin-menu" class="side-menu list-unstyled"> 
             <li> <a href="#"> <i class="icon-screen"> </i>Demo</a></li>
@@ -71,7 +75,7 @@
             <li> <a href=""> <i class="icon-flask"> </i>Demo</a></li>
             <li> <a href=""> <i class="icon-picture"> </i>Demo</a></li>
           </ul>
-        </div>
+        </div> -->
       </div>
     </nav>
     <div class="page">
@@ -80,7 +84,7 @@
         <nav class="navbar">
           <div class="container-fluid">
             <div class="navbar-holder d-flex align-items-center justify-content-between">
-              <div class="navbar-header"><a id="toggle-btn" href="#" class="menu-btn"><i class="icon-bars"> </i></a><a href="index.html" class="navbar-brand">
+              <div class="navbar-header"><a id="toggle-btn" href="#" class="menu-btn"><i class="icon-bars"> </i></a><a href="index.php" class="navbar-brand">
                   <div class="brand-text d-none d-md-inline-block"><span>Bootstrap </span><strong class="text-primary">Dashboard</strong></div></a></div>
               <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
                 <!-- Notifications dropdown-->
@@ -138,7 +142,7 @@
                   </ul>
                 </li>
                 <!-- Log out-->
-                <li class="nav-item"><a href="login.html" class="nav-link logout"> <span class="d-none d-sm-inline-block">Logout</span><i class="fa fa-sign-out"></i></a></li>
+                <li class="nav-item"><a href="login.php" class="nav-link logout"> <span class="d-none d-sm-inline-block">Logout</span><i class="fa fa-sign-out"></i></a></li>
               </ul>
             </div>
           </div>
@@ -152,7 +156,7 @@
             <div class="col-xl-2 col-md-4 col-6">
               <div class="wrapper count-title d-flex">
                 <div class="icon"><i class="icon-user"></i></div>
-                <div class="name"><strong class="text-uppercase">New Clients</strong><span>Last 7 days</span>
+                <div class="name"><strong class="text-uppercase">New STUDENT</strong><span>Last 7 days</span>
                   <div class="count-number">25</div>
                 </div>
               </div>
@@ -548,10 +552,10 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-sm-6">
-              <p>Your company &copy; 2017-2019</p>
+              <p>CT249 Team 3 &copy; 2017-2018</p>
             </div>
             <div class="col-sm-6 text-right">
-              <p>Design by <a href="https://bootstrapious.com" class="external">Bootstrapious</a></p>
+              <p>Design by <a href="Index.php" class="external">Teams 3</a></p>
               <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions and it helps me to run Bootstrapious. Thank you for understanding :)-->
             </div>
           </div>
