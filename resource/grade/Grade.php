@@ -60,11 +60,11 @@ if (isset($_POST['btnDelete'])&&isset($_POST['checkbox']))
 						<td><?php echo $num ?></td>
 						<td><?php echo $row["GradeName"] ?></td>
 						<td align='center'>
-							<a class="btn btn-danger" href="?page=grade&ma=<?php echo $row['GradeId']; ?>" onclick="return deleteConfirm()">
+							<a class="btn btn-default"   href="?page=grade&ma=<?php echo $row['GradeId']; ?>" onclick="return deleteConfirm()">
 								<i class="fa fa-remove"></i></a>
 							</td>
 							<td>
-								<a class="btn btn-primary" href="?page=updateGrade&ma=<?php
+								<a class="btn btn-default" href="?page=updateGrade&ma=<?php
 								echo $row['GradeId'];?>"><i class="fa fa-share"></i></a>
 							</td>
 						</tr>
