@@ -24,7 +24,7 @@ if (isset($_POST['btnDelete'])&&isset($_POST['checkbox']))
 	for ($i = 0; $i < count($_POST['checkbox']); $i++) 
 	{
 		$GradeId1 = $_POST['checkbox'][$i];
-		mysqli_query($conn, "DELETE FROM `Grade` WHERE GradeId=$GradeId=$GradeId1");
+		mysqli_query($conn, "DELETE FROM `Grade` WHERE GradeId=$GradeId1");
 	}
 }
 ?>
@@ -56,7 +56,7 @@ if (isset($_POST['btnDelete'])&&isset($_POST['checkbox']))
 				{
 					?>
 					<tr>
-						<td><input name="checkbox[]" type="checkbox" id="checkbox[]" value="<?php echo $row["PublisherId"] ?>"></td>
+						<td><input name="checkbox[]" type="checkbox" id="checkbox[]" class="text-center" value="<?php echo $row["GradeId"] ?>"></td>
 						<td><?php echo $num ?></td>
 						<td><?php echo $row["GradeName"] ?></td>
 						<td align='center'>
@@ -64,7 +64,7 @@ if (isset($_POST['btnDelete'])&&isset($_POST['checkbox']))
 								<i class="fa fa-remove"></i></a>
 							</td>
 							<td>
-								<a class="btn btn-primary" href="?page=updategrade&ma=<?php
+								<a class="btn btn-primary" href="?page=updateGrade&ma=<?php
 								echo $row['GradeId'];?>"><i class="fa fa-share"></i></a>
 							</td>
 						</tr>
