@@ -23,20 +23,23 @@ if(isset($_POST["btnEdit"])){
 			echo '<meta http-equiv="refresh" content="0;URL=?page=grade"/>';
 	}
 ?>
+<div class="container">
 
-	<h2 class="text-center">EDIT GRADE</h2>
-	<form id="form1" name="form1" method="post" class="form-horizontal" role="form">
-    
+	
+	<form id="form1" name="form1" method="post" class="form-horizontal" >
+	<div class="form-group">
+            <h4 class="text-center">EDIT GRADE</h4>
+        </div>
 		<div class="form-group">
-			<label for="txtGradeNames" class="col-sm-2 control-label">Grade Names:  </label>
-			<div class="col-sm-10">
-				<input type="text" name="txtGradeNames" id="txtGradeNames" class="form-control" required placeholder="Grade Names" value='<?php echo $gradename; ?>' >
-			</div>
+			<label for="txtGradeNames" class="control-label">Grade Names:  </label>
+		
+				<input type="text" name="txtGradeNames" id="txtGradeNames" class="form-control" required placeholder="Grade Names" value='<?php echo $gradename; ?>' />
+			
 		</div>
-		<div class="form-group">
-			<div class="col-sm-offset-2 col-sm-10">
+		
 				<input type="submit"  class="btn btn-primary" name="btnEdit" id="btnEdit" value="Update"/>
 				<input type="reset" class="btn btn-primary" name="btnCancel"  id="btnCancel" value="Cancel"  />                              	
-			</div>
+			
 		</div>
 	</form>
+	</div>

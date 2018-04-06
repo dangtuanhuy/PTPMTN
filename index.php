@@ -54,7 +54,7 @@
             <li><a href="index.php"> <i class="icon-home"></i>Home                             </a></li>
             <li><a href="?page=grade"> <i class="fa fa-clipboard"></i>Grade</a></li>
             <li><a href="?page=SchoolYears"> <i class="fa fa-calendar"></i>School Years</a></li>
-            <li><a href="charts.html"> <i class="	fa fa-briefcase"></i>Class</a></li>
+            <li><a href="?page=Class"> <i class="	fa fa-briefcase"></i>Class</a></li>
             <li><a href="tables.html"> <i class="fa fa-child"></i>Student</a></li>
             <li><a href="#"> <i class="fa fa-fort-awesome"></i>Department</a></li>
             <li><a href="#"> <i class="fa fa-institution"></i>Position</a></li>
@@ -186,6 +186,23 @@ if(isset($_GET['page']))
     include_once("resource/schoolyears/UpdateSchoolYears.php");
   }
   //Class
+  if($page=="Class")
+  {
+    include_once("resource/class/Class.php");
+  }
+  if($page=="AddClass")
+  {
+    include_once("resource/class/AddClass.php");
+  }
+  if($page=="UpdateClass")
+  {
+    include_once("resource/class/UpdateClass.php");
+  }
+  //Department
+  //Position
+  //Role
+  //Student
+  //Personnel
 }
 else
 include_once('body.php') 

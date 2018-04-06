@@ -43,7 +43,7 @@ if (isset($_POST['btnDelete'])&&isset($_POST['checkbox']))
 				<tr>
 					<th><strong>Choice</strong></th>
 					<th ><strong>No</strong></th>
-					<th class="col-6"><strong>Grade Name</strong></th>
+					<th class="col-10"><strong>Grade Name</strong></th>
 					<th class="col-2"><strong>Delete</strong></th>
 					<th class="col-2"><strong>Update</strong></th>
 				</tr>

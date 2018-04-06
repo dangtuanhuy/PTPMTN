@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 02, 2018 at 01:41 AM
+-- Generation Time: Apr 06, 2018 at 06:12 AM
 -- Server version: 5.6.37
 -- PHP Version: 5.6.31
 
@@ -68,7 +68,7 @@ CREATE TABLE IF NOT EXISTS `Department` (
 CREATE TABLE IF NOT EXISTS `Grade` (
   `GradeId` int(11) NOT NULL,
   `GradeName` varchar(50) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `Grade`
@@ -77,7 +77,14 @@ CREATE TABLE IF NOT EXISTS `Grade` (
 INSERT INTO `Grade` (`GradeId`, `GradeName`) VALUES
 (1, 'Pre'),
 (2, 'Kindergarten'),
-(3, 'Primary');
+(3, 'Primary'),
+(4, 'Lá'),
+(5, 'Lá 1'),
+(6, 'Leaves'),
+(7, 'Lá 3'),
+(13, 'Left Green'),
+(14, 'Dự Thính 2'),
+(15, 'Lỗi');
 
 -- --------------------------------------------------------
 
@@ -159,6 +166,45 @@ CREATE TABLE IF NOT EXISTS `Role` (
   `RoleId` int(11) NOT NULL,
   `RoleName` varchar(150) NOT NULL,
   `RoleActive` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `SchoolYears`
+--
+
+CREATE TABLE IF NOT EXISTS `SchoolYears` (
+  `SchoolYearsId` tinyint(4) NOT NULL,
+  `SchoolYears` varchar(155) NOT NULL,
+  `Details` varchar(155) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `SchoolYears`
+--
+
+INSERT INTO `SchoolYears` (`SchoolYearsId`, `SchoolYears`, `Details`) VALUES
+(1, '2014-2015', 'The interest and help of the education and training of Cam expert preschool PGD, the leadership, the local authorities, agencies, unions created all condit'),
+(2, '2015-2016', 'The interest and help of the education and training of Cam expert preschool PGD, the leadership, the local authorities, agencies, unions created all condit'),
+(3, '2016-2017', 'The interest and help of the education and training of Cam expert preschool PGD, the leadership, the local authorities, agencies, unions created all condit'),
+(4, '2017-2018', 'The interest and help of the education and training of Cam expert preschool PGD, the leadership, the local authorities, agencies, unions created all condit'),
+(5, '2018-2019', 'The interest and help of the education and training of Cam expert preschool PGD, the leadership, the local authorities, agencies, unions created all condit'),
+(6, '2019-2020', 'The interest and help of the education and training of Cam expert preschool PGD, the leadership, the local authorities, agencies, unions created all condit'),
+(7, '2007-2008', NULL),
+(8, '2008-2009', NULL),
+(9, '2009-2010', NULL),
+(10, '2020-2021', 'The interest and help of the education and training of Cam expert preschool PGD, the leadership, the local authorities, agencies, unions created all condit');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `SchoolYears_Class`
+--
+
+CREATE TABLE IF NOT EXISTS `SchoolYears_Class` (
+  `SchoolYearsId` tinyint(4) NOT NULL,
+  `ClassId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -247,6 +293,19 @@ ALTER TABLE `Role`
   ADD PRIMARY KEY (`RoleId`);
 
 --
+-- Indexes for table `SchoolYears`
+--
+ALTER TABLE `SchoolYears`
+  ADD PRIMARY KEY (`SchoolYearsId`);
+
+--
+-- Indexes for table `SchoolYears_Class`
+--
+ALTER TABLE `SchoolYears_Class`
+  ADD PRIMARY KEY (`SchoolYearsId`,`ClassId`),
+  ADD KEY `ClassId` (`ClassId`);
+
+--
 -- Indexes for table `Student`
 --
 ALTER TABLE `Student`
@@ -271,7 +330,7 @@ ALTER TABLE `Department`
 -- AUTO_INCREMENT for table `Grade`
 --
 ALTER TABLE `Grade`
-  MODIFY `GradeId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `GradeId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `ImgPersonel`
 --
@@ -292,6 +351,11 @@ ALTER TABLE `Position`
 --
 ALTER TABLE `Role`
   MODIFY `RoleId` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `SchoolYears`
+--
+ALTER TABLE `SchoolYears`
+  MODIFY `SchoolYearsId` tinyint(4) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- Constraints for dumped tables
 --
@@ -333,6 +397,13 @@ ALTER TABLE `Personnel`
 --
 ALTER TABLE `Position`
   ADD CONSTRAINT `position_ibfk_1` FOREIGN KEY (`DepartmentId`) REFERENCES `Department` (`DepartmentId`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `SchoolYears_Class`
+--
+ALTER TABLE `SchoolYears_Class`
+  ADD CONSTRAINT `schoolyears_class_ibfk_1` FOREIGN KEY (`SchoolYearsId`) REFERENCES `SchoolYears` (`SchoolYearsId`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `schoolyears_class_ibfk_2` FOREIGN KEY (`ClassId`) REFERENCES `Class` (`ClassId`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `Student`

@@ -56,7 +56,7 @@ if (isset($_POST['btnDelete'])&&isset($_POST['checkbox']))
 				{
 					?>
 					<tr>
-						<td><input name="checkbox[]" type="checkbox" id="checkbox[]" class="form-control" value="<?php echo $row["GradeId"] ?>"></td>
+						<td><input name="checkbox[]" type="checkbox" id="checkbox[]" class="form-control" value="<?php echo $row["SchoolYearsId"] ?>"></td>
 						<td><?php echo $num ?></td>
 						<td><?php echo $row["SchoolYears"] ?></td>
                         <td><?php echo $row["Details"] ?></td>
