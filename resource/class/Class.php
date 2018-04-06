@@ -64,7 +64,18 @@ if (isset($_POST['btnDelete'])&&isset($_POST['checkbox']))
 						<td><?php echo $row["ClassName"] ?></td>
                         <td><?php echo $row["Enrollment"] ?></td>
                         <td><?php echo $row["GradeName"] ?></td>
-                        <td><?php echo $row["ClassStatus"] ?></td>
+                        <td>
+						<form  method="post" >
+                                            <?php 
+                                            if ($row["ClassStatus"]==1){
+                                                echo '<a class="btn btn-default" href="?page=ActiveClass&ClassStatus='.$row["ClassStatus"].'&ClassId='.$row["ClassId"].'">Use</a>';
+                                            }
+                                            else {
+                                                echo '<a class="btn btn-default" href="?page=ActiveClass&ClassStatus='.$row["ClassStatus"].'&ClassId='.$row["ClassId"].'">Maintenance</a>';
+                                            }
+                    ?>
+                    </form>
+						</td>
 						<td align='center'>
 							<a class="btn btn-default"   href="?page=Class&ma=<?php echo $row['SchoolYearsId']; ?>" onclick="return deleteConfirm()">
 								<i class="fa fa-remove"></i></a>

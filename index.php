@@ -56,7 +56,7 @@
             <li><a href="?page=SchoolYears"> <i class="fa fa-calendar"></i>School Years</a></li>
             <li><a href="?page=Class"> <i class="	fa fa-briefcase"></i>Class</a></li>
             <li><a href="tables.html"> <i class="fa fa-child"></i>Student</a></li>
-            <li><a href="#"> <i class="fa fa-fort-awesome"></i>Department</a></li>
+            <li><a href="?page=Department"> <i class="fa fa-fort-awesome"></i>Department</a></li>
             <li><a href="#"> <i class="fa fa-institution"></i>Position</a></li>
             <li><a href="#"> <i class="fa fa-group"></i>Personnel</a></li>
             <li><a href="#"> <i class="fa fa-cogs"></i>Role</a></li>
@@ -198,7 +198,31 @@ if(isset($_GET['page']))
   {
     include_once("resource/class/UpdateClass.php");
   }
+  if(isset($_GET['page'])&& $_GET['page']=="ActiveClass"){
+
+    if($_GET['ClassStatus'] == 0){
+      $active = 1;
+    }
+    else{
+      $active = 0;
+    }
+    $updateStatus = "UPDATE `Class` SET `ClassStatus`=".$active." where `ClassId` = '".$_GET['ClassId']."'";
+    mysqli_query($conn,$updateStatus);
+    echo "<script>window.location.href='?page=Class'</script>";
+  }
   //Department
+  if($page=="Department")
+  {
+    include_once("resource/department/Department.php");
+  }
+  if($page=="AddDepartment")
+  {
+    include_once("resource/department/AddDepartment.php");
+  }
+  if($page=="UpdateDepartment")
+  {
+    include_once("resource/department/UpdateDepartment.php");
+  }
   //Position
   //Role
   //Student
@@ -262,5 +286,9 @@ include_once('body.php')
         //new $.fn.dataTable.FixedHeader( table );
       } );    
     </script>  
+    <script type="text/javascript" src="library/Ckeditor/ckeditor.js"></script>
+    <script type="text/javascript">
+      CKEDITOR.replace('ckeditor');
+    </script>
   </body>
 </html>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 06, 2018 at 06:12 AM
+-- Generation Time: Apr 06, 2018 at 08:51 AM
 -- Server version: 5.6.37
 -- PHP Version: 5.6.31
 
@@ -32,20 +32,21 @@ CREATE TABLE IF NOT EXISTS `Class` (
   `Enrollment` int(10) unsigned NOT NULL,
   `ClassStatus` tinyint(4) DEFAULT '0',
   `GradeId` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `Class`
 --
 
 INSERT INTO `Class` (`ClassId`, `ClassName`, `Enrollment`, `ClassStatus`, `GradeId`) VALUES
-(1, 'PRE1801', 40, 0, 1),
-(2, 'PRE1802', 50, 0, 1),
+(1, 'PRE1801-01', 41, 0, 1),
+(2, 'PRE1802', 50, 1, 1),
 (3, 'PRE1803', 40, 0, 1),
 (4, 'KIND1801', 45, 0, 2),
 (5, 'KIND1802', 54, 0, 2),
 (6, 'KIND1803', 41, 1, 2),
-(7, 'KIND1804', 38, 1, 2);
+(7, 'KIND1804', 38, 1, 2),
+(8, 'PRE 1601', 12, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -56,8 +57,22 @@ INSERT INTO `Class` (`ClassId`, `ClassName`, `Enrollment`, `ClassStatus`, `Grade
 CREATE TABLE IF NOT EXISTS `Department` (
   `DepartmentId` int(11) NOT NULL,
   `DepartmentName` varchar(255) NOT NULL,
-  `DepartmentDetails` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `DepartmentDetails` text
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `Department`
+--
+
+INSERT INTO `Department` (`DepartmentId`, `DepartmentName`, `DepartmentDetails`) VALUES
+(1, 'Human Resouces', 'Office administration is an indispensable part of any company, undertakes affairs related to administrative procedures and welcome reception, organization of clerical support to the whole human You can also provide legal advice if needed. Due to the nature of the work, in many companies, the Administration - Human Resources or Administrative - Organizational Unit are usually arranged together to facilitate mutual exchange and support.'),
+(2, 'Accounting (KT)', 'Office administration is an indispensable part of any company, undertakes affairs related to administrative procedures and welcome reception, organization of clerical support to the whole human You can also provide legal advice if needed. Due to the nature of the work, in many companies, the Administration - Human Resources or Administrative - Organizational Unit are usually arranged together to facilitate mutual exchange and support.'),
+(3, 'Consulting ', 'Office administration is an indispensable part of any company, undertakes affairs related to administrative procedures and welcome reception, organization of clerical support to the whole human You can also provide legal advice if needed. Due to the nature of the work, in many companies, the Administration - Human Resources or Administrative - Organizational Unit are usually arranged together to facilitate mutual exchange and support.'),
+(4, 'Classroom', 'Office administration is an indispensable part of any company, undertakes affairs related to administrative procedures and welcome reception, organization of clerical support to the whole human You can also provide legal advice if needed. Due to the nature of the work, in many companies, the Administration - Human Resources or Administrative - Organizational Unit are usually arranged together to facilitate mutual exchange and support.'),
+(5, 'Dining room', 'Office administration is an indispensable part of any company, undertakes affairs related to administrative procedures and welcome reception, organization of clerical support to the whole human You can also provide legal advice if needed. Due to the nature of the work, in many companies, the Administration - Human Resources or Administrative - Organizational Unit are usually arranged together to facilitate mutual exchange and support.'),
+(6, 'Teacher''s room', 'Office administration is an indispensable part of any company, undertakes affairs related to administrative procedures and welcome reception, organization of clerical support to the whole human You can also provide legal advice if needed. Due to the nature of the work, in many companies, the Administration - Human Resources or Administrative - Organizational Unit are usually arranged together to facilitate mutual exchange and support.'),
+(7, 'Warehouse', 'Office administration is an indispensable part of any company, undertakes affairs related to administrative procedures and welcome reception, organization of clerical support to the whole human You can also provide legal advice if needed. Due to the nature of the work, in many companies, the Administration - Human Resources or Administrative - Organizational Unit are usually arranged together to facilitate mutual exchange and support.'),
+(8, 'Administrative offices', 'Office administration is an indispensable part of any company, undertakes affairs related to administrative procedures and welcome reception, organization of clerical support to the whole human You can also provide legal advice if needed. Due to the nature of the work, in many companies, the Administration - Human Resources or Administrative - Organizational Unit are usually arranged together to facilitate mutual exchange and support.');
 
 -- --------------------------------------------------------
 
@@ -82,9 +97,7 @@ INSERT INTO `Grade` (`GradeId`, `GradeName`) VALUES
 (5, 'Lá 1'),
 (6, 'Leaves'),
 (7, 'Lá 3'),
-(13, 'Left Green'),
-(14, 'Dự Thính 2'),
-(15, 'Lỗi');
+(13, 'Left Green');
 
 -- --------------------------------------------------------
 
@@ -165,7 +178,7 @@ CREATE TABLE IF NOT EXISTS `Position` (
 CREATE TABLE IF NOT EXISTS `Role` (
   `RoleId` int(11) NOT NULL,
   `RoleName` varchar(150) NOT NULL,
-  `RoleActive` tinyint(1) NOT NULL
+  `RoleDescription` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -191,9 +204,6 @@ INSERT INTO `SchoolYears` (`SchoolYearsId`, `SchoolYears`, `Details`) VALUES
 (4, '2017-2018', 'The interest and help of the education and training of Cam expert preschool PGD, the leadership, the local authorities, agencies, unions created all condit'),
 (5, '2018-2019', 'The interest and help of the education and training of Cam expert preschool PGD, the leadership, the local authorities, agencies, unions created all condit'),
 (6, '2019-2020', 'The interest and help of the education and training of Cam expert preschool PGD, the leadership, the local authorities, agencies, unions created all condit'),
-(7, '2007-2008', NULL),
-(8, '2008-2009', NULL),
-(9, '2009-2010', NULL),
 (10, '2020-2021', 'The interest and help of the education and training of Cam expert preschool PGD, the leadership, the local authorities, agencies, unions created all condit');
 
 -- --------------------------------------------------------
@@ -218,11 +228,12 @@ CREATE TABLE IF NOT EXISTS `Student` (
   `StudentName` varchar(155) NOT NULL,
   `StudentBirth` date NOT NULL,
   `StudentGender` int(11) NOT NULL,
-  `StudentPhone` varchar(50) NOT NULL,
-  `StudentEmail` varchar(150) NOT NULL,
+  `StudentAddress` varchar(150) NOT NULL,
   `YourFatherName` varchar(70) NOT NULL,
+  `Job'Father` varchar(50) DEFAULT NULL,
   `YourMotherName` varchar(70) NOT NULL,
-  `PhoneHouse` varchar(50) DEFAULT NULL,
+  `Job'Mother` varchar(50) DEFAULT NULL,
+  `PhoneHouse` varchar(50) NOT NULL,
   `StudentStatus` smallint(6) DEFAULT '1',
   `ClassId` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -320,12 +331,12 @@ ALTER TABLE `Student`
 -- AUTO_INCREMENT for table `Class`
 --
 ALTER TABLE `Class`
-  MODIFY `ClassId` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+  MODIFY `ClassId` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `Department`
 --
 ALTER TABLE `Department`
-  MODIFY `DepartmentId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `DepartmentId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `Grade`
 --
