@@ -14,8 +14,8 @@
 <?php 
 if(isset($_GET["ma"]))
 {
-	$GradeId = $_GET["ma"];
-	mysqli_query($conn,"DELETE FROM `Grade` WHERE GradeId=$GradeId");
+	$SchoolYearsId = $_GET["ma"];
+	mysqli_query($conn,"DELETE FROM `SchoolYears` WHERE SchoolYearsId=$SchoolYearsId");
 }
 ?>
 <?php
@@ -23,49 +23,50 @@ if (isset($_POST['btnDelete'])&&isset($_POST['checkbox']))
 {
 	for ($i = 0; $i < count($_POST['checkbox']); $i++) 
 	{
-		$GradeId1 = $_POST['checkbox'][$i];
-		mysqli_query($conn, "DELETE FROM `Grade` WHERE GradeId=$GradeId1");
+		$SchoolYearsId1 = $_POST['checkbox'][$i];
+		mysqli_query($conn, "DELETE FROM `SchoolYears` WHERE SchoolYearsId=$SchoolYearsId1");
 	}
 }
 ?>
 <div class="container">
 
 	<form name="frmXoa" method="post" action="">
-		<h1 class="text-center">Manage Grade</h1>
+		<h1 class="text-center">Manage School Years</h1>
 		<p>
-			<a  class="btn btn-default" href="?page=addGrade">
+			<a  class="btn btn-default" href="?page=AddSchoolYears">
 				<i class="fa fa-plus"></i>
 			</a>
-
 		</p>
 		<table class="table-striped table-responsive table-bordered" id="myTable">
 			<thead>
 				<tr>
 					<th><strong>Choice</strong></th>
 					<th ><strong>No</strong></th>
-					<th class="col-6"><strong>Grade Name</strong></th>
-					<th class="col-2"><strong>Delete</strong></th>
-					<th class="col-2"><strong>Update</strong></th>
+					<th><strong>School Years</strong></th>
+                    <th class="col-9"><strong>Details</strong></th>
+					<th class="col-1"><strong>Delete</strong></th>
+					<th class="col-1"><strong>Update</strong></th>
 				</tr>
 			</thead>
 			<tbody>
 				<?php 
 				$num=1;
-				$result = mysqli_query($conn,"SELECT * FROM `Grade`");
+				$result = mysqli_query($conn,"SELECT * FROM `SchoolYears`");
 				while($row=mysqli_fetch_array($result, MYSQLI_ASSOC))
 				{
 					?>
 					<tr>
-						<td><input name="checkbox[]" type="checkbox" id="checkbox[]"  class="form-control" value="<?php echo $row["GradeId"] ?>"></td>
+						<td><input name="checkbox[]" type="checkbox" id="checkbox[]" class="form-control" value="<?php echo $row["GradeId"] ?>"></td>
 						<td><?php echo $num ?></td>
-						<td><?php echo $row["GradeName"] ?></td>
+						<td><?php echo $row["SchoolYears"] ?></td>
+                        <td><?php echo $row["Details"] ?></td>
 						<td align='center'>
-							<a class="btn btn-default"   href="?page=grade&ma=<?php echo $row['GradeId']; ?>" onclick="return deleteConfirm()">
+							<a class="btn btn-default"   href="?page=SchoolYears&ma=<?php echo $row['SchoolYearsId']; ?>" onclick="return deleteConfirm()">
 								<i class="fa fa-remove"></i></a>
 							</td>
 							<td>
-								<a class="btn btn-default" href="?page=updateGrade&ma=<?php
-								echo $row['GradeId'];?>"><i class="fa fa-share"></i></a>
+								<a class="btn btn-default" href="?page=UpdateSchoolYears&ma=<?php
+								echo $row['SchoolYearsId'];?>"><i class="fa fa-share"></i></a>
 							</td>
 						</tr>
 						<?php

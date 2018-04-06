@@ -53,6 +53,7 @@
           <ul id="side-main-menu" class="side-menu list-unstyled">                  
             <li><a href="index.php"> <i class="icon-home"></i>Home                             </a></li>
             <li><a href="?page=grade"> <i class="fa fa-clipboard"></i>Grade</a></li>
+            <li><a href="?page=SchoolYears"> <i class="fa fa-calendar"></i>School Years</a></li>
             <li><a href="charts.html"> <i class="	fa fa-briefcase"></i>Class</a></li>
             <li><a href="tables.html"> <i class="fa fa-child"></i>Student</a></li>
             <li><a href="#"> <i class="fa fa-fort-awesome"></i>Department</a></li>
@@ -171,6 +172,20 @@ if(isset($_GET['page']))
   {
     include_once("resource/grade/UpdateGrade.php");
   }
+  //School Years
+  if($page=="SchoolYears")
+  {
+    include_once("resource/schoolyears/SchoolYears.php");
+  }
+  if($page=="AddSchoolYears")
+  {
+    include_once("resource/schoolyears/AddSchoolYears.php");
+  }
+  if($page=="UpdateSchoolYears")
+  {
+    include_once("resource/schoolyears/UpdateSchoolYears.php");
+  }
+  //Class
 }
 else
 include_once('body.php') 
