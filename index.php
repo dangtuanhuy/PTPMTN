@@ -55,11 +55,11 @@
             <li><a href="?page=grade"> <i class="fa fa-clipboard"></i>Grade</a></li>
             <li><a href="?page=SchoolYears"> <i class="fa fa-calendar"></i>School Years</a></li>
             <li><a href="?page=Class"> <i class="	fa fa-briefcase"></i>Class</a></li>
-            <li><a href="tables.html"> <i class="fa fa-child"></i>Student</a></li>
+            <li><a href="#"> <i class="fa fa-child"></i>Student</a></li>
             <li><a href="?page=Department"> <i class="fa fa-fort-awesome"></i>Department</a></li>
             <li><a href="#"> <i class="fa fa-institution"></i>Position</a></li>
             <li><a href="#"> <i class="fa fa-group"></i>Personnel</a></li>
-            <li><a href="#"> <i class="fa fa-cogs"></i>Role</a></li>
+            <li><a href="?page=Role"> <i class="fa fa-cogs"></i>Role</a></li>
             <!-- <li><a href="#" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Example dropdown </a> -->
               <!-- <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
                 <li><a href="#">Page</a></li>
@@ -225,6 +225,18 @@ if(isset($_GET['page']))
   }
   //Position
   //Role
+  if($page=="Role")
+  {
+    include_once("resource/role/Role.php");
+  }
+  if($page=="AddRole")
+  {
+    include_once("resource/role/AddRole.php");
+  }
+  if($page=="UpdateRole")
+  {
+    include_once("resource/role/UpdateRole.php");
+  }
   //Student
   //Personnel
 }
@@ -271,6 +283,12 @@ include_once('body.php')
                                     // "emptyTable": "Chưa có dữ liệu nào",
                                     // "processing": "Đang xử lý...",
                                     // "search": "Tìm kiếm:",
+                                    "infoEmpty": "Empty data",
+                                    "emptyTable": "Data not available",
+                                    "processing": "Processing...",
+                                    "search": "Search:",
+                                    "loadingRecords": "Loading data...",
+                                    "zeroRecords": "Data not found",
                                     // "loadingRecords": "Đang load dữ liệu...",
                                     // "zeroRecords": "không tìm thấy dữ liệu",
                                     // "infoFiltered": "(Được từ tổng số _MAX_ dòng dữ liệu)",
