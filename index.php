@@ -55,7 +55,7 @@
             <li><a href="?page=grade"> <i class="fa fa-clipboard"></i>Grade</a></li>
             <li><a href="?page=SchoolYears"> <i class="fa fa-calendar"></i>School Years</a></li>
             <li><a href="?page=Class"> <i class="	fa fa-briefcase"></i>Class</a></li>
-            <li><a href="#"> <i class="fa fa-child"></i>Student</a></li>
+            <li><a href="?page=Student"> <i class="fa fa-child"></i>Student</a></li>
             <li><a href="?page=Department"> <i class="fa fa-fort-awesome"></i>Department</a></li>
             <li><a href="?page=Position"> <i class="fa fa-institution"></i>Position</a></li>
             <li><a href="#"> <i class="fa fa-group"></i>Personnel</a></li>
@@ -250,6 +250,30 @@ if(isset($_GET['page']))
     include_once("resource/role/UpdateRole.php");
   }
   //Student
+  if($page=="Student")
+  {
+    include_once("resource/student/Student.php");
+  }
+  if($page=="AddStudent")
+  {
+    include_once("resource/student/AddStudent.php");
+  }
+  if($page=="UpdateStudent")
+  {
+    include_once("resource/student/UpdateStudent.php");
+  }
+  if(isset($_GET['page'])&& $_GET['page']=="ActiveStudent"){
+
+    if($_GET['StudentStatus'] == 0){
+      $active = 1;
+    }
+    else{
+      $active = 0;
+    }
+    $updateStatus = "UPDATE `Student` SET `StudentStatus`=".$active." where `StudentCode` = '".$_GET['StudentCode']."'";
+    mysqli_query($conn,$updateStatus);
+    echo "<script>window.location.href='?page=Student'</script>";
+  }
   //Personnel
 }
 else
