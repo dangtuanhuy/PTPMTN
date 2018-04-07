@@ -11,20 +11,20 @@
 </script>
 <!-- Lệnh Delete -->
 
-<?php 
+<?php
 if(isset($_GET["ma"]))
 {
 	$StudentCode = $_GET["ma"];
-	mysqli_query($conn,"DELETE FROM `Student` WHERE `StudentCode`=$StudentCode");
+	mysqli_query($conn,"DELETE FROM Student WHERE StudentCode='{$StudentCode}'");
 }
 ?>
 <?php
-if (isset($_POST['btnDelete'])&&isset($_POST['checkbox'])) 
+if (isset($_POST['btnDelete'])&&isset($_POST['checkbox']))
 {
-	for ($i = 0; $i < count($_POST['checkbox']); $i++) 
+	for ($i = 0; $i < count($_POST['checkbox']); $i++)
 	{
 		$StudentCode1 = $_POST['checkbox'][$i];
-		mysqli_query($conn, "DELETE FROM `Student` WHERE `StudentCode`=$StudentCode1");
+		mysqli_query($conn, "DELETE FROM `Student` WHERE `StudentCode`='{$StudentCode1}'");
 	}
 }
 ?>
@@ -35,6 +35,12 @@ if (isset($_POST['btnDelete'])&&isset($_POST['checkbox']))
 		<p>
 			<a  class="btn btn-default" href="?page=AddStduent">
 				<i class="fa fa-plus"></i>
+			</a>
+			<a  class="btn btn-default" href="#">
+				<i class="fa fa-upload"> Import</i>
+			</a>
+			<a  class="btn btn-default" href="#">
+				<i class="fa fa-download"> Export</i>
 			</a>
 		</p>
 		<table class="table-striped table-responsive table-bordered" id="myTable">
@@ -60,7 +66,7 @@ if (isset($_POST['btnDelete'])&&isset($_POST['checkbox']))
 				</tr>
 			</thead>
 			<tbody>
-				<?php 
+				<?php
 				$num=1;
 				$result = mysqli_query($conn,"SELECT `StudentCode`, `StudentName`, `StudentBirth`, `StudentGender`, `StudentAddress`, `YourFatherName`, `Job'Father`, `YourMotherName`, `Job'Mother`, `PhoneHouse`, `StudentStatus`, `ClassName` FROM `Student`
                 JOIN Class ON Student.ClassId=Class.ClassId");
@@ -80,19 +86,19 @@ if (isset($_POST['btnDelete'])&&isset($_POST['checkbox']))
                         <td><?php echo $row["YourMotherName"] ?></td>
                         <td><?php echo $row["Job'Mother"] ?></td>
                         <td><?php echo $row["PhoneHouse"] ?></td>
-                        
+
                         <td>
-						<form  method="post" >
-                                            <?php 
-                                            if ($row["StudentStatus"]==1){
-                                                echo '<a class="btn btn-default" href="?page=ActiveStudent&StudentStatus='.$row["StudentStatus"].'&StudentCode='.$row["StudentCode"].'">Learning</a>';
-                                            }
-                                            else {
-                                                echo '<a class="btn btn-default" href="?page=ActiveStudent&StudentStatus='.$row["StudentStatus"].'&StudentCode='.$row["StudentCode"].'">Stop learning</a>';
-                                            }
-                    ?>
-                    </form>
-						</td>
+													<form  method="post" >
+							            <?php
+								            if ($row["StudentStatus"]==1){
+								               echo '<a class="btn btn-default" href="?page=ActiveStudent&StudentStatus='.$row["StudentStatus"].'&StudentCode='.$row["StudentCode"].'">Learning</a>';
+								            }
+								            else {
+								               echo '<a class="btn btn-default" href="?page=ActiveStudent&StudentStatus='.$row["StudentStatus"].'&StudentCode='.$row["StudentCode"].'">Stop learning</a>';
+								            }
+							            ?>
+							            </form>
+												</td>
                         <td><?php echo $row["ClassName"] ?></td>
                         <td align='center'>
 							<a class="btn btn-default"   href="#" >
