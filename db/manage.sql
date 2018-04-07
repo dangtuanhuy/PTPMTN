@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 06, 2018 at 08:51 AM
+-- Generation Time: Apr 07, 2018 at 03:22 AM
 -- Server version: 5.6.37
 -- PHP Version: 5.6.31
 
@@ -58,14 +58,14 @@ CREATE TABLE IF NOT EXISTS `Department` (
   `DepartmentId` int(11) NOT NULL,
   `DepartmentName` varchar(255) NOT NULL,
   `DepartmentDetails` text
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `Department`
 --
 
 INSERT INTO `Department` (`DepartmentId`, `DepartmentName`, `DepartmentDetails`) VALUES
-(1, 'Human Resouces', 'Office administration is an indispensable part of any company, undertakes affairs related to administrative procedures and welcome reception, organization of clerical support to the whole human You can also provide legal advice if needed. Due to the nature of the work, in many companies, the Administration - Human Resources or Administrative - Organizational Unit are usually arranged together to facilitate mutual exchange and support.'),
+(1, 'Human Resouces (HR)', '<p>Office administration is an indispensable part of any company, undertakes affairs related to administrative procedures and welcome reception, organization of clerical support to the whole human You can also provide legal advice if needed. Due to the nature of the work, in many companies, the Administration - Human Resources or Administrative - Organizational Unit are usually arranged together to facilitate mutual exchange and support. (HR)</p>\r\n'),
 (2, 'Accounting (KT)', 'Office administration is an indispensable part of any company, undertakes affairs related to administrative procedures and welcome reception, organization of clerical support to the whole human You can also provide legal advice if needed. Due to the nature of the work, in many companies, the Administration - Human Resources or Administrative - Organizational Unit are usually arranged together to facilitate mutual exchange and support.'),
 (3, 'Consulting ', 'Office administration is an indispensable part of any company, undertakes affairs related to administrative procedures and welcome reception, organization of clerical support to the whole human You can also provide legal advice if needed. Due to the nature of the work, in many companies, the Administration - Human Resources or Administrative - Organizational Unit are usually arranged together to facilitate mutual exchange and support.'),
 (4, 'Classroom', 'Office administration is an indispensable part of any company, undertakes affairs related to administrative procedures and welcome reception, organization of clerical support to the whole human You can also provide legal advice if needed. Due to the nature of the work, in many companies, the Administration - Human Resources or Administrative - Organizational Unit are usually arranged together to facilitate mutual exchange and support.'),
@@ -83,7 +83,7 @@ INSERT INTO `Department` (`DepartmentId`, `DepartmentName`, `DepartmentDetails`)
 CREATE TABLE IF NOT EXISTS `Grade` (
   `GradeId` int(11) NOT NULL,
   `GradeName` varchar(50) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `Grade`
@@ -97,7 +97,8 @@ INSERT INTO `Grade` (`GradeId`, `GradeName`) VALUES
 (5, 'Lá 1'),
 (6, 'Leaves'),
 (7, 'Lá 3'),
-(13, 'Left Green');
+(13, 'Left Green'),
+(16, 'Quản trị hệ thống');
 
 -- --------------------------------------------------------
 
@@ -151,7 +152,8 @@ CREATE TABLE IF NOT EXISTS `Personnel` (
   `PersonnelAddress` text NOT NULL,
   `PersonnelNum` varchar(15) NOT NULL,
   `PersonnelEmail` varchar(50) NOT NULL,
-  `PersonnelStatus` smallint(6) DEFAULT '0',
+  `PersonnelStatus` smallint(6) DEFAULT '1',
+  `PersonnelActive` int(11) DEFAULT '0',
   `PositionId` int(11) NOT NULL,
   `RoleId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -167,7 +169,18 @@ CREATE TABLE IF NOT EXISTS `Position` (
   `PositionName` varchar(140) NOT NULL,
   `PositionDetails` text,
   `DepartmentId` int(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `Position`
+--
+
+INSERT INTO `Position` (`PositionId`, `PositionName`, `PositionDetails`, `DepartmentId`) VALUES
+(1, 'Principal', 'The Rector is the head of a school (Elementary, secondary, College, University, etc.), management decisions for the school that', 8),
+(2, 'The ministers', 'The Rector is the head of a school (Elementary, secondary, College, University, etc.), management decisions for the school that', 1),
+(3, 'Labor', 'The Rector is the head of a school (Elementary, secondary, College, University, etc.), management decisions for the school that', 7),
+(4, 'Teacher', 'The Rector is the head of a school (Elementary, secondary, College, University, etc.), management decisions for the school that', 4),
+(5, 'Teacher', 'The Rector is the head of a school (Elementary, secondary, College, University, etc.), management decisions for the school that', 5);
 
 -- --------------------------------------------------------
 
@@ -179,7 +192,15 @@ CREATE TABLE IF NOT EXISTS `Role` (
   `RoleId` int(11) NOT NULL,
   `RoleName` varchar(150) NOT NULL,
   `RoleDescription` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `Role`
+--
+
+INSERT INTO `Role` (`RoleId`, `RoleName`, `RoleDescription`) VALUES
+(1, 'User1', '<p>Ex: Teacher 1</p>\r\n'),
+(2, 'Admin', '<p>Ex: Adminstrator</p>\r\n');
 
 -- --------------------------------------------------------
 
@@ -227,7 +248,7 @@ CREATE TABLE IF NOT EXISTS `Student` (
   `StudentCode` varchar(155) NOT NULL,
   `StudentName` varchar(155) NOT NULL,
   `StudentBirth` date NOT NULL,
-  `StudentGender` int(11) NOT NULL,
+  `StudentGender` int(11) NOT NULL DEFAULT '0',
   `StudentAddress` varchar(150) NOT NULL,
   `YourFatherName` varchar(70) NOT NULL,
   `Job'Father` varchar(50) DEFAULT NULL,
@@ -336,12 +357,12 @@ ALTER TABLE `Class`
 -- AUTO_INCREMENT for table `Department`
 --
 ALTER TABLE `Department`
-  MODIFY `DepartmentId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+  MODIFY `DepartmentId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `Grade`
 --
 ALTER TABLE `Grade`
-  MODIFY `GradeId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
+  MODIFY `GradeId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `ImgPersonel`
 --
@@ -356,12 +377,12 @@ ALTER TABLE `ImgStudent`
 -- AUTO_INCREMENT for table `Position`
 --
 ALTER TABLE `Position`
-  MODIFY `PositionId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `PositionId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `Role`
 --
 ALTER TABLE `Role`
-  MODIFY `RoleId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `RoleId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `SchoolYears`
 --
