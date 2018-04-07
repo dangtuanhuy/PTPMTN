@@ -69,7 +69,7 @@ if (isset($_POST['btnDelete'])&&isset($_POST['checkbox']))
 							</td>
 							<td>
 								<a class="btn btn-default" href="?page=UpdatePosition&ma=<?php
-								echo $row['ClassId'];?>"><i class="fa fa-share"></i></a>
+								echo $row['PositionId'];?>"><i class="fa fa-share"></i></a>
 							</td>
 						</tr>
 						<?php
