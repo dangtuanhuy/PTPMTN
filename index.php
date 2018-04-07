@@ -57,7 +57,7 @@
             <li><a href="?page=Class"> <i class="	fa fa-briefcase"></i>Class</a></li>
             <li><a href="#"> <i class="fa fa-child"></i>Student</a></li>
             <li><a href="?page=Department"> <i class="fa fa-fort-awesome"></i>Department</a></li>
-            <li><a href="#"> <i class="fa fa-institution"></i>Position</a></li>
+            <li><a href="?page=Position"> <i class="fa fa-institution"></i>Position</a></li>
             <li><a href="#"> <i class="fa fa-group"></i>Personnel</a></li>
             <li><a href="?page=Role"> <i class="fa fa-cogs"></i>Role</a></li>
             <!-- <li><a href="#" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Example dropdown </a> -->
@@ -224,6 +224,18 @@ if(isset($_GET['page']))
     include_once("resource/department/UpdateDepartment.php");
   }
   //Position
+  if($page=="Position")
+  {
+    include_once("resource/position/Position.php");
+  }
+  if($page=="AddPosition")
+  {
+    include_once("resource/position/AddPosition.php");
+  }
+  if($page=="UpdatePosition")
+  {
+    include_once("resource/position/UpdatePosition.php");
+  }
   //Role
   if($page=="Role")
   {

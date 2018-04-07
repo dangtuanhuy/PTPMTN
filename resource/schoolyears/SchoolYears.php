@@ -40,12 +40,12 @@ if (isset($_POST['btnDelete'])&&isset($_POST['checkbox']))
 		<table class="table-striped table-responsive table-bordered" id="myTable">
 			<thead>
 				<tr>
-					<th class="col-1"><strong>Choice</strong></th>
-					<th class="col-1"><strong>No</strong></th>
-					<th class="col-1"><strong>School Years</strong></th>
-                    <th class="col-7"><strong>Details</strong></th>
-					<th class="col-1"><strong>Delete</strong></th>
-					<th class="col-1"><strong>Update</strong></th>
+					<th ><strong>Choice</strong></th>
+					<th ><strong>No</strong></th>
+					<th ><strong>School Years</strong></th>
+                    <th class="col-md-7"><strong>Details</strong></th>
+					<th class="col-md-1"><strong>Delete</strong></th>
+					<th class="col-md-1"><strong>Update</strong></th>
 				</tr>
 			</thead>
 			<tbody>
