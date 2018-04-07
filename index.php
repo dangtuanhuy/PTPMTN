@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="css/custom.css">
-    
+
     <!-- Favicon-->
     <link rel="shortcut icon" href="img/favicon.ico">
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
@@ -31,9 +31,9 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
   </head>
   <body>
-  
+
   <?php
-  include_once('config/connect.php'); 
+  include_once('config/connect.php');
   ?>
     <!-- Side Navbar -->
     <nav class="side-navbar">
@@ -50,7 +50,7 @@
         <!-- Sidebar Navigation Menus-->
         <div class="main-menu">
           <h5 class="sidenav-heading">Main</h5>
-          <ul id="side-main-menu" class="side-menu list-unstyled">                  
+          <ul id="side-main-menu" class="side-menu list-unstyled">
             <li><a href="index.php"> <i class="icon-home"></i>Home                             </a></li>
             <li><a href="?page=grade"> <i class="fa fa-clipboard"></i>Grade</a></li>
             <li><a href="?page=SchoolYears"> <i class="fa fa-calendar"></i>School Years</a></li>
@@ -74,7 +74,7 @@
         </div>
         <!-- <div class="admin-menu">
           <h5 class="sidenav-heading">Second menu</h5>
-          <ul id="side-admin-menu" class="side-menu list-unstyled"> 
+          <ul id="side-admin-menu" class="side-menu list-unstyled">
             <li> <a href="#"> <i class="icon-screen"> </i>Demo</a></li>
             <li> <a href="#"> <i class="icon-flask"> </i>Demo
                 <div class="badge badge-info">Special</div></a></li>
@@ -91,27 +91,27 @@
           <div class="container-fluid">
             <div class="navbar-holder d-flex align-items-center justify-content-between">
               <div class="navbar-header"><a id="toggle-btn" href="#" class="menu-btn"><i class="icon-bars"> </i></a><a href="index.php" class="navbar-brand">
-                  <div class="brand-text d-none d-md-inline-block"><span>Bootstrap </span><strong class="text-primary">Dashboard</strong></div></a></div>
+                  <div class="brand-text d-none d-md-inline-block"><span><h1>CT249</h1> </span><strong class="text-primary"> Dashboard</strong></div></a></div>
               <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
                 <!-- Notifications dropdown-->
                 <li class="nav-item dropdown"> <a id="notifications" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-bell"></i><span class="badge badge-warning">12</span></a>
                   <ul aria-labelledby="notifications" class="dropdown-menu">
-                    <li><a rel="nofollow" href="#" class="dropdown-item"> 
+                    <li><a rel="nofollow" href="#" class="dropdown-item">
                         <div class="notification d-flex justify-content-between">
                           <div class="notification-content"><i class="fa fa-envelope"></i>You have 6 new messages </div>
                           <div class="notification-time"><small>4 minutes ago</small></div>
                         </div></a></li>
-                    <li><a rel="nofollow" href="#" class="dropdown-item"> 
+                    <li><a rel="nofollow" href="#" class="dropdown-item">
                         <div class="notification d-flex justify-content-between">
                           <div class="notification-content"><i class="fa fa-twitter"></i>You have 2 followers</div>
                           <div class="notification-time"><small>4 minutes ago</small></div>
                         </div></a></li>
-                    <li><a rel="nofollow" href="#" class="dropdown-item"> 
+                    <li><a rel="nofollow" href="#" class="dropdown-item">
                         <div class="notification d-flex justify-content-between">
                           <div class="notification-content"><i class="fa fa-upload"></i>Server Rebooted</div>
                           <div class="notification-time"><small>4 minutes ago</small></div>
                         </div></a></li>
-                    <li><a rel="nofollow" href="#" class="dropdown-item"> 
+                    <li><a rel="nofollow" href="#" class="dropdown-item">
                         <div class="notification d-flex justify-content-between">
                           <div class="notification-content"><i class="fa fa-twitter"></i>You have 2 followers</div>
                           <div class="notification-time"><small>10 minutes ago</small></div>
@@ -122,17 +122,17 @@
                 <!-- Messages dropdown-->
                 <li class="nav-item dropdown"> <a id="messages" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-envelope"></i><span class="badge badge-info">10</span></a>
                   <ul aria-labelledby="notifications" class="dropdown-menu">
-                    <li><a rel="nofollow" href="#" class="dropdown-item d-flex"> 
+                    <li><a rel="nofollow" href="#" class="dropdown-item d-flex">
                         <div class="msg-profile"> <img src="img/avatar-1.jpg" alt="..." class="img-fluid rounded-circle"></div>
                         <div class="msg-body">
                           <h3 class="h5">Jason Doe</h3><span>sent you a direct message</span><small>3 days ago at 7:58 pm - 10.06.2014</small>
                         </div></a></li>
-                    <li><a rel="nofollow" href="#" class="dropdown-item d-flex"> 
+                    <li><a rel="nofollow" href="#" class="dropdown-item d-flex">
                         <div class="msg-profile"> <img src="img/avatar-2.jpg" alt="..." class="img-fluid rounded-circle"></div>
                         <div class="msg-body">
                           <h3 class="h5">Frank Williams</h3><span>sent you a direct message</span><small>3 days ago at 7:58 pm - 10.06.2014</small>
                         </div></a></li>
-                    <li><a rel="nofollow" href="#" class="dropdown-item d-flex"> 
+                    <li><a rel="nofollow" href="#" class="dropdown-item d-flex">
                         <div class="msg-profile"> <img src="img/avatar-3.jpg" alt="..." class="img-fluid rounded-circle"></div>
                         <div class="msg-body">
                           <h3 class="h5">Ashley Wood</h3><span>sent you a direct message</span><small>3 days ago at 7:58 pm - 10.06.2014</small>
@@ -277,7 +277,7 @@ if(isset($_GET['page']))
   //Personnel
 }
 else
-include_once('body.php') 
+include_once('body.php')
 ?>
       <footer class="main-footer">
         <div class="container-fluid">
@@ -293,7 +293,7 @@ include_once('body.php')
         </div>
       </footer>
     </div>
-    
+
     <!-- JavaScript files-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/popper.js/umd/popper.min.js"> </script>
@@ -338,8 +338,8 @@ include_once('body.php')
                                   "lengthMenu": [[10, 15, 20, 25, 30, -1], [10, 15, 20, 25, 30, "All"]]
                                 } );
         //new $.fn.dataTable.FixedHeader( table );
-      } );    
-    </script>  
+      } );
+    </script>
     <script type="text/javascript" src="library/Ckeditor/ckeditor.js"></script>
     <script type="text/javascript">
       CKEDITOR.replace('ckeditor');
