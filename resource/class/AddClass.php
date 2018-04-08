@@ -5,7 +5,7 @@ function blindGradeList($conn)
 	SELECT `GradeId`, `GradeName` FROM `Grade`";
 	$result = mysqli_query($conn,$sqlSelect);
 	echo "<select class='form-control' name='slGrade'>
-	<option value='0'>Choice Class</option>";
+	<option value='0'>Choice Grade</option>";
 	while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 		echo "
 		<option value='".$row['GradeId']."'>".$row['GradeName']."</option>";
