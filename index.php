@@ -275,6 +275,18 @@ if(isset($_GET['page']))
     echo "<script>window.location.href='?page=Student'</script>";
   }
   //Personnel
+  if($page=="Personnel")
+  {
+    include_once("resource/personnel/Personnel.php");
+  }
+  if($page=="AddPersonnel")
+  {
+    include_once("resource/personnel/AddPersonnel.php");
+  }
+  if($page=="UpdatePersonnel")
+  {
+    include_once("resource/personnel/UpdatePersonnel.php");
+  }
 }
 else
 include_once('body.php') 
