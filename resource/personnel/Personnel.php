@@ -15,7 +15,7 @@
 if(isset($_GET["ma"]))
 {
 	$PersonnelCode = $_GET["ma"];
-	mysqli_query($conn,"DELETE FROM `Personnel` WHERE `PersonnelCode`=$PersonnelCode");
+	mysqli_query($conn,"DELETE FROM `Personnel` WHERE `PersonnelCode`={$PersonnelCode}");
 }
 ?>
 <?php
@@ -24,7 +24,7 @@ if (isset($_POST['btnDelete'])&&isset($_POST['checkbox']))
 	for ($i = 0; $i < count($_POST['checkbox']); $i++) 
 	{
 		$PersonnelCode1 = $_POST['checkbox'][$i];
-		mysqli_query($conn, "DELETE FROM `Personnel` WHERE `PersonnelCode`=$PersonnelCode1");
+		mysqli_query($conn, "DELETE FROM `Personnel` WHERE `PersonnelCode`={$PersonnelCode1}");
 	}
 }
 ?>
@@ -42,69 +42,87 @@ if (isset($_POST['btnDelete'])&&isset($_POST['checkbox']))
 				<tr>
 					<th><strong>Choice</strong></th>
 					<th><strong>No</strong></th>
-					<th><strong>Student Code</strong></th>
-                    <th><strong>Student Name</strong></th>
+					<th><strong>Personnel Code</strong></th>
+                    <th><strong>Personnel Name</strong></th>
                     <th><strong>Birthday</strong></th>
                     <th><strong>Gender</strong></th>
                     <th><strong>Address</strong></th>
-                    <th><strong>Father</strong></th>
-                    <th><strong>Job's Father</strong></th>
-                    <th><strong>Mother</strong></th>
-                    <th><strong>Job's Mother</strong></th>
-                    <th><strong>Phone</strong></th>
-                    <th><strong>Status</strong></th>
-                    <th><strong>Class</strong></th>
-                    <th><strong>IMG</strong></th>
-					<th><strong>Delete</strong></th>
-					<th><strong>Update</strong></th>
+                    <th><strong>Phone number</strong></th>
+                    <th><strong>Email</strong></th>
+                    <th><strong>Active</strong></th>
+                    <th><strong>Note</strong></th>
+                    <th><strong>Position</strong></th>
+                    <th><strong>Role</strong></th>
+                    <th><strong>Open/Close</strong></th>
+					<th><strong>IMG</strong></th>
+                    <th><strong>Delete</strong></th>
 				</tr>
 			</thead>
 			<tbody>
 				<?php 
 				$num=1;
-				$result = mysqli_query($conn,"SELECT `StudentCode`, `StudentName`, `StudentBirth`, `StudentGender`, `StudentAddress`, `YourFatherName`, `JobFather`, `YourMotherName`, `JobMother`, `PhoneHouse`, `StudentStatus`, `ClassName` FROM `Student`
-                JOIN Class ON Student.ClassId=Class.ClassId");
+				$result = mysqli_query($conn,"SELECT `PersonnelCode`, `PersonnelName`, `PersonnelBirth`, `PersonnelGender`, `PersonnelAddress`, `PersonnelNum`, `PersonnelEmail`, `PersonnelActive`, `PersonnelNote`, `PositionName`, `RoleName`, `PersonnelStatus` FROM `Personnel`
+                JOIN Role on Personnel.RoleId = Role.RoleId
+                JOIN Position ON Personnel.PositionId = Position.PositionId");
 				while($row=mysqli_fetch_array($result, MYSQLI_ASSOC))
 				{
 					?>
 					<tr>
-						<td><input name="checkbox[]" type="checkbox" id="checkbox[]" class="form-control" value="<?php echo $row["StudentCode"] ?>"></td>
+						<td><input name="checkbox[]" type="checkbox" id="checkbox[]" class="form-control" value="<?php echo $row["PersonnelCode"] ?>"></td>
 						<td><?php echo $num ?></td>
-						<td><?php echo $row["StudentCode"] ?></td>
-                        <td><?php echo $row["StudentName"] ?></td>
-                        <td><?php echo $row["StudentBirth"] ?></td>
-                        <td><?php echo $row["StudentGender"]== 0 ? "Male" : "Female" ?></td>
-                        <td><?php echo $row["StudentAddress"] ?></td>
-                        <td><?php echo $row["YourFatherName"] ?></td>
-                        <td><?php echo $row["JobFather"] ?></td>
-                        <td><?php echo $row["YourMotherName"] ?></td>
-                        <td><?php echo $row["JobMother"] ?></td>
-                        <td><?php echo $row["PhoneHouse"] ?></td>
-                        
+						<td><?php echo $row["PersonnelCode"] ?></td>
+                        <td><?php echo $row["PersonnelName"] ?></td>
+                        <td><?php echo $row["PersonnelBirth"] ?></td>
+                        <td><?php echo $row["PersonnelGender"]== 0 ? "Male" : "Female" ?></td>
+                        <td><?php echo $row["PersonnelAddress"] ?></td>
+                        <td><?php echo $row["PersonnelNum"] ?></td>
+                        <td><?php echo $row["PersonnelEmail"] ?></td>                      
                         <td>
 						<form  method="post" >
                                             <?php 
-                                            if ($row["StudentStatus"]==1){
-                                                echo '<a class="btn btn-default" href="?page=ActiveStudent&StudentStatus='.$row["StudentStatus"].'&StudentCode='.$row["StudentCode"].'">Learning</a>';
+                                            if ($row["PersonnelActive"]==1){
+                                                echo '<a class="btn btn-default" href="?page=ActivePersonnel&PersonnelActive='.$row["PersonnelActive"].'&PersonnelCode='.$row["PersonnelCode"].'">Active</a>';
                                             }
                                             else {
-                                                echo '<a class="btn btn-default" href="?page=ActiveStudent&StudentStatus='.$row["StudentStatus"].'&StudentCode='.$row["StudentCode"].'">Stop learning</a>';
+                                                echo '<a class="btn btn-default" href="?page=ActivePersonnel&PersonnelActive='.$row["PersonnelActive"].'&PersonnelCode='.$row["PersonnelCode"].'">No Active</a>';
                                             }
-                    ?>
-                    </form>
+                                            ?>
+                        </form>
 						</td>
-                        <td><?php echo $row["ClassName"] ?></td>
+                        <td>
+                        <form  method="post" >
+                                            <?php 
+                                            if ($row["PersonnelNote"]==1){
+                                                echo '<a class="btn btn-default" href="?page=ActiveNote&PersonnelNote='.$row["PersonnelNote"].'&PersonnelCode='.$row["PersonnelCode"].'">Visiting</a>';
+                                            }
+                                            else {
+                                                echo '<a class="btn btn-default" href="?page=ActiveNote&PersonnelNote='.$row["PersonnelNote"].'&PersonnelCode='.$row["PersonnelCode"].'">Lecture</a>';
+                                            }
+                                            ?>
+                        </form>
+						</td>
+                        <td><?php echo $row["PositionName"] ?></td>
+                        <td><?php echo $row["RoleName"] ?></td>
+                        <td>
+                        <form  method="get" >
+                                            <?php 
+                                            if ($row["PersonnelStatus"]==1){
+                                                echo '<a class="btn btn-default" href="?page=OpenClose&PersonnelStatus='.$row["PersonnelStatus"].'&PersonnelCode='.$row["PersonnelCode"].'">Teaching</a>';
+                                            }
+                                            else {
+                                                echo '<a class="btn btn-default" href="?page=OpenClose&PersonnelStatus='.$row["PersonnelStatus"].'&PersonnelCode='.$row["PersonnelCode"].'">Retirement</a>';
+                                            }
+                                            ?>
+                        </form>
+						</td>
                         <td align='center'>
-							<a class="btn btn-default"   href="#" >
+							<a class="btn btn-default" href="?page=imgs&id=<?php echo $row['PersonnelCode']; ?>" >
 								<i class="fa fa-image"></i></a></td>
 						<!-- <td> -->
 						<td align='center'>
-							<a class="btn btn-default"   href="?page=Student&ma=<?php echo $row['StudentCode']; ?>" onclick="return deleteConfirm()">
+							<a class="btn btn-default"   href="?page=Personnel&ma=<?php echo $row['PersonnelCode']; ?>" onclick="return deleteConfirm()">
 								<i class="fa fa-remove"></i></a>
                         </td>
-						<td align='center'>
-								<a class="btn btn-default" href="?page=UpdateStudent&ma=<?php
-								echo $row['StudentCode'];?>"><i class="fa fa-share"></i></a></td>
 						</tr>
 						<?php
 						$num++;

@@ -58,7 +58,7 @@
             <li><a href="?page=Student"> <i class="fa fa-child"></i>Student</a></li>
             <li><a href="?page=Department"> <i class="fa fa-fort-awesome"></i>Department</a></li>
             <li><a href="?page=Position"> <i class="fa fa-institution"></i>Position</a></li>
-            <li><a href="#"> <i class="fa fa-group"></i>Personnel</a></li>
+            <li><a href="?page=Personnel"> <i class="fa fa-group"></i>Personnel</a></li>
             <li><a href="?page=Role"> <i class="fa fa-cogs"></i>Role</a></li>
             <!-- <li><a href="#" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Example dropdown </a> -->
               <!-- <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
@@ -286,6 +286,46 @@ if(isset($_GET['page']))
   if($page=="UpdatePersonnel")
   {
     include_once("resource/personnel/UpdatePersonnel.php");
+  }
+  if(isset($_GET['page'])&& $_GET['page']=="ActiveNote"){
+
+    if($_GET['PersonnelNote'] == 0){
+      $active = 1;
+    }
+    else{
+      $active = 0;
+    }
+    $updateStatus = "UPDATE `Personnel` SET `PersonnelNote`=".$active." where `PersonnelCode` = '".$_GET['PersonnelCode']."'";
+    mysqli_query($conn,$updateStatus);
+    echo "<script>window.location.href='?page=Personnel'</script>";
+  }
+  if(isset($_GET['page'])&& $_GET['page']=="ActivePersonnel"){
+
+    if($_GET['PersonnelActive'] == 0){
+      $active = 1;
+    }
+    else{
+      $active = 0;
+    }
+    $updateStatus = "UPDATE `Personnel` SET `PersonnelActive`=".$active." where `PersonnelCode` = '".$_GET['PersonnelCode']."'";
+    mysqli_query($conn,$updateStatus);
+    echo "<script>window.location.href='?page=Personnel'</script>";
+  }
+  if(isset($_GET['page'])&& $_GET['page']=="OpenClose"){
+
+    if($_GET['PersonnelStatus'] == 0){
+      $active = 1;
+    }
+    else{
+      $active = 0;
+    }
+    $updateStatus = "UPDATE `Personnel` SET `PersonnelStatus`=".$active." where `PersonnelCode` = '".$_GET['PersonnelCode']."'";
+    mysqli_query($conn,$updateStatus);
+    echo "<script>window.location.href='?page=Personnel'</script>";
+  }
+  if($page=="imgs")
+  {
+    include_once("resource/personnel/ImgPersonnel.php");
   }
 }
 else
