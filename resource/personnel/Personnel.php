@@ -15,7 +15,7 @@
 if(isset($_GET["ma"]))
 {
 	$PersonnelCode = $_GET["ma"];
-	mysqli_query($conn,"DELETE FROM `Personnel` WHERE `PersonnelCode`={$PersonnelCode}");
+	mysqli_query($conn,"DELETE FROM `Personnel` WHERE PersonnelCode={$PersonnelCode}");
 }
 ?>
 <?php
@@ -24,7 +24,7 @@ if (isset($_POST['btnDelete'])&&isset($_POST['checkbox']))
 	for ($i = 0; $i < count($_POST['checkbox']); $i++) 
 	{
 		$PersonnelCode1 = $_POST['checkbox'][$i];
-		mysqli_query($conn, "DELETE FROM `Personnel` WHERE `PersonnelCode`={$PersonnelCode1}");
+		mysqli_query($conn, "DELETE FROM `Personnel` WHERE PersonnelCode={$PersonnelCode1}");
 	}
 }
 ?>
@@ -33,7 +33,7 @@ if (isset($_POST['btnDelete'])&&isset($_POST['checkbox']))
 	<form name="frmXoa" method="post" action="">
 		<h1 class="text-center">Manage Personnel</h1>
 		<p>
-			<a  class="btn btn-default" href="?page=AddStudent">
+			<a  class="btn btn-default" href="?page=AddPersonnel">
 				<i class="fa fa-plus"></i>
 			</a>
 		</p>
