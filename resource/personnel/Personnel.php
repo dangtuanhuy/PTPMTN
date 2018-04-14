@@ -36,6 +36,9 @@ if (isset($_POST['btnDelete'])&&isset($_POST['checkbox']))
 			<a  class="btn btn-default" href="?page=AddPersonnel">
 				<i class="fa fa-plus"></i>
 			</a>
+			<a  class="btn btn-default" href="?page=ie">
+				<i class="fa fa-cloud"> Import/Export</i>
+			</a>
 		</p>
 		<table class="table-striped table-responsive table-bordered" id="myTable">
 			<thead>
