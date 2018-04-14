@@ -68,8 +68,7 @@ if (isset($_POST['btnDelete'])&&isset($_POST['checkbox']))
 			<tbody>
 				<?php
 				$num=1;
-				$result = mysqli_query($conn,"SELECT `StudentCode`, `StudentName`, `StudentBirth`, `StudentGender`, `StudentAddress`, `YourFatherName`, `JobFather`, `YourMotherName`, `JobMother`, `PhoneHouse`, `StudentStatus`, `ClassName` FROM `Student`
-                JOIN Class ON Student.ClassId=Class.ClassId");
+				$result = mysqli_query($conn,"SELECT * FROM `Student` JOIN `Class` ON Student.ClassId=Class.ClassId");
 				while($row=mysqli_fetch_array($result, MYSQLI_ASSOC))
 				{
 					?>
@@ -82,9 +81,9 @@ if (isset($_POST['btnDelete'])&&isset($_POST['checkbox']))
                         <td><?php echo $row["StudentGender"]== 0 ? "Male" : "Female" ?></td>
                         <td><?php echo $row["StudentAddress"] ?></td>
                         <td><?php echo $row["YourFatherName"] ?></td>
-                        <td><?php echo $row["JobFather"] ?></td>
+                        <td><?php echo $row["Job'Father"] ?></td>
                         <td><?php echo $row["YourMotherName"] ?></td>
-                        <td><?php echo $row["JobMother"] ?></td>
+                        <td><?php echo $row["Job'Mother"] ?></td>
                         <td><?php echo $row["PhoneHouse"] ?></td>
 
                         <td>

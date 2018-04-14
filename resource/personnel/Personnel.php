@@ -11,7 +11,7 @@
 </script>
 <!-- Lệnh Delete -->
 
-<?php 
+<?php
 if(isset($_GET["ma"]))
 {
 	$PersonnelCode = $_GET["ma"];
@@ -19,9 +19,9 @@ if(isset($_GET["ma"]))
 }
 ?>
 <?php
-if (isset($_POST['btnDelete'])&&isset($_POST['checkbox'])) 
+if (isset($_POST['btnDelete'])&&isset($_POST['checkbox']))
 {
-	for ($i = 0; $i < count($_POST['checkbox']); $i++) 
+	for ($i = 0; $i < count($_POST['checkbox']); $i++)
 	{
 		$PersonnelCode1 = $_POST['checkbox'][$i];
 		mysqli_query($conn, "DELETE FROM `Personnel` WHERE PersonnelCode={$PersonnelCode1}");
@@ -59,11 +59,9 @@ if (isset($_POST['btnDelete'])&&isset($_POST['checkbox']))
 				</tr>
 			</thead>
 			<tbody>
-				<?php 
+				<?php
 				$num=1;
-				$result = mysqli_query($conn,"SELECT `PersonnelCode`, `PersonnelName`, `PersonnelBirth`, `PersonnelGender`, `PersonnelAddress`, `PersonnelNum`, `PersonnelEmail`, `PersonnelActive`, `PersonnelNote`, `PositionName`, `RoleName`, `PersonnelStatus` FROM `Personnel`
-                JOIN Role on Personnel.RoleId = Role.RoleId
-                JOIN Position ON Personnel.PositionId = Position.PositionId");
+				$result = mysqli_query($conn,"SELECT * FROM `Personnel` JOIN `Role` on Personnel.RoleId = Role.RoleId JOIN `Position` ON Personnel.PositionId = Position.PositionId");
 				while($row=mysqli_fetch_array($result, MYSQLI_ASSOC))
 				{
 					?>
@@ -76,10 +74,10 @@ if (isset($_POST['btnDelete'])&&isset($_POST['checkbox']))
                         <td><?php echo $row["PersonnelGender"]== 0 ? "Male" : "Female" ?></td>
                         <td><?php echo $row["PersonnelAddress"] ?></td>
                         <td><?php echo $row["PersonnelNum"] ?></td>
-                        <td><?php echo $row["PersonnelEmail"] ?></td>                      
+                        <td><?php echo $row["PersonnelEmail"] ?></td>
                         <td>
 						<form  method="post" >
-                                            <?php 
+                                            <?php
                                             if ($row["PersonnelActive"]==1){
                                                 echo '<a class="btn btn-default" href="?page=ActivePersonnel&PersonnelActive='.$row["PersonnelActive"].'&PersonnelCode='.$row["PersonnelCode"].'">Active</a>';
                                             }
@@ -91,7 +89,7 @@ if (isset($_POST['btnDelete'])&&isset($_POST['checkbox']))
 						</td>
                         <td>
                         <form  method="post" >
-                                            <?php 
+                                            <?php
                                             if ($row["PersonnelNote"]==1){
                                                 echo '<a class="btn btn-default" href="?page=ActiveNote&PersonnelNote='.$row["PersonnelNote"].'&PersonnelCode='.$row["PersonnelCode"].'">Visiting</a>';
                                             }
@@ -105,7 +103,7 @@ if (isset($_POST['btnDelete'])&&isset($_POST['checkbox']))
                         <td><?php echo $row["RoleName"] ?></td>
                         <td>
                         <form  method="get" >
-                                            <?php 
+                                            <?php
                                             if ($row["PersonnelStatus"]==1){
                                                 echo '<a class="btn btn-default" href="?page=OpenClose&PersonnelStatus='.$row["PersonnelStatus"].'&PersonnelCode='.$row["PersonnelCode"].'">Teaching</a>';
                                             }
