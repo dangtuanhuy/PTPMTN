@@ -6,7 +6,7 @@ if(!isset($_SESSION['Username'])){
 
 function PersonnelLogin($conn, $PersonnelCode) {
   $sql_query_Personnel = "SELECT PersonnelName FROM `Personnel` WHERE `PersonnelCode` = '{$PersonnelCode}'";
-  $sql_result_Personnel = mysqli_query($conn,$sql_query_Personnel)  or die(mysql_error());;
+  $sql_result_Personnel = mysqli_query($conn,$sql_query_Personnel)  or die(mysql_error());
   while ($row = $sql_result_Personnel->fetch_assoc()) {
     echo $row['PersonnelName'];
 }

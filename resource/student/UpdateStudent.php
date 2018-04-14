@@ -4,8 +4,7 @@ if(isset($_GET["ma"])){
 
 	$ma = $_GET["ma"];
 	
-	$sqlstring = "SELECT `StudentCode`, `StudentName`, `StudentBirth`, `StudentGender`, `StudentAddress`, `
-    YourFatherName`, `JobFather`, `YourMotherName`, `JobMother`, `PhoneHouse`,`ClassId` FROM Student WHERE StudentCode=".$ma;
+	$sqlstring = "SELECT `StudentCode`, `StudentName`, `StudentBirth`, `StudentGender`, `StudentAddress`, `YourFatherName`, `JobFather`, `YourMotherName`, `JobMother`, `PhoneHouse`,`ClassId` FROM Student WHERE StudentCode='".$ma."'";
 	$result = mysqli_query($conn, $sqlstring);
 	$row = mysqli_fetch_row($result);
 	$StudentCode = $row['0'];
