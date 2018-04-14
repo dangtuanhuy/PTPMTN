@@ -77,7 +77,7 @@ if (isset($_POST['btnDelete'])&&isset($_POST['checkbox']))
                     </form>
 						</td>
 						<td align='center'>
-							<a class="btn btn-default"   href="?page=Class&ma=<?php echo $row['SchoolYearsId']; ?>" onclick="return deleteConfirm()">
+							<a class="btn btn-default"   href="?page=Class&ma=<?php echo $row['ClassId']; ?>" onclick="return deleteConfirm()">
 								<i class="fa fa-remove"></i></a>
 							</td>
 							<td>
