@@ -30,6 +30,7 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
   </head>
   <body>
+  <?php session_start(); ?>
   <?php include_once("config/connect.php"); ?>
   <?php
     if(isset($_POST['btnLogion']))
@@ -37,9 +38,9 @@
       $loginusername = trim($_POST["txtloginUsername"]);
 			$loginpassword = trim($_POST["txtloginPassword"]);
       $loginpassword = md5($loginpassword);
-      $result = mysqli_query($conn,"SELECT *
-                                    FROM user
-                                    WHERE `Role` = 4 AND  Username='{$loginusername}' AND Passwords='{$loginpassword}'");
+      $result = mysqli_query($conn,"SELECT PersonnelCode, PersonnelPass,  RoleId
+                                    FROM Personnel
+                                    WHERE RoleId = 2 AND  PersonnelCode='{$loginusername}' AND PersonnelPass='{$loginpassword}'");
       if (mysqli_num_rows($result) == 1)
       {
         $_SESSION["Username"] = $loginusername;
@@ -47,7 +48,7 @@
       }
       else
       {
-        echo '<script> alert("Tên tài khoản hoặc mật khẩu không chính xác!");</script>';
+        echo '<script> alert("Tên tài khoản hoặc mật khẩu không chính xác hoặc bạn không có quyền truy cập");</script>';
       }
     }
   ?>
@@ -57,19 +58,20 @@
           <div class="form-inner">
             <div class="logo text-uppercase"><span>Bootstrap</span><strong class="text-primary">Dashboard</strong></div>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p>
-            <form method="get" class="text-left form-validate">
+            <form method="post" class="text-left form-validate">
               <div class="form-group-material">
-                <input id="login-username" type="text" name="loginUsername" required data-msg="Please enter your username" class="input-material">
-                <label for="login-username" class="label-material">Username</label>
+                <input id="txtloginUsername" type="text" name="txtloginUsername" required data-msg="Please enter your username" class="input-material">
+                <label for="txtloginUsername" class="label-material">Username</label>
               </div>
               <div class="form-group-material">
-                <input id="login-password" type="password" name="loginPassword" required data-msg="Please enter your password" class="input-material">
-                <label for="login-password" class="label-material">Password</label>
+                <input id="txtloginPassword" type="password" name="txtloginPassword" required data-msg="Please enter your password" class="input-material">
+                <label for="txtloginPassword" class="label-material">Password</label>
               </div>
-              <div class="form-group text-center"><a id="login" href="index.php" class="btn btn-primary">Login</a>
+              <div class="form-group text-center">
+              <input type="submit" value="LOGIN" name="btnLogion" class="btn btn-outline-info"/>
                 <!-- This should be submit button but I replaced it with <a> for demo purposes-->
               </div>
-            </form><a href="#" class="forgot-pass">Forgot Password?</a><small>Do not have an account? </small><a href="register.php" class="signup">Signup</a>
+            </form>
           </div>
           <div class="copyrights text-center">
             <p>Design by <a href="https://bootstrapious.com" class="external">Bootstrapious</a></p>

@@ -1,3 +1,18 @@
+<?php
+session_start();
+if(!isset($_SESSION['Username'])){
+	echo '<meta http-equiv="refresh" content="0; URL=index.php"/>';
+}
+
+function PersonnelLogin($PersonnelCode) {
+  $sql_query_Personnel = "SELECT * FROM `Personnel` WHERE `PersonnelCode` = '{$PersonnelCode}'";
+  $sql_result_Personnel = mysqli_query($conn,$sql_query_Personnel );
+
+  while ($row_Personnel = mysqli_fetch_array($conn,$sql_result_Personnel)) {
+    echo $row_Personnel['PersonnelName'];
+  }
+}
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -90,7 +105,7 @@
         <nav class="navbar">
           <div class="container-fluid">
             <div class="navbar-holder d-flex align-items-center justify-content-between">
-              <div class="navbar-header"><a id="toggle-btn" href="#" class="menu-btn"><i class="icon-bars"> </i></a><a href="index.php" class="navbar-brand">
+              <div class="navbar-header"><a id="toggle-btn" href="index.php" class="menu-btn"><i class="icon-bars"> </i></a><a href="index.php" class="navbar-brand">
                   <div class="brand-text d-none d-md-inline-block"><span><h1>CT249</h1> </span><strong class="text-primary"> Dashboard</strong></div></a></div>
               <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
                 <!-- Notifications dropdown-->
@@ -148,7 +163,7 @@
                   </ul>
                 </li>
                 <!-- Log out-->
-                <li class="nav-item"><a href="login.php" class="nav-link logout"> <span class="d-none d-sm-inline-block">Logout</span><i class="fa fa-sign-out"></i></a></li>
+                <li class="nav-item"><a href="logout.php" class="nav-link logout"> <span class="d-none d-sm-inline-block"><?php if(isset($_SESSION["Username"])){PersonnelLogin($_SESSION["Username"]); echo "  <i class='fa fa-power-off text-danger'></i>"; }?></span><i class="fa fa-sign-out"></i></a></li>
               </ul>
             </div>
           </div>
@@ -403,3 +418,4 @@ include_once('body.php')
     </script>
   </body>
 </html>
+
