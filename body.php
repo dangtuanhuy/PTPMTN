@@ -194,8 +194,8 @@
             <td><?php echo $row["PersonnelEmail"] ?></td>
             <td><?php echo $row["DepartmentName"] ?></td>
             <td><?php echo $row["PositionName"] ?></td>
-            <td><a class="btn btn-default" href="#"><i class="fa fa-user"></i></a></td>
-            <td><a class="btn btn-default" href="#"><i class="fa fa-print"></i></a></td>
+            <td class="text-center"><a class="btn btn-default " href="#"><i class="fa fa-user"></i></a></td>
+            <td class="text-center"><a class="btn btn-default " href="#"><i class="fa fa-print"></i></a></td>
 						</tr>
 						<?php
 						$num++;
