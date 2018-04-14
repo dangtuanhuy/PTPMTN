@@ -135,11 +135,8 @@ function PersonnelLogin($conn, $PersonnelCode) {
                   </ul>
                 </li>
                 <!-- Languages dropdown    -->
-                <li class="nav-item dropdown"><a id="languages" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link language dropdown-toggle"><img src="img/flags/16/GB.png" alt="English"><span class="d-none d-sm-inline-block">English</span></a>
-                  <ul aria-labelledby="languages" class="dropdown-menu">
-                    <li><a rel="nofollow" href="#" class="dropdown-item"> <img src="img/flags/16/DE.png" alt="English" class="mr-2"><span>German</span></a></li>
-                    <li><a rel="nofollow" href="#" class="dropdown-item"> <img src="img/flags/16/FR.png" alt="English" class="mr-2"><span>French                                                         </span></a></li>
-                  </ul>
+                <li class="nav-item "><a id="languages" rel="nofollow"  href="#"  aria-haspopup="true" aria-expanded="false" class="nav-link language dropdown-toggle"><img src="img/flags/16/GB.png" alt="English"><span class="d-none d-sm-inline-block">Cập Nhật</span></a>
+                 
                 </li>
                 <!-- Log out-->
                 <li class="nav-item"><a href="logout.php" class="nav-link logout"> <span class="d-none d-sm-inline-block"><?php if(isset($_SESSION["Username"])){PersonnelLogin($conn, $_SESSION["Username"]); echo "  <i class='fa fa-power-off text-danger'></i>"; }?></span></a></li>
@@ -379,6 +376,38 @@ include_once('body.php')
     <script language="javascript">
                               $(document).ready(function() {
                                 var table = $('#myTable').DataTable( {
+                                  responsive: true,
+                                  "language": {
+                                    // "lengthMenu": "Hiển thị _MENU_ dòng dữ liệu trên một trang",
+                                    // "info": "Hiển thị _START_ trong tổng số _TOTAL_ dòng dữ liệu",
+                                    // "infoEmpty": "Dữ liệu rỗng",
+                                    // "emptyTable": "Chưa có dữ liệu nào",
+                                    // "processing": "Đang xử lý...",
+                                    // "search": "Tìm kiếm:",
+                                    "infoEmpty": "Empty data",
+                                    "emptyTable": "Data not available",
+                                    "processing": "Processing...",
+                                    "search": "Search:",
+                                    "loadingRecords": "Loading data...",
+                                    "zeroRecords": "Data not found",
+                                    // "loadingRecords": "Đang load dữ liệu...",
+                                    // "zeroRecords": "không tìm thấy dữ liệu",
+                                    // "infoFiltered": "(Được từ tổng số _MAX_ dòng dữ liệu)",
+                                    "paginate": {
+                                      "first": "|<",
+                                      "last": ">|",
+                                      "next": ">>",
+                                      "previous": "<<"
+                                    }
+                                  },
+                                  "lengthMenu": [[10, 15, 20, 25, 30, -1], [10, 15, 20, 25, 30, "All"]]
+                                } );
+        //new $.fn.dataTable.FixedHeader( table );
+      } );
+    </script>
+    <script language="javascript">
+                              $(document).ready(function() {
+                                var table = $('#myTable1').DataTable( {
                                   responsive: true,
                                   "language": {
                                     // "lengthMenu": "Hiển thị _MENU_ dòng dữ liệu trên một trang",

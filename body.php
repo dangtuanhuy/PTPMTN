@@ -210,7 +210,7 @@
       <section class="statistics">
       <div class="container">
       <h3 class="text-center">INFORMATION STUDENT</h3>
-      <table class="table-striped table-responsive table-bordered" id="myTable">
+      <table class="table-striped table-responsive table-bordered" id="myTable1">
       
 			<thead>
 				<tr>
