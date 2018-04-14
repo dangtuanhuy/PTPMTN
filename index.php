@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(!isset($_SESSION['Username'])){
-	echo '<meta http-equiv="refresh" content="0; URL=index.php"/>';
+	echo '<meta http-equiv="refresh" content="0; URL=login.php"/>';
 }
 
 function PersonnelLogin($PersonnelCode) {
