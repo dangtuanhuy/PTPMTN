@@ -188,7 +188,7 @@
 						<td><?php echo $row["PersonnelCode"] ?></td>
             <td><?php echo $row["PersonnelName"] ?></td>
 						<td><?php echo $row["PersonnelBirth"] ?></td>
-            <td><?php echo $row["PersonnelGender"] ?></td>
+            <td><?php echo $row["PersonnelGender"] == 0 ?"Boy" : "Girl" ?></td>
             <td><?php echo $row["PersonnelAddress"] ?></td>
             <td><?php echo $row["PersonnelNum"] ?></td>
             <td><?php echo $row["PersonnelEmail"] ?></td>
@@ -204,46 +204,58 @@
 				</tbody>
 			</table>
       </div>
-        <!-- <div class="container-fluid">
-          <div class="row d-flex">
-            <div class="col-lg-4"> -->
-              <!-- Income-->
-              <!-- <div class="card income text-center">
-                <div class="icon"><i class="icon-line-chart"></i></div>
-                <div class="number">126,418</div><strong class="text-primary">All Income</strong>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.</p>
-              </div>
-            </div>
-            <div class="col-lg-4"> -->
-              <!-- Monthly Usage-->
-              <!-- <div class="card data-usage">
-                <h2 class="display h4">Monthly Usage</h2>
-                <div class="row d-flex align-items-center">
-                  <div class="col-sm-6">
-                    <div id="progress-circle" class="d-flex align-items-center justify-content-center"></div>
-                  </div>
-                  <div class="col-sm-6"><strong class="text-primary">80.56 Gb</strong><small>Current Plan</small><span>100 Gb Monthly</span></div>
-                </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
-              </div>
-            </div>
-            <div class="col-lg-4"> -->
-              <!-- User Actibity-->
-              <!-- <div class="card user-activity">
-                <h2 class="display h4">User Activity</h2>
-                <div class="number">210</div>
-                <h3 class="h4 display">Social Users</h3>
-                <div class="progress">
-                  <div role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar bg-primary"></div>
-                </div>
-                <div class="page-statistics d-flex justify-content-between">
-                  <div class="page-statistics-left"><span>Pages Visits</span><strong>230</strong></div>
-                  <div class="page-statistics-right"><span>New Visits</span><strong>73.4%</strong></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> -->
+        
+      </section>
+
+      <section class="statistics">
+      <div class="container">
+      <h3 class="text-center">INFORMATION STUDENT</h3>
+      <table class="table-striped table-responsive table-bordered" id="myTable">
+      
+			<thead>
+				<tr>
+					<th ><strong>No</strong></th>
+					<th class="col-md-1"><strong>Student Code</strong></th>
+          <th class="col-md-1"><strong>Student Name</strong></th>
+					<th class="col-md-1"><strong>Birthday</strong></th>
+          <th class="col-md-1"><strong>Address</strong></th>
+					<th class="col-md-1"><strong>Gender</strong></th>
+          <th class="col-md-1"><strong>Class Name</strong></th>
+          <th class="col-md-1"><strong>Grade Name</strong></th>
+          <th class="col-md-1"><strong>Details</strong></th>
+          <th class="col-md-1"><strong>Print</strong></th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php 
+				$num1=1;
+				$result = mysqli_query($conn,"SELECT `StudentCode`,`StudentName`,`StudentBirth`,`StudentGender`,`StudentAddress`, `ClassName`, GradeName
+        FROM `Student` st
+        JOIN `Class`  ON Class.`ClassId` = st.`ClassId`
+        JOIN Grade ON Grade.GradeId = Class.ClassId");
+				while($row=mysqli_fetch_array($result, MYSQLI_ASSOC))
+				{
+					?>
+					<tr>
+						<td><?php echo $num1 ?></td>
+						<td><?php echo $row["StudentCode"] ?></td>
+            <td><?php echo $row["StudentName"] ?></td>
+						<td><?php echo $row["StudentBirth"] ?></td>
+            <td><?php echo $row["StudentAddress"] ?></td>
+            <td><?php echo $row["StudentGender"] ==1 ?"Boy" : "Girl" ?></td> 
+            <td><?php echo $row["ClassName"] ?></td>
+            <td><?php echo $row["GradeName"] ?></td>
+            <td class="text-center"><a class="btn btn-default " href="#"><i class="fa fa-user"></i></a></td>
+            <td class="text-center"><a class="btn btn-default " href="#"><i class="fa fa-print"></i></a></td>
+						</tr>
+						<?php
+						$num1 ++;
+					}
+					?>
+				</tbody>
+			</table>
+      </div>
+        
       </section>
       <!-- Updates Section -->
       <section class="mt-30px mb-30px">
