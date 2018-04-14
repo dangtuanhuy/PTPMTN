@@ -44,6 +44,7 @@ if (isset($_POST['btnDelete'])&&isset($_POST['checkbox']))
 					<th ><strong>No</strong></th>
 					<th ><strong>School Years</strong></th>
                     <th class="col-md-7"><strong>Details</strong></th>
+					<th class="col-md-1"><strong>School_Years</strong></th>
 					<th class="col-md-1"><strong>Delete</strong></th>
 					<th class="col-md-1"><strong>Update</strong></th>
 				</tr>
@@ -60,6 +61,8 @@ if (isset($_POST['btnDelete'])&&isset($_POST['checkbox']))
 						<td><?php echo $num ?></td>
 						<td><?php echo $row["SchoolYears"] ?></td>
                         <td><?php echo $row["Details"] ?></td>
+						<td align='center'><a class="btn btn-default"   href="?page=AddYears_Class">
+								<i class="fa fa-calculator"></i></a></td>
 						<td align='center'>
 							<a class="btn btn-default"   href="?page=SchoolYears&ma=<?php echo $row['SchoolYearsId']; ?>" onclick="return deleteConfirm()">
 								<i class="fa fa-remove"></i></a>

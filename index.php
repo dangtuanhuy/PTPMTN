@@ -204,6 +204,19 @@ if(isset($_GET['page']))
     mysqli_query($conn,$updateStatus);
     echo "<script>window.location.href='?page=Class'</script>";
   }
+  //School Years_Class
+  if($page=="Years_Class")
+  {
+    include_once("resource/schoolyears/Years_Class.php");
+  }
+  if($page=="AddYears_Class")
+  {
+    include_once("resource/schoolyears/AddYears_Class.php");
+  }
+  if($page=="UpdateYears_Class")
+  {
+    include_once("resource/schoolyears/UpdateYears_Class");
+  }
   //Department
   if($page=="Department")
   {
