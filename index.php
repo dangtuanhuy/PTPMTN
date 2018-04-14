@@ -286,6 +286,10 @@ if(isset($_GET['page']))
   {
     include_once("resource/personnel/UpdatePersonnel.php");
   }
+
+  if($page=="DeleteImgPersonnel"){
+     include_once("resource/personnel/DeleteImgPersonnel.php");
+  }
   if(isset($_GET['page'])&& $_GET['page']=="ActiveNote"){
 
     if($_GET['PersonnelNote'] == 0){

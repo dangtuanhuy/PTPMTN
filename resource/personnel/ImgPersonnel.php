@@ -8,10 +8,6 @@
 			$row = mysqli_fetch_row($rs);
 			$ten = $row[0];
 		}
-		else
-		{
-			echo '<meta http-equiv="refresh" content="0;URL=Book.php"/>';
-		}
 
 		if(isset($_POST['btnLuu']))
 		{
@@ -32,7 +28,7 @@
 					else 
 					{
 						echo "<script>alert('Upload hình không thành công...');</script>";
-						echo '<meta http-equiv="refresh" content="0;URL=page=imgs?ma='.$id.'">';
+						echo '<meta http-equiv="refresh" content="0;URL=page=imgs?id='.$id.'">';
 					}
 				}
 				else
@@ -46,18 +42,7 @@
 			}	
 		}
 
-		if(isset($_GET["ImgPersonelId"]))
-		{
-			$ImgPersonelId = $_GET["ImgPersonelId"];
-			$ketqua = mysqli_query($conn,"select * FROM ImgPersonel WHERE ImgPersonelId='$ImgPersonelId'");
-			$row = mysqli_fetch_array($ketqua,MYSQLI_ASSOC);
-			$filecanxoa = $row['ImgPersonel'];
-			$PersonnelCode =  $row['PersonnelCode'];
-			unlink("resource/".$filecanxoa);
-			mysqli_query($conn,"DELETE FROM ImgPersonel WHERE ImgPersonelId=$ImgPersonelId");
-			echo '<meta http-equiv="refresh" content="0;URL=updateimages.php?PersonnelCode='.$PersonnelCode.'"/>';
-
-		}
+		
 		?>
 		<div class="container">
 			<h2>Employee Management</h2>
@@ -96,7 +81,8 @@
 				{
 					?>
 					<div class="col-sm-10">  
-						<span class="badge badge-info"><?php echo $stt;?> </span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span class="badge badge-danger"><i class="fa fa-remove"></i></span>
+						<span class="badge badge-info"><?php echo $stt;?> </span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span class="badge badge-danger"><a 
+                                  href="?page=DeleteImgPersonnel&&ImgPersonelId=<?php echo $row['ImgPersonelId']; ?>"><i class="fa fa-remove"></i></a></span>
 						<br/>
 						<img src="resource/<?php echo $row['ImgPersonel'];?>" width="100px"/>
 						<br/><br/>
