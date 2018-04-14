@@ -249,6 +249,11 @@ if(isset($_GET['page']))
   {
     include_once("resource/role/UpdateRole.php");
   }
+  // Import Export
+  if($page=="ie")
+  {
+    include_once("resource/immigration/ImportController.php");
+  }
   //Student
   if($page=="Student")
   {
