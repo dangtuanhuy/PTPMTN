@@ -79,13 +79,15 @@
 					<div class="col-sm-10">
 						<input type="file" name="fileHinhAnh" id="fileHinhAnh" class="form-control"/>
 					</div>
-				</div>       
-				<input type="submit"  class="btn btn-primary" name="btnLuu" id="btnLuu" value="Save"/>        
-				<input type="submit"  class="btn btn-danger" name="btnClose" id="btnLuu" value="Close"/>        
-			</form>
-			<!--Row du lieu-->
-			<div class="row">
-
+				</div>    
+				<div class="form-group">     
+					<div class="col-sm-10">  
+						<input type="submit"  class="btn btn-primary btn-lg" name="btnLuu" id="btnLuu" value="Upload"/>        
+						<input type="submit"  class="btn btn-danger btn-lg" name="btnClose" id="btnLuu" value="Close"/>  
+					</div>	      
+				</form>
+				<hr />
+				<!--Row du lieu-->
 				<?php
 				$query = "select ImgPersonelId, ImgPersonel, PersonelCode from ImgPersonel where PersonelCode='".$_GET['id']."'";
 				$result = mysqli_query($conn, $query) or die(mysql_error());
@@ -93,27 +95,16 @@
 				while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) 
 				{
 					?>
-					<div class='col-sm-offset-2 col-sm-12'>
-						<div class='col-sm-1'>
-							<?php echo $stt;?>
-						</div>
-						<div class='col-sm-2'>
-							<img src="resource/<?php echo $row['ImgPersonel'];?>" width="100px"/>
-						</div>
-						<div class='col-sm-3'>
-							<a href="updateimages.php?ImgPersonelId=<?php echo $row['ImgPersonelId']; ?>">
-								<i class="fa fa-remove"></i></a>
-							</div>
-
-						</div>
-						<div class='col-sm-offset-2 col-sm-4'>
-							<div><hr /></div>
-						</div>
-						<?php
-						$stt++;
-					}
-					?>
-				</div>
+					<div class="col-sm-10">  
+						<span class="badge badge-info"><?php echo $stt;?> </span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span class="badge badge-danger"><i class="fa fa-remove"></i></span>
+						<br/>
+						<img src="resource/<?php echo $row['ImgPersonel'];?>" width="100px"/>
+						<br/><br/>
+					</div>
+					<?php
+					$stt++;
+				}
+				?>
 			</div><!--<div class="container">-->
 
 
