@@ -267,7 +267,7 @@ if(isset($_GET['page']))
   // Import Export
   if($page=="ie")
   {
-    include_once("resource/immigration/ImportController.php");
+    include_once("resource/immigration/ImmigrationController.php");
   }
   //Student
   if($page=="Student")
@@ -418,4 +418,3 @@ include_once('body.php')
     </script>
   </body>
 </html>
-
