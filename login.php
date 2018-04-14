@@ -30,6 +30,27 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
   </head>
   <body>
+  <?php include_once("config/connect.php"); ?>
+  <?php
+    if(isset($_POST['btnLogion']))
+    {
+      $loginusername = trim($_POST["txtloginUsername"]);
+			$loginpassword = trim($_POST["txtloginPassword"]);
+      $loginpassword = md5($loginpassword);
+      $result = mysqli_query($conn,"SELECT *
+                                    FROM user
+                                    WHERE `Role` = 4 AND  Username='{$loginusername}' AND Passwords='{$loginpassword}'");
+      if (mysqli_num_rows($result) == 1)
+      {
+        $_SESSION["Username"] = $loginusername;
+        echo "<script>window.location.href='index.php'</script>";
+      }
+      else
+      {
+        echo '<script> alert("Tên tài khoản hoặc mật khẩu không chính xác!");</script>';
+      }
+    }
+  ?>
     <div class="page login-page">
       <div class="container">
         <div class="form-outer text-center d-flex align-items-center">
