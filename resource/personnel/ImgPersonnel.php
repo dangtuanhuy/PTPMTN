@@ -60,22 +60,22 @@
 		}
 		?>
 		<div class="container">
-			<h2>Employee Management</h2>
+			<h2 class="text-center">Personnel Picture</h2>
 			<form  id="frmHinhAnh" class="form-horizontal form" name="frmHinhAnh" method="post" action="" enctype="multipart/form-data" role="form">
 				<div class="form-group">
-					<label for="txtMa" class="col-sm-2 control-label">Mã sách(*):  </label>
+					<label for="txtMa" class="col-sm-2 control-label">Personnel Code(*):  </label>
 					<div class="col-sm-10">
 						<input type="text" name="txtMa" id="txtMa" class="form-control" placeholder="Mã sản phẩm" value='<?php echo $_GET['id']; ?>' readonly="readonly"/>
 					</div>
 				</div>	
 				<div class="form-group">    
-					<label for="txtTen" class="col-sm-2 control-label">Tên sách(*):  </label>
+					<label for="txtTen" class="col-sm-2 control-label">Personnel Name(*):  </label>
 					<div class="col-sm-10">
 						<input type="text" name="txtTen" id="txtTen" class="form-control" placeholder="Tên loại sản phẩm" value='<?php echo $ten; ?>' readonly="readonly"/> 
 					</div>
 				</div>    
 				<div class="form-group">    
-					<label for="" class="col-sm-2 control-label">Hình ảnh(*):  </label>
+					<label for="" class="col-sm-2 control-label">IMG (*):  </label>
 					<div class="col-sm-10">
 						<input type="file" name="fileHinhAnh" id="fileHinhAnh" class="form-control"/>
 					</div>
