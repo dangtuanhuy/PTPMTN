@@ -6,7 +6,7 @@ if(!isset($_SESSION['Username'])){
 
 function PersonnelLogin($conn, $PersonnelCode) {
   $sql_query_Personnel = "SELECT PersonnelName FROM `Personnel` WHERE `PersonnelCode` = '{$PersonnelCode}'";
-  $sql_result_Personnel = mysqli_query($conn,$sql_query_Personnel)  or die(mysql_error());;
+  $sql_result_Personnel = mysqli_query($conn,$sql_query_Personnel)  or die(mysql_error());
   while ($row = $sql_result_Personnel->fetch_assoc()) {
     echo $row['PersonnelName'];
 }
@@ -135,11 +135,8 @@ function PersonnelLogin($conn, $PersonnelCode) {
                   </ul>
                 </li>
                 <!-- Languages dropdown    -->
-                <li class="nav-item dropdown"><a id="languages" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link language dropdown-toggle"><img src="img/flags/16/GB.png" alt="English"><span class="d-none d-sm-inline-block">English</span></a>
-                  <ul aria-labelledby="languages" class="dropdown-menu">
-                    <li><a rel="nofollow" href="#" class="dropdown-item"> <img src="img/flags/16/DE.png" alt="English" class="mr-2"><span>German</span></a></li>
-                    <li><a rel="nofollow" href="#" class="dropdown-item"> <img src="img/flags/16/FR.png" alt="English" class="mr-2"><span>French                                                         </span></a></li>
-                  </ul>
+                <li class="nav-item "><a id="languages" rel="nofollow"  href="#"  aria-haspopup="true" aria-expanded="false" class="nav-link language dropdown-toggle"><img src="img/flags/16/GB.png" alt="English"><span class="d-none d-sm-inline-block">Cập Nhật</span></a>
+                 
                 </li>
                 <!-- Log out-->
                 <li class="nav-item"><a href="logout.php" class="nav-link logout"> <span class="d-none d-sm-inline-block"><?php if(isset($_SESSION["Username"])){PersonnelLogin($conn, $_SESSION["Username"]); echo "  <i class='fa fa-power-off text-danger'></i>"; }?></span></a></li>
@@ -203,6 +200,19 @@ if(isset($_GET['page']))
     $updateStatus = "UPDATE `Class` SET `ClassStatus`=".$active." where `ClassId` = '".$_GET['ClassId']."'";
     mysqli_query($conn,$updateStatus);
     echo "<script>window.location.href='?page=Class'</script>";
+  }
+  //School Years_Class
+  if($page=="Years_Class")
+  {
+    include_once("resource/schoolyears/Years_Class.php");
+  }
+  if($page=="AddYears_Class")
+  {
+    include_once("resource/schoolyears/AddYears_Class.php");
+  }
+  if($page=="UpdateYears_Class")
+  {
+    include_once("resource/schoolyears/UpdateYears_Class");
   }
   //Department
   if($page=="Department")
@@ -286,6 +296,10 @@ if(isset($_GET['page']))
   {
     include_once("resource/personnel/UpdatePersonnel.php");
   }
+
+  if($page=="DeleteImgPersonnel"){
+     include_once("resource/personnel/DeleteImgPersonnel.php");
+  }
   if(isset($_GET['page'])&& $_GET['page']=="ActiveNote"){
 
     if($_GET['PersonnelNote'] == 0){
@@ -362,6 +376,38 @@ include_once('body.php')
     <script language="javascript">
                               $(document).ready(function() {
                                 var table = $('#myTable').DataTable( {
+                                  responsive: true,
+                                  "language": {
+                                    // "lengthMenu": "Hiển thị _MENU_ dòng dữ liệu trên một trang",
+                                    // "info": "Hiển thị _START_ trong tổng số _TOTAL_ dòng dữ liệu",
+                                    // "infoEmpty": "Dữ liệu rỗng",
+                                    // "emptyTable": "Chưa có dữ liệu nào",
+                                    // "processing": "Đang xử lý...",
+                                    // "search": "Tìm kiếm:",
+                                    "infoEmpty": "Empty data",
+                                    "emptyTable": "Data not available",
+                                    "processing": "Processing...",
+                                    "search": "Search:",
+                                    "loadingRecords": "Loading data...",
+                                    "zeroRecords": "Data not found",
+                                    // "loadingRecords": "Đang load dữ liệu...",
+                                    // "zeroRecords": "không tìm thấy dữ liệu",
+                                    // "infoFiltered": "(Được từ tổng số _MAX_ dòng dữ liệu)",
+                                    "paginate": {
+                                      "first": "|<",
+                                      "last": ">|",
+                                      "next": ">>",
+                                      "previous": "<<"
+                                    }
+                                  },
+                                  "lengthMenu": [[10, 15, 20, 25, 30, -1], [10, 15, 20, 25, 30, "All"]]
+                                } );
+        //new $.fn.dataTable.FixedHeader( table );
+      } );
+    </script>
+    <script language="javascript">
+                              $(document).ready(function() {
+                                var table = $('#myTable1').DataTable( {
                                   responsive: true,
                                   "language": {
                                     // "lengthMenu": "Hiển thị _MENU_ dòng dữ liệu trên một trang",

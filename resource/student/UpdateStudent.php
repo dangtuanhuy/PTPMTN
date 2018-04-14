@@ -4,8 +4,7 @@ if(isset($_GET["ma"])){
 
 	$ma = $_GET["ma"];
 	
-	$sqlstring = "SELECT `StudentCode`, `StudentName`, `StudentBirth`, `StudentGender`, `StudentAddress`, `
-    YourFatherName`, `JobFather`, `YourMotherName`, `JobMother`, `PhoneHouse`,`ClassId` FROM Student WHERE StudentCode=".$ma;
+	$sqlstring = "SELECT `StudentCode`, `StudentName`, `StudentBirth`, `StudentGender`, `StudentAddress`, `YourFatherName`, `JobFather`, `YourMotherName`, `JobMother`, `PhoneHouse`,`ClassId` FROM Student WHERE StudentCode='".$ma."'";
 	$result = mysqli_query($conn, $sqlstring);
 	$row = mysqli_fetch_row($result);
 	$StudentCode = $row['0'];
@@ -89,11 +88,11 @@ if(isset($_POST["btnEdit"])){
                     <div class="form-group">
                     <label class="radio-inline">
                     <input type="radio" name="grpGender" value="0" id="grpGender" 
-                             <?php if(isset($Gender)&&$Gender=="0") { echo "checked";} ?> />
+                             <?php if(isset($StudentGender)&&$StudentGender=="0") { echo "checked";} ?> />
                      Male</label>
 
                     <label class="radio-inline"><input type="radio" name="grpGender" value="1" id="grpGender" 
-                        <?php if(isset($Gender)&&$Gender=="1") { echo "checked";} ?> />
+                        <?php if(isset($StudentGender)&&$StudentGender=="1") { echo "checked";} ?> />
                     Female</label>
                     </div>
 					
