@@ -34,7 +34,7 @@ if(isset($_POST['btnAdd']))
     $sqlInsert ="INSERT INTO `SchoolYears_Class`(`SchoolYearsId`, `ClassId`) VALUES ('$idSchoolYears','$idClass')";
     mysqli_query($conn,$sqlInsert);
     echo '<script> alert("Insert Success!");</script>';
-    echo '<meta http-equiv="refresh" content="0;URL=?page=Years_Class.php"/>';
+    echo '<meta http-equiv="refresh" content="0;URL=?page=Years_Class"/>';
 }
 ?>
 
