@@ -4,13 +4,12 @@ if(!isset($_SESSION['Username'])){
 	echo '<meta http-equiv="refresh" content="0; URL=login.php"/>';
 }
 
-function PersonnelLogin($PersonnelCode) {
-  $sql_query_Personnel = "SELECT * FROM `Personnel` WHERE `PersonnelCode` = '{$PersonnelCode}'";
-  $sql_result_Personnel = mysqli_query($conn,$sql_query_Personnel );
-
-  while ($row_Personnel = mysqli_fetch_array($conn,$sql_result_Personnel)) {
-    echo $row_Personnel['PersonnelName'];
-  }
+function PersonnelLogin($conn, $PersonnelCode) {
+  $sql_query_Personnel = "SELECT PersonnelName FROM `Personnel` WHERE `PersonnelCode` = '{$PersonnelCode}'";
+  $sql_result_Personnel = mysqli_query($conn,$sql_query_Personnel)  or die(mysql_error());;
+  while ($row = $sql_result_Personnel->fetch_assoc()) {
+    echo $row['PersonnelName'];
+}
 }
 ?>
 <!DOCTYPE html>
@@ -75,28 +74,8 @@ function PersonnelLogin($PersonnelCode) {
             <li><a href="?page=Position"> <i class="fa fa-institution"></i>Position</a></li>
             <li><a href="?page=Personnel"> <i class="fa fa-group"></i>Personnel</a></li>
             <li><a href="?page=Role"> <i class="fa fa-cogs"></i>Role</a></li>
-            <!-- <li><a href="#" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Example dropdown </a> -->
-              <!-- <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
-                <li><a href="#">Page</a></li>
-                <li><a href="#">Page</a></li>
-                <li><a href="#">Page</a></li>
-              </ul> -->
-            <!-- </li> -->
-            <!-- <li><a href="login.php"> <i class="icon-interface-windows"></i>Login page                             </a></li>
-            <li> <a href="#"> <i class="icon-user"></i>Role
-                <div class="badge badge-warning">6 New</div></a></li> -->
           </ul>
         </div>
-        <!-- <div class="admin-menu">
-          <h5 class="sidenav-heading">Second menu</h5>
-          <ul id="side-admin-menu" class="side-menu list-unstyled">
-            <li> <a href="#"> <i class="icon-screen"> </i>Demo</a></li>
-            <li> <a href="#"> <i class="icon-flask"> </i>Demo
-                <div class="badge badge-info">Special</div></a></li>
-            <li> <a href=""> <i class="icon-flask"> </i>Demo</a></li>
-            <li> <a href=""> <i class="icon-picture"> </i>Demo</a></li>
-          </ul>
-        </div> -->
       </div>
     </nav>
     <div class="page">
@@ -163,7 +142,7 @@ function PersonnelLogin($PersonnelCode) {
                   </ul>
                 </li>
                 <!-- Log out-->
-                <li class="nav-item"><a href="logout.php" class="nav-link logout"> <span class="d-none d-sm-inline-block"><?php if(isset($_SESSION["Username"])){PersonnelLogin($_SESSION["Username"]); echo "  <i class='fa fa-power-off text-danger'></i>"; }?></span><i class="fa fa-sign-out"></i></a></li>
+                <li class="nav-item"><a href="logout.php" class="nav-link logout"> <span class="d-none d-sm-inline-block"><?php if(isset($_SESSION["Username"])){PersonnelLogin($conn, $_SESSION["Username"]); echo "  <i class='fa fa-power-off text-danger'></i>"; }?></span></a></li>
               </ul>
             </div>
           </div>
