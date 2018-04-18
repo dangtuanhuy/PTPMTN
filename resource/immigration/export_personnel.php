@@ -102,10 +102,10 @@ foreach ($data as $index => $item)
     $PHPExcel->getActiveSheet()->setCellValue('K' . $rowNumber, $item[10]);
 
     // L1, L2, L3, ...
-    $PHPExcel->getActiveSheet()->setCellValue('L' . $rowNumber, $item[10]);
+    $PHPExcel->getActiveSheet()->setCellValue('L' . $rowNumber, $item[11]);
 
     // M1, M2, M3, ...
-    $PHPExcel->getActiveSheet()->setCellValue('M' . $rowNumber, $item[10]);
+    $PHPExcel->getActiveSheet()->setCellValue('M' . $rowNumber, $item[12]);
 
     // Tăng row lên để khỏi bị lưu đè
     $rowNumber++;
