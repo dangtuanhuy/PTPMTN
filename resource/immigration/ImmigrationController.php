@@ -26,7 +26,7 @@ require_once 'connect.php';
     <form method="POST" enctype="multipart/form-data" class="form">
       <input class="form-control" type="file" name="file">
       <button type="submit" name="student-import" class="btn btn-default">Import</button>
-      <a class="btn btn-primary" href="Wine_import_file_example.xlsx">
+      <a class="btn btn-primary" href="/CT249/resource/immigration/Student_import_file_example.xlsx">
         <strong>File Import Example</strong> <i class="fa fa-cloud-download"></i>
       </a>
     </form>
@@ -53,7 +53,7 @@ require_once 'connect.php';
     <form method="POST" enctype="multipart/form-data" class="form">
       <input class="form-control" type="file" name="file">
       <button type="submit" name="personnel-import" class="btn btn-default">Import</button>
-      <a class="btn btn-primary" href="Wine_import_file_example.xlsx">
+      <a class="btn btn-primary" href="/CT249/resource/immigration/Personnel_import_file_example.xlsx">
         <strong>File Import Example</strong> <i class="fa fa-cloud-download"></i>
       </a>
     </form>
@@ -91,103 +91,108 @@ require_once 'connect.php';
 
 <?php
 // // Start
-// if(isset($_POST['student-import'])){
-// 	$inputFileName = $_FILES['file']['tmp_name'];
-//
-// 	//  Tiến hành đọc file excel
-// 	try {
-// 	    $inputFileType = PHPExcel_IOFactory::identify($inputFileName);
-// 	    $objReader = PHPExcel_IOFactory::createReader($inputFileType);
-// 	    $objPHPExcel = $objReader->load($inputFileName);
-// 	} catch(Exception $e) {
-// 	    die('Lỗi không thể đọc file "'.pathinfo($inputFileName,PATHINFO_BASENAME).'": '.$e->getMessage());
-// 	}
-//
-// 	//  Lấy thông tin cơ bản của file excel
-//
-// 	// Lấy sheet hiện tại
-// 	$sheet = $objPHPExcel->getSheet(0);
-//
-// 	// Lấy tổng số dòng của file, trong trường hợp này là 6 dòng
-// 	$highestRow = $sheet->getHighestRow();
-//
-// 	// Lấy tổng số cột của file, trong trường hợp này là 4 dòng
-// 	$highestColumn = $sheet->getHighestColumn();
-//
-// 	// Khai báo mảng $rowData chứa dữ liệu
-//
-// 	//  Thực hiện việc lặp qua từng dòng của file, để lấy thông tin
-// 	for ($row = 2; $row <= $highestRow; $row++){
-// 	    // Lấy dữ liệu từng dòng và đưa vào mảng $rowData
-// 	    $rowData[] = $sheet->rangeToArray('A' . $row . ':' . $highestColumn . $row, NULL, TRUE,FALSE);
-// 	}
-//
-// 	for ($i = 0; $i < $highestRow - 1; $i++) {
-// 			$winename = $rowData[$i][0][1];
-// 			$winestrength = $rowData[$i][0][2];
-// 			$wineshortdetails = $rowData[$i][0][3];
-//       $winedetails = $rowData[$i][0][4];
-// 			$wineupdatedate = $rowData[$i][0][5];
-// 			$winequantity = $rowData[$i][0][6];
-//       $winesold = $rowData[$i][0][7];
-// 			$categoryid = $rowData[$i][0][8];
-//       $publisherid = $rowData[$i][0][9];
-// 			$countryid = $rowData[$i][0][10];
-// 			$sql = "INSERT INTO wine(winename,winestrength,wineshortdetails,winedetails,wineupdatedate,winequantity,winesold,categoryid,publisherid,countryid) VALUES ('$winename',$winestrength,'$wineshortdetails','$winedetails','$wineupdatedate',$winequantity,$winesold,$categoryid,$publisherid,$countryid)";
-//
-// 			mysqli_query($conn, $sql);
-// 		}
-// 	echo "New record created successfully";
-// 	mysqli_close($conn);
-// }
-//
-// if(isset($_POST['personnel-import'])){
-// 	$inputFileName = $_FILES['file']['tmp_name'];
-//
-// 	//  Tiến hành đọc file excel
-// 	try {
-// 	    $inputFileType = PHPExcel_IOFactory::identify($inputFileName);
-// 	    $objReader = PHPExcel_IOFactory::createReader($inputFileType);
-// 	    $objPHPExcel = $objReader->load($inputFileName);
-// 	} catch(Exception $e) {
-// 	    die('Lỗi không thể đọc file "'.pathinfo($inputFileName,PATHINFO_BASENAME).'": '.$e->getMessage());
-// 	}
-//
-// 	//  Lấy thông tin cơ bản của file excel
-//
-// 	// Lấy sheet hiện tại
-// 	$sheet = $objPHPExcel->getSheet(0);
-//
-// 	// Lấy tổng số dòng của file, trong trường hợp này là 6 dòng
-// 	$highestRow = $sheet->getHighestRow();
-//
-// 	// Lấy tổng số cột của file, trong trường hợp này là 4 dòng
-// 	$highestColumn = $sheet->getHighestColumn();
-//
-// 	// Khai báo mảng $rowData chứa dữ liệu
-//
-// 	//  Thực hiện việc lặp qua từng dòng của file, để lấy thông tin
-// 	for ($row = 2; $row <= $highestRow; $row++){
-// 	    // Lấy dữ liệu từng dòng và đưa vào mảng $rowData
-// 	    $rowData[] = $sheet->rangeToArray('A' . $row . ':' . $highestColumn . $row, NULL, TRUE,FALSE);
-// 	}
-//
-// 	for ($i = 0; $i < $highestRow - 1; $i++) {
-// 			$winename = $rowData[$i][0][1];
-// 			$winestrength = $rowData[$i][0][2];
-// 			$wineshortdetails = $rowData[$i][0][3];
-//       $winedetails = $rowData[$i][0][4];
-// 			$wineupdatedate = $rowData[$i][0][5];
-// 			$winequantity = $rowData[$i][0][6];
-//       $winesold = $rowData[$i][0][7];
-// 			$categoryid = $rowData[$i][0][8];
-//       $publisherid = $rowData[$i][0][9];
-// 			$countryid = $rowData[$i][0][10];
-// 			$sql = "INSERT INTO wine(winename,winestrength,wineshortdetails,winedetails,wineupdatedate,winequantity,winesold,categoryid,publisherid,countryid) VALUES ('$winename',$winestrength,'$wineshortdetails','$winedetails','$wineupdatedate',$winequantity,$winesold,$categoryid,$publisherid,$countryid)";
-//
-// 			mysqli_query($conn, $sql);
-// 		}
-// 	echo "New record created successfully";
-// 	mysqli_close($conn);
-// }
+if(isset($_POST['student-import'])){
+	$inputFileName = $_FILES['file']['tmp_name'];
+
+	//  Tiến hành đọc file excel
+	try {
+	    $inputFileType = PHPExcel_IOFactory::identify($inputFileName);
+	    $objReader = PHPExcel_IOFactory::createReader($inputFileType);
+	    $objPHPExcel = $objReader->load($inputFileName);
+	} catch(Exception $e) {
+	    die('Lỗi không thể đọc file "'.pathinfo($inputFileName,PATHINFO_BASENAME).'": '.$e->getMessage());
+	}
+
+	//  Lấy thông tin cơ bản của file excel
+
+	// Lấy sheet hiện tại
+	$sheet = $objPHPExcel->getSheet(0);
+
+	// Lấy tổng số dòng của file, trong trường hợp này là 6 dòng
+	$highestRow = $sheet->getHighestRow();
+
+	// Lấy tổng số cột của file, trong trường hợp này là 4 dòng
+	$highestColumn = $sheet->getHighestColumn();
+
+	// Khai báo mảng $rowData chứa dữ liệu
+
+	//  Thực hiện việc lặp qua từng dòng của file, để lấy thông tin
+	for ($row = 2; $row <= $highestRow; $row++){
+	    // Lấy dữ liệu từng dòng và đưa vào mảng $rowData
+	    $rowData[] = $sheet->rangeToArray('A' . $row . ':' . $highestColumn . $row, NULL, TRUE,FALSE);
+	}
+
+	for ($i = 0; $i < $highestRow - 1; $i++) {
+			$StudentCode = $rowData[$i][0][1];
+			$StudentName = $rowData[$i][0][2];
+			$StudentBirth = $rowData[$i][0][3];
+      $StudentGender = $rowData[$i][0][4];
+			$StudentAddress = $rowData[$i][0][5];
+			$YourFatherName = $rowData[$i][0][6];
+      $JobFather = $rowData[$i][0][7];
+			$YourMotherName = $rowData[$i][0][8];
+      $JobMother = $rowData[$i][0][9];
+      $PhoneHouse = $rowData[$i][0][10];
+      $StudentStatus = $rowData[$i][0][11];
+			$ClassId = $rowData[$i][0][12];
+			$sql = "INSERT INTO student VALUES ('$StudentCode','$StudentName','$StudentBirth',$StudentGender,'$StudentAddress','$YourFatherName','$JobFather','$YourMotherName','$JobMother','$PhoneHouse',$StudentStatus,$ClassId)";
+
+			mysqli_query($conn, $sql);
+		}
+	echo "New record created successfully";
+	mysqli_close($conn);
+}
+
+if(isset($_POST['personnel-import'])){
+	$inputFileName = $_FILES['file']['tmp_name'];
+
+	//  Tiến hành đọc file excel
+	try {
+	    $inputFileType = PHPExcel_IOFactory::identify($inputFileName);
+	    $objReader = PHPExcel_IOFactory::createReader($inputFileType);
+	    $objPHPExcel = $objReader->load($inputFileName);
+	} catch(Exception $e) {
+	    die('Lỗi không thể đọc file "'.pathinfo($inputFileName,PATHINFO_BASENAME).'": '.$e->getMessage());
+	}
+
+	//  Lấy thông tin cơ bản của file excel
+
+	// Lấy sheet hiện tại
+	$sheet = $objPHPExcel->getSheet(0);
+
+	// Lấy tổng số dòng của file, trong trường hợp này là 6 dòng
+	$highestRow = $sheet->getHighestRow();
+
+	// Lấy tổng số cột của file, trong trường hợp này là 4 dòng
+	$highestColumn = $sheet->getHighestColumn();
+
+	// Khai báo mảng $rowData chứa dữ liệu
+
+	//  Thực hiện việc lặp qua từng dòng của file, để lấy thông tin
+	for ($row = 2; $row <= $highestRow; $row++){
+	    // Lấy dữ liệu từng dòng và đưa vào mảng $rowData
+	    $rowData[] = $sheet->rangeToArray('A' . $row . ':' . $highestColumn . $row, NULL, TRUE,FALSE);
+	}
+
+	for ($i = 0; $i < $highestRow - 1; $i++) {
+			$PersonnelCode = $rowData[$i][0][1];
+			$PersonnelName = $rowData[$i][0][2];
+			$PersonnelPass = $rowData[$i][0][3];
+      $PersonnelBirth = $rowData[$i][0][4];
+			$PersonnelGender = $rowData[$i][0][5];
+			$PersonnelAddress = $rowData[$i][0][6];
+      $PersonnelNum = $rowData[$i][0][7];
+			$PersonnelEmail = $rowData[$i][0][8];
+      $PersonnelActive = $rowData[$i][0][9];
+      $PersonnelNote = $rowData[$i][0][10];
+      $PositionId = $rowData[$i][0][11];
+      $RoleId = $rowData[$i][0][12];
+			$PersonnelStatus = $rowData[$i][0][13];
+			$sql = "INSERT INTO personnel VALUES ('$PersonnelCode','$PersonnelName','$PersonnelPass','$PersonnelBirth',$PersonnelGender,'$PersonnelAddress','$PersonnelNum','$PersonnelEmail',$PersonnelActive,$PersonnelNote,$PositionId,$RoleId,$PersonnelStatus)";
+
+			mysqli_query($conn, $sql);
+		}
+	echo "New record created successfully";
+	mysqli_close($conn);
+}
 ?>
