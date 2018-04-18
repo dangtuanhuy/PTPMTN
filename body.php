@@ -167,8 +167,7 @@
           <th class="col-md-1"><strong>Email</strong></th>
           <th class="col-md-1"><strong>Department</strong></th>
           <th class="col-md-1"><strong>Position</strong></th>
-          <th class="col-md-1"><strong>Details</strong></th>
-          <th class="col-md-1"><strong>Print</strong></th>
+       
 				</tr>
 			</thead>
 			<tbody>
@@ -194,8 +193,7 @@
             <td><?php echo $row["PersonnelEmail"] ?></td>
             <td><?php echo $row["DepartmentName"] ?></td>
             <td><?php echo $row["PositionName"] ?></td>
-            <td class="text-center"><a class="btn btn-default " href="#"><i class="fa fa-user"></i></a></td>
-            <td class="text-center"><a class="btn btn-default " href="#"><i class="fa fa-print"></i></a></td>
+        
 						</tr>
 						<?php
 						$num++;
@@ -222,8 +220,7 @@
 					<th class="col-md-1"><strong>Gender</strong></th>
           <th class="col-md-1"><strong>Class Name</strong></th>
           <th class="col-md-1"><strong>Grade Name</strong></th>
-          <th class="col-md-1"><strong>Details</strong></th>
-          <th class="col-md-1"><strong>Print</strong></th>
+     
 				</tr>
 			</thead>
 			<tbody>
@@ -245,8 +242,7 @@
             <td><?php echo $row["StudentGender"] ==1 ?"Boy" : "Girl" ?></td> 
             <td><?php echo $row["ClassName"] ?></td>
             <td><?php echo $row["GradeName"] ?></td>
-            <td class="text-center"><a class="btn btn-default " href="#"><i class="fa fa-user"></i></a></td>
-            <td class="text-center"><a class="btn btn-default " href="#"><i class="fa fa-print"></i></a></td>
+      
 						</tr>
 						<?php
 						$num1 ++;

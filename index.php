@@ -135,8 +135,12 @@ function PersonnelLogin($conn, $PersonnelCode) {
                   </ul>
                 </li>
                 <!-- Languages dropdown    -->
-                <li class="nav-item "><a id="languages" rel="nofollow"  href="#"  aria-haspopup="true" aria-expanded="false" class="nav-link language dropdown-toggle"><img src="img/flags/16/GB.png" alt="English"><span class="d-none d-sm-inline-block">Cập Nhật</span></a>
-                 
+                <?php
+                if (isset($_SESSION['Username']) && $_SESSION['Username'] != "")
+                {
+                ?>
+                <li class="nav-item "><a id="languages" rel="nofollow"  href="?page=UpdatePersonnel"  aria-haspopup="true" aria-expanded="false" class="nav-link language dropdown-toggle"><img src="img/flags/16/GB.png" alt="English"><span class="d-none d-sm-inline-block">Cập Nhật</span></a>
+                <?php }?>
                 </li>
                 <!-- Log out-->
                 <li class="nav-item"><a href="logout.php" class="nav-link logout"> <span class="d-none d-sm-inline-block"><?php if(isset($_SESSION["Username"])){PersonnelLogin($conn, $_SESSION["Username"]); echo "  <i class='fa fa-power-off text-danger'></i>"; }?></span></a></li>
@@ -339,6 +343,19 @@ if(isset($_GET['page']))
   if($page=="imgs")
   {
     include_once("resource/personnel/ImgPersonnel.php");
+  }
+  //Personal_class
+  if($page=="Personel_Class")
+  {
+    include_once("resource/personnel/Personel_Class.php");
+  }
+  if($page=="AddPersonel_Class")
+  {
+    include_once("resource/personnel/AddPersonel_Class.php");
+  }
+  if($page=="UpdatePersonel_Class")
+  {
+    include_once("resource/personnel/UpdatePersonel_Class.php");
   }
 }
 else
