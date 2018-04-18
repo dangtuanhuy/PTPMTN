@@ -340,6 +340,19 @@ if(isset($_GET['page']))
   {
     include_once("resource/personnel/ImgPersonnel.php");
   }
+  //Personal_class
+  if($page=="Personel_Class")
+  {
+    include_once("resource/personnel/Personel_Class.php");
+  }
+  if($page=="AddPersonel_Class")
+  {
+    include_once("resource/personnel/AddPersonel_Class.php");
+  }
+  if($page=="UpdatePersonel_Class")
+  {
+    include_once("resource/personnel/UpdatePersonel_Class.php");
+  }
 }
 else
 include_once('body.php')

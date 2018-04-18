@@ -56,6 +56,7 @@ if (isset($_POST['btnDelete'])&&isset($_POST['checkbox']))
                     <th><strong>Note</strong></th>
                     <th><strong>Position</strong></th>
                     <th><strong>Role</strong></th>
+					<th></strong>Personel_Class</strong></th>
                     <th><strong>Open/Close</strong></th>
 					<th><strong>IMG</strong></th>
                     <th><strong>Delete</strong></th>
@@ -104,6 +105,8 @@ if (isset($_POST['btnDelete'])&&isset($_POST['checkbox']))
 						</td>
                         <td><?php echo $row["PositionName"] ?></td>
                         <td><?php echo $row["RoleName"] ?></td>
+						<td align='center'><a class="btn btn-default"   href="?page=Personel_Class" >
+								<i class="fa fa-clipboard"></i></a></td>
                         <td>
                         <form  method="get" >
                                             <?php
