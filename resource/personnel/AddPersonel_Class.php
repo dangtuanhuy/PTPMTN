@@ -31,7 +31,7 @@ if(isset($_POST['btnAdd']))
 {
     $idPersonnal = $_POST['slPersonnal'];
     $idClass = $_POST['slClass'];
-    $sqlInsert ="INSERT INTO `Personel_Class`(`ClassId`, `PersonnelCode`) VALUES '$idClass','$idPersonnal ')";
+    $sqlInsert ="INSERT INTO Personel_Class(ClassId, PersonnelCode) VALUES '$idClass','$idPersonnal')";
     mysqli_query($conn,$sqlInsert);
     echo '<script> alert("Insert Success!");</script>';
     echo '<meta http-equiv="refresh" content="0;URL=?page=Personel_Class"/>';
