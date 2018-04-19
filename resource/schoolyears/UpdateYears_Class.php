@@ -15,7 +15,7 @@ else
 	echo '<meta http-equiv="refresh" content="0;URL=?page=Class"/>';
 }
 function bindUpdateClass($conn, $selectedValue) {
-	$sqlstring = "SELECT  SchoolYears, ClassName FROM `SchoolYears_Class` 
+	$sqlstring = "SELECT * FROM `SchoolYears_Class` 
     JOIN Class ON Class.ClassId = SchoolYears_Class.ClassId
     JOIN SchoolYears ON SchoolYears.SchoolYearsId = SchoolYears_Class.SchoolYearsId";
 	$result = mysqli_query($conn, $sqlstring);
