@@ -1,9 +1,10 @@
 <?php 
-if(isset($_GET["ma"])){
+if(isset($_GET["SchoolYearsId"]) && isset($_GET["ClassId"])){
 
-	$ma = $_GET["ma"];
+    $SchoolYearsId = $_GET["SchoolYearsId"];
+    $ClassId = $_GET["ClassId"];
 	
-	$sqlstring = "SELECT SchoolYearsId, ClassId FROM SchoolYears_Class WHERE SchoolYearsId=".$ma;
+	$sqlstring = "SELECT SchoolYearsId, ClassId FROM SchoolYears_Class WHERE SchoolYearsId = $SchoolYearsId AND  ClassId = $ClassId ";
 	$result = mysqli_query($conn, $sqlstring);
 	$row = mysqli_fetch_row($result);
 	$idClass = $row['0'];
@@ -18,7 +19,7 @@ function bindUpdateClass($conn, $selectedValue) {
     JOIN Class ON Class.ClassId = SchoolYears_Class.ClassId
     JOIN SchoolYears ON SchoolYears.SchoolYearsId = SchoolYears_Class.SchoolYearsId";
 	$result = mysqli_query($conn, $sqlstring);
-	echo "<select name='slClass' class='form-control'>
+	echo "<select name='slClass' class='form-control' readonly='true'>
 	<option value='0'>Class:</option>";
 	while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 		if ($row['ClassId'] == $selectedValue) {

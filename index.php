@@ -55,8 +55,8 @@ function PersonnelLogin($conn, $PersonnelCode) {
         <!-- Sidebar Header    -->
         <div class="sidenav-header d-flex align-items-center justify-content-center">
           <!-- User Info-->
-          <div class="sidenav-header-inner text-center"><img src="img/avatar-1.jpg" alt="person" class="img-fluid rounded-circle">
-            <h2 class="h5">Software Development Work </h2>
+          <div class="sidenav-header-inner text-center"><img src="img/logo.png" alt="person" class="img-fluid rounded-circle">
+            <h2 class="h5">Management School </h2>
           </div>
           <!-- Small Brand information, appears on minimized sidebar-->
           <div class="sidenav-header-logo"><a href="index.php" class="brand-small text-center"> <strong>B</strong><strong class="text-primary">D</strong></a></div>
@@ -88,7 +88,7 @@ function PersonnelLogin($conn, $PersonnelCode) {
                   <div class="brand-text d-none d-md-inline-block"><span><h1>CT249</h1> </span><strong class="text-primary"> Dashboard</strong></div></a></div>
               <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
                 <!-- Notifications dropdown-->
-                <li class="nav-item dropdown"> <a id="notifications" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-bell"></i><span class="badge badge-warning">12</span></a>
+                <li class="nav-item dropdown"> 
                   <ul aria-labelledby="notifications" class="dropdown-menu">
                     <li><a rel="nofollow" href="#" class="dropdown-item">
                         <div class="notification d-flex justify-content-between">
@@ -114,7 +114,7 @@ function PersonnelLogin($conn, $PersonnelCode) {
                   </ul>
                 </li>
                 <!-- Messages dropdown-->
-                <li class="nav-item dropdown"> <a id="messages" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-envelope"></i><span class="badge badge-info">10</span></a>
+                <li class="nav-item dropdown">
                   <ul aria-labelledby="notifications" class="dropdown-menu">
                     <li><a rel="nofollow" href="#" class="dropdown-item d-flex">
                         <div class="msg-profile"> <img src="img/avatar-1.jpg" alt="..." class="img-fluid rounded-circle"></div>
@@ -139,7 +139,7 @@ function PersonnelLogin($conn, $PersonnelCode) {
                 if (isset($_SESSION['Username']) && $_SESSION['Username'] != "")
                 {
                 ?>
-                <li class="nav-item "><a id="languages" rel="nofollow"  href="?page=UpdatePersonnel"  aria-haspopup="true" aria-expanded="false" class="nav-link language dropdown-toggle"><img src="img/flags/16/GB.png" alt="English"><span class="d-none d-sm-inline-block">Cập Nhật</span></a>
+                <li class="nav-item "><a id="languages" rel="nofollow"  href="?page=UpdatePersonnel"  aria-haspopup="true" aria-expanded="false" class="nav-link language dropdown-toggle"><span class="d-none d-sm-inline-block">Update</span></a>
                 <?php }?>
                 </li>
                 <!-- Log out-->
@@ -216,7 +216,7 @@ if(isset($_GET['page']))
   }
   if($page=="UpdateYears_Class")
   {
-    include_once("resource/schoolyears/UpdateYears_Class");
+    include_once("resource/schoolyears/UpdateYears_Class.php");
   }
   //Department
   if($page=="Department")

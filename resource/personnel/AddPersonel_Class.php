@@ -2,7 +2,7 @@
 function blindPersonnelList($conn)
 {
 	$sqlSelect ="
-	SELECT `PersonnelCode`,`PersonnelName` FROM `Personnel` ";
+	SELECT * FROM `Personnel` ";
 	$result = mysqli_query($conn,$sqlSelect);
 	echo "<select class='form-control' name='slPersonnal'>
 	<option value='0'>Choice Personnal</option>";
@@ -15,7 +15,7 @@ function blindPersonnelList($conn)
 function blindClassList($conn)
 {
 	$sqlSelect ="
-	SELECT `ClassId`, `ClassName`, `Enrollment`, `ClassStatus`, `GradeId` FROM `Class`";
+	SELECT * FROM `Class`";
 	$result = mysqli_query($conn,$sqlSelect);
 	echo "<select class='form-control' name='slClass'>
 	<option value='0'>Choice Class</option>";
@@ -31,7 +31,7 @@ if(isset($_POST['btnAdd']))
 {
     $idPersonnal = $_POST['slPersonnal'];
     $idClass = $_POST['slClass'];
-    $sqlInsert ="INSERT INTO Personel_Class(ClassId, PersonnelCode) VALUES '$idClass','$idPersonnal')";
+    $sqlInsert ="INSERT INTO Personel_Class(ClassId, PersonnelCode) VALUES ('$idClass','$idPersonnal')";
     mysqli_query($conn,$sqlInsert);
     echo '<script> alert("Insert Success!");</script>';
     echo '<meta http-equiv="refresh" content="0;URL=?page=Personel_Class"/>';
