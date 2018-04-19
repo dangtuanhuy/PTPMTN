@@ -16,22 +16,25 @@ if(isset($_GET["PersonnelCode"]) && isset($_GET["ClassId"]))
 {
 	$PersonnelCode = $_GET["PersonnelCode"];
     $ClassId = $_GET["ClassId"];
-    mysqli_query($conn,"DELETE FROM Personel_Class WHERE ClassId = $ClassId AND  PersonnelCode = {$PersonnelCode} ");
+    mysqli_query($conn,"DELETE FROM Personel_Class WHERE ClassId = {$ClassId} AND  PersonnelCode = '{$PersonnelCode}' ");
 }
 ?>
 <?php
 if (isset($_POST['btnDelete'])&&isset($_POST['checkbox'])) 
 {
-	for ($i = 0; $i < count($_POST['checkbox']); $i++) 
-	{
-		$ClassId1 = $_POST['checkbox'][$i];
-		mysqli_query($conn, "DELETE FROM Personel_Class WHERE ClassId = $ClassId AND  PersonnelCode = {$PersonnelCode}  ");
-	}
+	// for ($i = 0; $i < count($_POST['checkbox']); $i++) 
+	// {
+	// 	$ClassId1 = $_POST['checkbox'][$i];
+	// 	mysqli_query($conn, "DELETE FROM Personel_Class WHERE ClassId = $ClassId AND  PersonnelCode = {$PersonnelCode}  ");
+    // }
+    foreach($_POST['checkbox'] as $key=>$ClassId) {
+		mysqli_query($conn, "DELETE FROM Personel_Class WHERE ClassId = {$ClassId}");        
+    }
 }
 ?>
 <div class="container">
 
-    <form name="frmXoa" method="post" action="">
+    <form name="frmXoa" method="post">
         <h1 class="text-center">Manage Personnal - Class</h1>
         <p>
             <a  class="btn btn-default" href="?page=AddPersonel_Class">
@@ -52,7 +55,7 @@ if (isset($_POST['btnDelete'])&&isset($_POST['checkbox']))
             <tbody>
                 <?php 
                 $num=1;
-                $query= "SELECT PersonnelName, ClassName FROM `Personel_Class`
+                $query= "SELECT * FROM `Personel_Class`
                 JOIN Class ON Class.ClassId = Personel_Class.ClassId
                 JOIN Personnel ON Personnel.PersonnelCode = Personel_Class.PersonnelCode";
                 $result = mysqli_query($conn,$query);
@@ -60,13 +63,13 @@ if (isset($_POST['btnDelete'])&&isset($_POST['checkbox']))
                 {
                     ?>
                     <tr>
-                        <td><input name="checkbox[]" type="checkbox" id="checkbox[]" class="form-control" value="<?php echo $row["ClassId"] ?>"></td>
+                        <td><input name="checkbox[]" type="checkbox" id="checkbox[]" class="form-control" value="<?php echo $row["ClassId"]; ?>"></td>
                         <td><?php echo $num ?></td>
                         <td><?php echo $row["PersonnelName"] ?></td>
                         <td><?php echo $row["ClassName"] ?></td>
 
                         <td align='center'>
-                            <a class="btn btn-default"   href="?page=Personel_Class&PersonnelCode=<?=$row['PersonnelCode']?>&ClassId=<?=$row['ClassId']; ?>" onclick="return deleteConfirm()">
+                            <a class="btn btn-default"   href="?page=Personel_Class&PersonnelCode=<?php echo $row["PersonnelCode"]; ?>&ClassId=<?php echo $row["ClassId"]; ?>" onclick="return deleteConfirm()">
                                 <i class="fa fa-remove"></i></a>
                             </td>
                             <td>
