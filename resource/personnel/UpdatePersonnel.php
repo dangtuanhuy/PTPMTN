@@ -44,7 +44,7 @@ if(isset($_POST['btnCapNhat'])){
 					WHERE PersonnelCode = '" . $_SESSION['Username'] . "'")
 					or die(mysqli_error());
 		}
-		echo "<script>alert('Cập nhật thành công!');window.location='Index.php';</script>";
+		echo "<script>alert('Update Success!');window.location='Index.php';</script>";
 	}else{
 		echo $kiemtra;
 	}
