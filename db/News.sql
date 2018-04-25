@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 14, 2018 at 07:00 AM
+-- Generation Time: Apr 25, 2018 at 03:38 AM
 -- Server version: 5.6.37
 -- PHP Version: 5.6.31
 
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `Class` (
   `Enrollment` int(10) unsigned NOT NULL,
   `ClassStatus` tinyint(4) DEFAULT '0',
   `GradeId` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `Class`
@@ -41,12 +41,9 @@ CREATE TABLE IF NOT EXISTS `Class` (
 INSERT INTO `Class` (`ClassId`, `ClassName`, `Enrollment`, `ClassStatus`, `GradeId`) VALUES
 (1, 'PRE1801-01', 41, 0, 1),
 (2, 'PRE1802', 50, 1, 1),
-(3, 'PRE1803', 40, 0, 1),
-(4, 'KIND1801', 45, 0, 2),
-(5, 'KIND1802', 54, 0, 2),
-(6, 'KIND1803', 41, 1, 2),
-(7, 'KIND1804', 38, 1, 2),
-(8, 'PRE 1601', 12, 0, 1);
+(3, 'PRE1803', 40, 1, 1),
+(4, 'KIND1801', 45, 1, 2),
+(5, 'KIND1802', 54, 0, 2);
 
 -- --------------------------------------------------------
 
@@ -110,35 +107,14 @@ CREATE TABLE IF NOT EXISTS `ImgPersonel` (
   `ImgPersonelId` int(11) NOT NULL,
   `ImgPersonel` varchar(255) DEFAULT NULL,
   `PersonelCode` varchar(150) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `ImgPersonel`
 --
 
 INSERT INTO `ImgPersonel` (`ImgPersonelId`, `ImgPersonel`, `PersonelCode`) VALUES
-(1, 'CP0810_ALG.png', 'CP0810'),
-(2, 'CP0810_ALG.png', 'CP0810'),
-(3, 'CP0810_AP.png', 'CP0810'),
-(4, 'CP0810_AP.png', 'CP0810'),
-(5, 'CP0810_AP.png', 'CP0810'),
-(6, 'CP0810_AP.png', 'CP0810'),
-(7, 'CP0810_AP.png', 'CP0810'),
-(8, 'CP0810_AP.png', 'CP0810'),
-(9, 'CP0810_AP.png', 'CP0810'),
-(10, 'CP0810_AP.png', 'CP0810'),
-(11, 'CP0810_AP.png', 'CP0810'),
-(12, 'CP0810_AP.png', 'CP0810'),
-(13, 'CP0810_AP.png', 'CP0810'),
-(14, 'CP0810_AP.png', 'CP0810'),
-(15, 'CP0810_AP.png', 'CP0810'),
-(16, 'CP0810_AP.png', 'CP0810'),
-(17, 'CP0810_AP.png', 'CP0810'),
-(18, 'CP0810_AP.png', 'CP0810'),
-(19, 'CP0810_AP.png', 'CP0810'),
-(20, 'CP0810_AP.png', 'CP0810'),
-(21, 'CP0810_AP.png', 'CP0810'),
-(22, 'CP0810_AP.png', 'CP0810');
+(23, 'CP0809_Admin.png', 'CP0809');
 
 -- --------------------------------------------------------
 
@@ -160,10 +136,17 @@ CREATE TABLE IF NOT EXISTS `ImgStudent` (
 
 CREATE TABLE IF NOT EXISTS `Personel_Class` (
   `ClassId` int(11) NOT NULL,
-  `PersonnelCode` varchar(150) NOT NULL,
-  `Start` date NOT NULL,
-  `End` date NOT NULL
+  `PersonnelCode` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `Personel_Class`
+--
+
+INSERT INTO `Personel_Class` (`ClassId`, `PersonnelCode`) VALUES
+(2, 'CP0808'),
+(2, 'CP0809'),
+(1, 'CP0810');
 
 -- --------------------------------------------------------
 
@@ -192,7 +175,7 @@ CREATE TABLE IF NOT EXISTS `Personnel` (
 --
 
 INSERT INTO `Personnel` (`PersonnelCode`, `PersonnelName`, `PersonnelPass`, `PersonnelBirth`, `PersonnelGender`, `PersonnelAddress`, `PersonnelNum`, `PersonnelEmail`, `PersonnelActive`, `PersonnelNote`, `PositionId`, `RoleId`, `PersonnelStatus`) VALUES
-('CP0808', 'Dang Tuan Huy', '11967d5e9addc5416ea9224eee0e91fc', '1997-01-02', 0, 'Ben Tre', '0925028450', 'huysamastar@gmail.com', 0, 1, 1, 2, 0),
+('CP0808', 'Dang Tuan Huy HUY', '11967d5e9addc5416ea9224eee0e91fc', '1997-01-02', 0, 'Ben Tre - Châu Thành', '0925028450', 'huysamastar@gmail.com', 0, 1, 1, 2, 0),
 ('CP0809', 'Nguyen Thi Cam Tuyen', 'cbb2e126f7265748e7b6403625431f21', '1994-01-20', 1, 'Thot Not', '09093509', 'ntctuyen@gmail.com', 1, 0, 1, 1, 1),
 ('CP0810', 'Pham Hoai An', 'abba8340466a1b7ddc56c287821923af', '1996-03-08', 0, 'An Giang', '08779339', 'phan@gmail.com', 0, 1, 1, 2, 1),
 ('CP900', 'Đặng Tuấn Huy', '202cb962ac59075b964b07152d234b70', '1997-01-02', 0, '<p>Ben Tre</p>\r\n', ' 0963505927', 'adobedangtuanhuy@gmail.com', 0, 1, 2, 1, 0),
@@ -217,9 +200,9 @@ CREATE TABLE IF NOT EXISTS `Position` (
 
 INSERT INTO `Position` (`PositionId`, `PositionName`, `PositionDetails`, `DepartmentId`) VALUES
 (1, 'Principal', '<p>The Rector is the head of a school (Elementary, secondary, College, University, etc.), management decisions for the school that 1</p>\r\n', 3),
-(2, 'The ministers', 'The Rector is the head of a school (Elementary, secondary, College, University, etc.), management decisions for the school that', 1),
-(3, 'Labor', 'The Rector is the head of a school (Elementary, secondary, College, University, etc.), management decisions for the school that', 7),
-(4, 'Teacher', 'The Rector is the head of a school (Elementary, secondary, College, University, etc.), management decisions for the school that', 4);
+(2, 'The ministers', '<p>The Rector is the head of a school (Elementary, secondary, College, University, etc.), management decisions for the school that</p>', 1),
+(3, 'Labor', '<p>The Rector is the head of a school (Elementary, secondary, College, University, etc.), management decisions for the school that</p>', 7),
+(4, 'Teacher', '<p>The Rector is the head of a school (Elementary, secondary, College, University, etc.), management decisions for the school that</p>', 4);
 
 -- --------------------------------------------------------
 
@@ -240,6 +223,18 @@ CREATE TABLE IF NOT EXISTS `Role` (
 INSERT INTO `Role` (`RoleId`, `RoleName`, `RoleDescription`) VALUES
 (1, 'User1', '<p>Ex: Teacher 1</p>\r\n'),
 (2, 'Admin', '<p>Ex: Adminstrator</p>\r\n');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `RoleDetails`
+--
+
+CREATE TABLE IF NOT EXISTS `RoleDetails` (
+  `RoleDetailsId` tinyint(4) NOT NULL,
+  `RoleDetailsName` varchar(155) NOT NULL,
+  `RoleId` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -277,6 +272,18 @@ CREATE TABLE IF NOT EXISTS `SchoolYears_Class` (
   `ClassId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `SchoolYears_Class`
+--
+
+INSERT INTO `SchoolYears_Class` (`SchoolYearsId`, `ClassId`) VALUES
+(1, 3),
+(3, 3),
+(2, 4),
+(3, 4),
+(1, 5),
+(3, 5);
+
 -- --------------------------------------------------------
 
 --
@@ -303,7 +310,7 @@ CREATE TABLE IF NOT EXISTS `Student` (
 --
 
 INSERT INTO `Student` (`StudentCode`, `StudentName`, `StudentBirth`, `StudentGender`, `StudentAddress`, `YourFatherName`, `JobFather`, `YourMotherName`, `JobMother`, `PhoneHouse`, `StudentStatus`, `ClassId`) VALUES
-('CP101', 'Dang Tuan Huy', '1997-01-02', 0, 'Ben Tre', 'Mr', NULL, 'Mrs', NULL, '08083508', 1, 1),
+('CP101', 'Dang Tuan Huy', '1997-01-02', 0, 'Ben Tre', 'Mr', 'Farmer', 'Mrs', NULL, '08083508', 1, 1),
 ('PRE003', 'Pham Hoai An', '2018-04-11', 0, '<p>Kieng Giang</p>\r\n', 'NULL', 'NULL ', 'NULL', 'NULL', '0963505927', 1, 2);
 
 --
@@ -372,6 +379,13 @@ ALTER TABLE `Role`
   ADD PRIMARY KEY (`RoleId`);
 
 --
+-- Indexes for table `RoleDetails`
+--
+ALTER TABLE `RoleDetails`
+  ADD PRIMARY KEY (`RoleDetailsId`),
+  ADD KEY `RoleId` (`RoleId`);
+
+--
 -- Indexes for table `SchoolYears`
 --
 ALTER TABLE `SchoolYears`
@@ -399,7 +413,7 @@ ALTER TABLE `Student`
 -- AUTO_INCREMENT for table `Class`
 --
 ALTER TABLE `Class`
-  MODIFY `ClassId` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+  MODIFY `ClassId` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `Department`
 --
@@ -414,7 +428,7 @@ ALTER TABLE `Grade`
 -- AUTO_INCREMENT for table `ImgPersonel`
 --
 ALTER TABLE `ImgPersonel`
-  MODIFY `ImgPersonelId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=23;
+  MODIFY `ImgPersonelId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=24;
 --
 -- AUTO_INCREMENT for table `ImgStudent`
 --
@@ -430,6 +444,11 @@ ALTER TABLE `Position`
 --
 ALTER TABLE `Role`
   MODIFY `RoleId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `RoleDetails`
+--
+ALTER TABLE `RoleDetails`
+  MODIFY `RoleDetailsId` tinyint(4) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `SchoolYears`
 --
@@ -476,6 +495,12 @@ ALTER TABLE `Personnel`
 --
 ALTER TABLE `Position`
   ADD CONSTRAINT `position_ibfk_1` FOREIGN KEY (`DepartmentId`) REFERENCES `Department` (`DepartmentId`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `RoleDetails`
+--
+ALTER TABLE `RoleDetails`
+  ADD CONSTRAINT `roledetails_ibfk_1` FOREIGN KEY (`RoleId`) REFERENCES `Role` (`RoleId`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `SchoolYears_Class`
