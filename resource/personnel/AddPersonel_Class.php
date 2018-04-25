@@ -1,4 +1,4 @@
-<?php 
+<?php
 function blindPersonnelList($conn)
 {
 	$sqlSelect ="
@@ -29,17 +29,31 @@ $idPersonnal = "";
 $idClass = "";
 if(isset($_POST['btnAdd']))
 {
-    $idPersonnal = $_POST['slPersonnal'];
-    $idClass = $_POST['slClass'];
-    $sqlInsert ="INSERT INTO Personel_Class(ClassId, PersonnelCode) VALUES ('$idClass','$idPersonnal')";
-    mysqli_query($conn,$sqlInsert);
-    echo '<script> alert("Insert Success!");</script>';
-    echo '<meta http-equiv="refresh" content="0;URL=?page=Personel_Class"/>';
+		$sql_qry_per_class = "SELECT * FROM `Personel_Class`";
+		$result_qry_per_class = mysqli_query($conn, $sql_qry_per_class);
+		$listPerClassAsPer = array();
+		$listPerClassAsClass = array();
+		while ($row_qry_per_class = mysqli_fetch_array($result_qry_per_class)) {
+			array_push($listPerClassAsPer,$row_qry_per_class[1]);
+			array_push($listPerClassAsClass,$row_qry_per_class[0]);
+		}
+    if(in_array($_POST["slPersonnal"],$listPerClassAsPer)) {
+			echo '<script> alert("Available code of Personnal in the database!");</script>';
+		} else if(in_array($_POST["slClass"],$listPerClassAsClass)) {
+			echo '<script> alert("Available code of Class in the database!");</script>';
+		} else {
+			$idPersonnal = $_POST['slPersonnal'];
+	    $idClass = $_POST['slClass'];
+	    $sqlInsert ="INSERT INTO Personel_Class(ClassId, PersonnelCode) VALUES ('$idClass','$idPersonnal')";
+	    mysqli_query($conn,$sqlInsert);
+	    echo '<script> alert("Insert Success!");</script>';
+	    echo '<meta http-equiv="refresh" content="0;URL=?page=Personel_Class"/>';
+		}
 }
 ?>
 
 <div class="container">
-	
+
     <form method="post" class="form-horizontal">
         <div class="form-group">
             <h4 class="text-center">ADD Class - Personnal</h4>
