@@ -1,8 +1,8 @@
 <?php
 session_start();
-if(!isset($_SESSION['Username'])){
+if(!isset($_SESSION['Username'])):
 	echo '<meta http-equiv="refresh" content="0; URL=login.php"/>';
-}
+else:
 
 function PersonnelLogin($conn, $PersonnelCode) {
   $sql_query_Personnel = "SELECT PersonnelName FROM `Personnel` WHERE `PersonnelCode` = '{$PersonnelCode}'";
@@ -460,3 +460,6 @@ include_once('body.php')
     </script>
   </body>
 </html>
+<?php
+endif;
+?>
