@@ -154,7 +154,7 @@
       <div class="container">
       <h3 class="text-center">INFORMATION PERSONNAL</h3>
       <table class="table-striped table-responsive table-bordered" id="myTable">
-      
+
 			<thead>
 				<tr>
 					<th ><strong>No</strong></th>
@@ -167,13 +167,13 @@
           <th class="col-md-1"><strong>Email</strong></th>
           <th class="col-md-1"><strong>Department</strong></th>
           <th class="col-md-1"><strong>Position</strong></th>
-       
+
 				</tr>
 			</thead>
 			<tbody>
-				<?php 
+				<?php
 				$num=1;
-				$result = mysqli_query($conn,"SELECT 
+				$result = mysqli_query($conn,"SELECT
         `PersonnelCode`,`PersonnelName`,`PersonnelBirth`,
         `PersonnelGender`,`PersonnelAddress`,`PersonnelNum`,`PersonnelEmail`,`DepartmentName`, `PositionName`
         FROM `Personnel` p
@@ -193,7 +193,7 @@
             <td><?php echo $row["PersonnelEmail"] ?></td>
             <td><?php echo $row["DepartmentName"] ?></td>
             <td><?php echo $row["PositionName"] ?></td>
-        
+
 						</tr>
 						<?php
 						$num++;
@@ -202,14 +202,14 @@
 				</tbody>
 			</table>
       </div>
-        
+
       </section>
 
       <section class="statistics">
       <div class="container">
       <h3 class="text-center">INFORMATION STUDENT</h3>
       <table class="table-striped table-responsive table-bordered" id="myTable1">
-      
+
 			<thead>
 				<tr>
 					<th ><strong>No</strong></th>
@@ -220,11 +220,11 @@
 					<th class="col-md-1"><strong>Gender</strong></th>
           <th class="col-md-1"><strong>Class Name</strong></th>
           <th class="col-md-1"><strong>Grade Name</strong></th>
-     
+
 				</tr>
 			</thead>
 			<tbody>
-				<?php 
+				<?php
 				$num1=1;
 				$result = mysqli_query($conn,"SELECT `StudentCode`,`StudentName`,`StudentBirth`,`StudentGender`,`StudentAddress`, `ClassName`, GradeName
         FROM `Student` st
@@ -239,10 +239,10 @@
             <td><?php echo $row["StudentName"] ?></td>
 						<td><?php echo $row["StudentBirth"] ?></td>
             <td><?php echo $row["StudentAddress"] ?></td>
-            <td><?php echo $row["StudentGender"] ==1 ?"Boy" : "Girl" ?></td> 
+            <td><?php echo $row["StudentGender"] ==1 ?"Boy" : "Girl" ?></td>
             <td><?php echo $row["ClassName"] ?></td>
             <td><?php echo $row["GradeName"] ?></td>
-      
+
 						</tr>
 						<?php
 						$num1 ++;
@@ -251,7 +251,7 @@
 				</tbody>
 			</table>
       </div>
-        
+
       </section>
       <!-- Updates Section -->
       <section class="mt-30px mb-30px">
@@ -261,70 +261,62 @@
               <!-- Recent Updates Widget          -->
               <div id="daily-feeds" class="card updates daily-feeds">
                 <div id="feeds-header" class="card-header d-flex justify-content-between align-items-center">
-                  <h2 class="h5 display"><a data-toggle="collapse" data-parent="#daily-feeds" href="#feeds-box" aria-expanded="true" aria-controls="feeds-box">Your daily Feeds </a></h2>
+                  <h2 class="h5 display"><a data-toggle="collapse" data-parent="#daily-feeds" href="#tda-box" aria-expanded="true" aria-controls="tda-box">Team Design and Analyst </a></h2>
                   <div class="right-column">
-                    <div class="badge badge-primary">10 messages</div><a data-toggle="collapse" data-parent="#daily-feeds" href="#feeds-box" aria-expanded="true" aria-controls="feeds-box"><i class="fa fa-angle-down"></i></a>
+                    <div class="badge badge-primary">5 members</div><a data-toggle="collapse" data-parent="#daily-feeds" href="#tda-box" aria-expanded="true" aria-controls="tda-box"><i class="fa fa-angle-down"></i></a>
                   </div>
                 </div>
-                <div id="feeds-box" role="tabpanel" class="collapse show">
+                <div id="tda-box" role="tabpanel" class="collapse show">
                   <div class="feed-box">
                     <ul class="feed-elements list-unstyled">
                       <!-- List-->
                       <li class="clearfix">
                         <div class="feed d-flex justify-content-between">
+                          <div class="feed-body d-flex justify-content-between"><a href="#" class="feed-profile"><img src="img/avatar-1.jpg" alt="person" class="img-fluid rounded-circle"></a>
+                            <div class="content"><strong>Pham Hoai An</strong><small>Project Manager </small>
+                              <div class="full-date"><small>CDM - DFD</small></div>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <!-- List-->
+                      <li class="clearfix">
+                        <div class="feed d-flex justify-content-between">
                           <div class="feed-body d-flex justify-content-between"><a href="#" class="feed-profile"><img src="img/avatar-5.jpg" alt="person" class="img-fluid rounded-circle"></a>
-                            <div class="content"><strong>Aria Smith</strong><small>Posted a new blog </small>
-                              <div class="full-date"><small>Today 5:60 pm - 12.06.2014</small></div>
+                            <div class="content"><strong>Vo Thi Thanh Quy</strong><small>Analyst </small>
+                              <div class="full-date"><small>Use-case model</small></div>
                             </div>
                           </div>
-                          <div class="date"><small>5min ago</small></div>
-                        </div>
-                      </li>
-                      <!-- List-->
-                      <li class="clearfix">
-                        <div class="feed d-flex justify-content-between">
-                          <div class="feed-body d-flex justify-content-between"><a href="#" class="feed-profile"><img src="img/avatar-2.jpg" alt="person" class="img-fluid rounded-circle"></a>
-                            <div class="content"><strong>Frank Williams</strong><small>Posted a new blog </small>
-                              <div class="full-date"><small>Today 5:60 pm - 12.06.2014</small></div>
-                              <div class="CTAs"><a href="#" class="btn btn-xs btn-dark"><i class="fa fa-thumbs-up"> </i>Like</a><a href="#" class="btn btn-xs btn-dark"><i class="fa fa-heart"> </i>Love</a></div>
-                            </div>
-                          </div>
-                          <div class="date"><small>5min ago</small></div>
-                        </div>
-                      </li>
-                      <!-- List-->
-                      <li class="clearfix">
-                        <div class="feed d-flex justify-content-between">
-                          <div class="feed-body d-flex justify-content-between"><a href="#" class="feed-profile"><img src="img/avatar-3.jpg" alt="person" class="img-fluid rounded-circle"></a>
-                            <div class="content"><strong>Ashley Wood</strong><small>Posted a new blog </small>
-                              <div class="full-date"><small>Today 5:60 pm - 12.06.2014</small></div>
-                            </div>
-                          </div>
-                          <div class="date"><small>5min ago</small></div>
                         </div>
                       </li>
                       <!-- List-->
                       <li class="clearfix">
                         <div class="feed d-flex justify-content-between">
                           <div class="feed-body d-flex justify-content-between"><a href="#" class="feed-profile"><img src="img/avatar-1.jpg" alt="person" class="img-fluid rounded-circle"></a>
-                            <div class="content"><strong>Jason Doe</strong><small>Posted a new blog </small>
-                              <div class="full-date"><small>Today 5:60 pm - 12.06.2014</small></div>
+                            <div class="content"><strong>Nguyen Van Loc</strong><small>Analyst </small>
+                              <div class="full-date"><small>CDM - Use-case</small></div>
                             </div>
                           </div>
-                          <div class="date"><small>5min ago</small></div>
                         </div>
-                        <div class="message-card"> <small>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</small></div>
-                        <div class="CTAs pull-right"><a href="#" class="btn btn-xs btn-dark"><i class="fa fa-thumbs-up"> </i>Like</a></div>
                       </li>
                       <!-- List-->
                       <li class="clearfix">
                         <div class="feed d-flex justify-content-between">
-                          <div class="feed-body d-flex justify-content-between"><a href="#" class="feed-profile"><img src="img/avatar-6.jpg" alt="person" class="img-fluid rounded-circle"></a>
-                            <div class="content"><strong>Sam Martinez</strong><small>Posted a new blog </small>
-                              <div class="full-date"><small>Today 5:60 pm - 12.06.2014</small></div>
+                          <div class="feed-body d-flex justify-content-between"><a href="#" class="feed-profile"><img src="img/avatar-1.jpg" alt="person" class="img-fluid rounded-circle"></a>
+                            <div class="content"><strong>Ly Truong Giang</strong><small>Analyst </small>
+                              <div class="full-date"><small>Use-case Model</small></div>
                             </div>
                           </div>
-                          <div class="date"><small>5min ago</small></div>
+                        </div>
+                      </li>
+                      <!-- List-->
+                      <li class="clearfix">
+                        <div class="feed d-flex justify-content-between">
+                          <div class="feed-body d-flex justify-content-between"><a href="#" class="feed-profile"><img src="img/avatar-5.jpg" alt="person" class="img-fluid rounded-circle"></a>
+                            <div class="content"><strong>Nguyen Thi Minh Tuyet</strong><small>Analyst </small>
+                              <div class="full-date"><small>CDM</small></div>
+                            </div>
+                          </div>
                         </div>
                       </li>
                     </ul>
@@ -337,71 +329,43 @@
               <!-- Daily Feed Widget-->
               <div id="daily-feeds" class="card updates daily-feeds">
                 <div id="feeds-header" class="card-header d-flex justify-content-between align-items-center">
-                  <h2 class="h5 display"><a data-toggle="collapse" data-parent="#daily-feeds" href="#feeds-box" aria-expanded="true" aria-controls="feeds-box">Your daily Feeds </a></h2>
+                  <h2 class="h5 display"><a data-toggle="collapse" data-parent="#daily-feeds" href="#td-box" aria-expanded="true" aria-controls="td-box">Team Development</a></h2>
                   <div class="right-column">
-                    <div class="badge badge-primary">10 messages</div><a data-toggle="collapse" data-parent="#daily-feeds" href="#feeds-box" aria-expanded="true" aria-controls="feeds-box"><i class="fa fa-angle-down"></i></a>
+                    <div class="badge badge-primary">3 members</div><a data-toggle="collapse" data-parent="#daily-feeds" href="#td-box" aria-expanded="true" aria-controls="td-box"><i class="fa fa-angle-down"></i></a>
                   </div>
                 </div>
-                <div id="feeds-box" role="tabpanel" class="collapse show">
+                <div id="td-box" role="tabpanel" class="collapse show">
                   <div class="feed-box">
                     <ul class="feed-elements list-unstyled">
                       <!-- List-->
                       <li class="clearfix">
                         <div class="feed d-flex justify-content-between">
-                          <div class="feed-body d-flex justify-content-between"><a href="#" class="feed-profile"><img src="img/avatar-5.jpg" alt="person" class="img-fluid rounded-circle"></a>
-                            <div class="content"><strong>Aria Smith</strong><small>Posted a new blog </small>
-                              <div class="full-date"><small>Today 5:60 pm - 12.06.2014</small></div>
+                          <div class="feed-body d-flex justify-content-between"><a href="#" class="feed-profile"><img src="img/avatar-2.jpg" alt="person" class="img-fluid rounded-circle"></a>
+                            <div class="content"><strong>Dang Tuan Huy</strong><small>Web App Team Leader </small>
+                              <div class="full-date"><small>Web App</small></div>
                             </div>
                           </div>
-                          <div class="date"><small>5min ago</small></div>
                         </div>
                       </li>
                       <!-- List-->
                       <li class="clearfix">
                         <div class="feed d-flex justify-content-between">
                           <div class="feed-body d-flex justify-content-between"><a href="#" class="feed-profile"><img src="img/avatar-2.jpg" alt="person" class="img-fluid rounded-circle"></a>
-                            <div class="content"><strong>Frank Williams</strong><small>Posted a new blog </small>
-                              <div class="full-date"><small>Today 5:60 pm - 12.06.2014</small></div>
-                              <div class="CTAs"><a href="#" class="btn btn-xs btn-dark"><i class="fa fa-thumbs-up"> </i>Like</a><a href="#" class="btn btn-xs btn-dark"><i class="fa fa-heart"> </i>Love</a></div>
+                            <div class="content"><strong>Le Nguyen Thuc</strong><small>Web App Developer </small>
+                              <div class="full-date"><small>Web App</small></div>
                             </div>
                           </div>
-                          <div class="date"><small>5min ago</small></div>
                         </div>
                       </li>
                       <!-- List-->
                       <li class="clearfix">
                         <div class="feed d-flex justify-content-between">
                           <div class="feed-body d-flex justify-content-between"><a href="#" class="feed-profile"><img src="img/avatar-3.jpg" alt="person" class="img-fluid rounded-circle"></a>
-                            <div class="content"><strong>Ashley Wood</strong><small>Posted a new blog </small>
-                              <div class="full-date"><small>Today 5:60 pm - 12.06.2014</small></div>
+                            <div class="content"><strong>Nguyen Thi Cam Tuyen</strong><small>Web App Developer </small>
+                              <div class="full-date"><small>Web App</small></div>
                             </div>
                           </div>
-                          <div class="date"><small>5min ago</small></div>
-                        </div>
-                      </li>
-                      <!-- List-->
-                      <li class="clearfix">
-                        <div class="feed d-flex justify-content-between">
-                          <div class="feed-body d-flex justify-content-between"><a href="#" class="feed-profile"><img src="img/avatar-1.jpg" alt="person" class="img-fluid rounded-circle"></a>
-                            <div class="content"><strong>Jason Doe</strong><small>Posted a new blog </small>
-                              <div class="full-date"><small>Today 5:60 pm - 12.06.2014</small></div>
-                            </div>
                           </div>
-                          <div class="date"><small>5min ago</small></div>
-                        </div>
-                        <div class="message-card"> <small>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</small></div>
-                        <div class="CTAs pull-right"><a href="#" class="btn btn-xs btn-dark"><i class="fa fa-thumbs-up"> </i>Like</a></div>
-                      </li>
-                      <!-- List-->
-                      <li class="clearfix">
-                        <div class="feed d-flex justify-content-between">
-                          <div class="feed-body d-flex justify-content-between"><a href="#" class="feed-profile"><img src="img/avatar-6.jpg" alt="person" class="img-fluid rounded-circle"></a>
-                            <div class="content"><strong>Sam Martinez</strong><small>Posted a new blog </small>
-                              <div class="full-date"><small>Today 5:60 pm - 12.06.2014</small></div>
-                            </div>
-                          </div>
-                          <div class="date"><small>5min ago</small></div>
-                        </div>
                       </li>
                     </ul>
                   </div>
@@ -410,64 +374,52 @@
               <!-- Daily Feed Widget End-->
             </div>
             <div class="col-lg-4 col-md-6">
-              <!-- Recent Activities Widget      -->
-              <div id="recent-activities-wrapper" class="card updates activities">
-                <div id="activites-header" class="card-header d-flex justify-content-between align-items-center">
-                  <h2 class="h5 display"><a data-toggle="collapse" data-parent="#recent-activities-wrapper" href="#activities-box" aria-expanded="true" aria-controls="activities-box">Recent Activities</a></h2><a data-toggle="collapse" data-parent="#recent-activities-wrapper" href="#activities-box" aria-expanded="true" aria-controls="activities-box"><i class="fa fa-angle-down"></i></a>
+              <!-- Daily Feed Widget-->
+              <div id="daily-feeds" class="card updates daily-feeds">
+                <div id="feeds-header" class="card-header d-flex justify-content-between align-items-center">
+                  <h2 class="h5 display"><a data-toggle="collapse" data-parent="#daily-feeds" href="#tu-box" aria-expanded="true" aria-controls="tu-box">Team Uncategory</a></h2>
+                  <div class="right-column">
+                    <div class="badge badge-primary">3 members</div><a data-toggle="collapse" data-parent="#daily-feeds" href="#tu-box" aria-expanded="true" aria-controls="tu-box"><i class="fa fa-angle-down"></i></a>
+                  </div>
                 </div>
-                <div id="activities-box" role="tabpanel" class="collapse show">
-                  <ul class="activities list-unstyled">
-                    <!-- Item-->
-                    <li>
-                      <div class="row">
-                        <div class="col-4 date-holder text-right">
-                          <div class="icon"><i class="icon-clock"></i></div>
-                          <div class="date"> <span>6:00 am</span><span class="text-info">6 hours ago</span></div>
+                <div id="tu-box" role="tabpanel" class="collapse show">
+                  <div class="feed-box">
+                    <ul class="feed-elements list-unstyled">
+                      <!-- List-->
+                      <li class="clearfix">
+                        <div class="feed d-flex justify-content-between">
+                          <div class="feed-body d-flex justify-content-between"><a href="#" class="feed-profile"><img src="img/avatar-6.jpg" alt="person" class="img-fluid rounded-circle"></a>
+                            <div class="content"><strong>Nguyen Dinh Trong</strong><small>- </small>
+                              <div class="full-date"><small>-</small></div>
+                            </div>
+                          </div>
                         </div>
-                        <div class="col-8 content"><strong>Meeting</strong>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.                </p>
+                      </li>
+                      <!-- List-->
+                      <li class="clearfix">
+                        <div class="feed d-flex justify-content-between">
+                          <div class="feed-body d-flex justify-content-between"><a href="#" class="feed-profile"><img src="img/avatar-6.jpg" alt="person" class="img-fluid rounded-circle"></a>
+                            <div class="content"><strong>Nguyen Tan Phat</strong><small>- </small>
+                              <div class="full-date"><small>-</small></div>
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                    </li>
-                    <!-- Item-->
-                    <li>
-                      <div class="row">
-                        <div class="col-4 date-holder text-right">
-                          <div class="icon"><i class="icon-clock"></i></div>
-                          <div class="date"> <span>6:00 am</span><span class="text-info">6 hours ago</span></div>
-                        </div>
-                        <div class="col-8 content"><strong>Meeting</strong>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.                </p>
-                        </div>
-                      </div>
-                    </li>
-                    <!-- Item-->
-                    <li>
-                      <div class="row">
-                        <div class="col-4 date-holder text-right">
-                          <div class="icon"><i class="icon-clock"></i></div>
-                          <div class="date"> <span>6:00 am</span><span class="text-info">6 hours ago</span></div>
-                        </div>
-                        <div class="col-8 content"><strong>Meeting</strong>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.                </p>
-                        </div>
-                      </div>
-                    </li>
-                    <!-- Item-->
-                    <li>
-                      <div class="row">
-                        <div class="col-4 date-holder text-right">
-                          <div class="icon"><i class="icon-clock"></i></div>
-                          <div class="date"> <span>6:00 am</span><span class="text-info">6 hours ago</span></div>
-                        </div>
-                        <div class="col-8 content"><strong>Meeting</strong>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.                </p>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
+                      </li>
+                      <!-- List-->
+                      <li class="clearfix">
+                        <div class="feed d-flex justify-content-between">
+                          <div class="feed-body d-flex justify-content-between"><a href="#" class="feed-profile"><img src="img/avatar-6.jpg" alt="person" class="img-fluid rounded-circle"></a>
+                            <div class="content"><strong>Huynh Trong Thanh</strong><small>- </small>
+                              <div class="full-date"><small>-</small></div>
+                            </div>
+                          </div>
+                          </div>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </div>
+              <!-- Daily Feed Widget End-->
             </div>
           </div>
         </div>
