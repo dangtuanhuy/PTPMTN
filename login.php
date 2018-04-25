@@ -40,7 +40,8 @@
           $loginpassword = md5($loginpassword);
           $result = mysqli_query($conn,"SELECT PersonnelCode, PersonnelPass,  RoleId
             FROM Personnel
-            WHERE RoleId = 2 AND  PersonnelCode='{$loginusername}' AND PersonnelPass='{$loginpassword}'");
+            WHERE PersonnelCode='{$loginusername}' AND PersonnelPass='{$loginpassword}'");
+            // WHERE RoleId = 2 AND  PersonnelCode='{$loginusername}' AND PersonnelPass='{$loginpassword}'");
           if (mysqli_num_rows($result) == 1)
           {
             $_SESSION["Username"] = $loginusername;

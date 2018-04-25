@@ -48,6 +48,11 @@ function PersonnelLogin($conn, $PersonnelCode) {
 
   <?php
   include_once('config/connect.php');
+	$_user = $_SESSION['Username'];
+	$sql_query_role = "SELECT RoleDetail FROM `Role` JOIN `Personnel` ON Role.RoleId = Personnel.RoleId WHERE Personnel.PersonnelCode = '{$_user}'";
+	$result_role = mysqli_query($conn,$sql_query_role);
+	$row_role_details = mysqli_fetch_array($result_role);
+	$role_details_arr = explode(',',$row_role_details[0]);
   ?>
     <!-- Side Navbar -->
     <nav class="side-navbar">
@@ -65,15 +70,15 @@ function PersonnelLogin($conn, $PersonnelCode) {
         <div class="main-menu">
           <h5 class="sidenav-heading">Main</h5>
           <ul id="side-main-menu" class="side-menu list-unstyled">
-            <li><a href="index.php"> <i class="icon-home"></i>Home                             </a></li>
-            <li><a href="?page=grade"> <i class="fa fa-clipboard"></i>Grade</a></li>
-            <li><a href="?page=SchoolYears"> <i class="fa fa-calendar"></i>School Years</a></li>
-            <li><a href="?page=Class"> <i class="	fa fa-briefcase"></i>Class</a></li>
-            <li><a href="?page=Student"> <i class="fa fa-child"></i>Student</a></li>
-            <li><a href="?page=Department"> <i class="fa fa-fort-awesome"></i>Department</a></li>
-            <li><a href="?page=Position"> <i class="fa fa-institution"></i>Position</a></li>
-            <li><a href="?page=Personnel"> <i class="fa fa-group"></i>Personnel</a></li>
-            <li><a href="?page=Role"> <i class="fa fa-cogs"></i>Role</a></li>
+						<?php if(in_array('home', $role_details_arr)) echo '<li><a href="index.php"> <i class="icon-home"></i>Home</a></li>'; ?>
+						<?php if(in_array('grade', $role_details_arr)) echo '<li><a href="?page=grade"> <i class="fa fa-clipboard"></i>Grade</a></li>'; ?>
+						<?php if(in_array('schoolyears', $role_details_arr)) echo '<li><a href="?page=SchoolYears"> <i class="fa fa-calendar"></i>School Years</a></li>'; ?>
+						<?php if(in_array('class', $role_details_arr)) echo '<li><a href="?page=Class"> <i class="	fa fa-briefcase"></i>Class</a></li>'; ?>
+						<?php if(in_array('student', $role_details_arr)) echo '<li><a href="?page=Student"> <i class="fa fa-child"></i>Student</a></li>'; ?>
+						<?php if(in_array('department', $role_details_arr)) echo '<li><a href="?page=Department"> <i class="fa fa-fort-awesome"></i>Department</a></li>'; ?>
+						<?php if(in_array('position', $role_details_arr)) echo '<li><a href="?page=Position"> <i class="fa fa-institution"></i>Position</a></li>'; ?>
+						<?php if(in_array('personnel', $role_details_arr)) echo '<li><a href="?page=Personnel"> <i class="fa fa-group"></i>Personnel</a></li>'; ?>
+						<?php if(in_array('role', $role_details_arr)) echo '<li><a href="?page=Role"> <i class="fa fa-cogs"></i>Role</a></li>'; ?>
           </ul>
         </div>
       </div>
@@ -88,7 +93,7 @@ function PersonnelLogin($conn, $PersonnelCode) {
                   <div class="brand-text d-none d-md-inline-block"><span><h1>CT249</h1> </span><strong class="text-primary"> Dashboard</strong></div></a></div>
               <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
                 <!-- Notifications dropdown-->
-                <li class="nav-item dropdown"> 
+                <li class="nav-item dropdown">
                   <ul aria-labelledby="notifications" class="dropdown-menu">
                     <li><a rel="nofollow" href="#" class="dropdown-item">
                         <div class="notification d-flex justify-content-between">
