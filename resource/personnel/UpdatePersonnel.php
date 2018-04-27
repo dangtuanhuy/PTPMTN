@@ -11,7 +11,7 @@ $query = "SELECT `PersonnelEmail`,`PersonnelName`,`PersonnelAddress`,`PersonnelN
 	$diachi = $row["PersonnelAddress"];
 	$dienthoai = $row["PersonnelNum"];
 
-//Cap nhat khach hang khi nhan vao nut cap nhat
+//Cap nhat giang vien khi nhan vao nut cap nhat
 if(isset($_POST['btnCapNhat'])){
 	$query = "SELECT `PersonnelEmail`,`PersonnelName`,`PersonnelAddress`,`PersonnelNum`
 			FROM Personnel
@@ -29,7 +29,7 @@ if(isset($_POST['btnCapNhat'])){
 
 	$kiemtra = kiemTra();
 	if($kiemtra == ""){
-		//Khach hang co thay doi mat khau
+		//Giao vien co thay doi mat khau
 		if($_POST['txtMatKhau1']!=""){
 			mysqli_query($conn, "UPDATE Personnel
 					SET PersonnelName = '".$hoten."', PersonnelAddress ='".$diachi."',
@@ -37,7 +37,7 @@ if(isset($_POST['btnCapNhat'])){
 					WHERE PersonnelCode = '" . $_SESSION['Username'] . "'")
 					or die(mysqli_error());
 		}
-		//Khach hang khong thay doi mat khau
+		//Giao vien khong thay doi mat khau
 		else{ mysqli_query($conn, "UPDATE Personnel
 					SET PersonnelName = '".$hoten."', PersonnelAddress ='".$diachi."',
 					PersonnelNum = '".$dienthoai."'
@@ -84,13 +84,13 @@ function kiemTra(){
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="lblMatKhau1" class="col control-label">Password(*):  </label>
+				<label for="lblMatKhau1" class="col control-label">New Password(*):  </label>
 				<div class="col-sm-10">
 					<input type="password" name="txtMatKhau1" id="txtMatKhau1" class="form-control"/>
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="lblMatKhau2" class="col control-label">Repeat Password(*):  </label>
+				<label for="lblMatKhau2" class="col control-label">Repeat New Password(*):  </label>
 				<div class="col-sm-10">
 						<input type="password" name="txtMatKhau2" id="txtMatKhau2" class="form-control"/>
 				</div>
