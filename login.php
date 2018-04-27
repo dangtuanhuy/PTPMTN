@@ -49,7 +49,7 @@
           }
           else
           {
-            echo '<script> alert("Tên tài khoản hoặc mật khẩu không chính xác hoặc bạn không có quyền truy cập");</script>';
+            echo '<script> alert("Usernames and Password Erro or Role is limit");</script>';
           }
         }
         ?>

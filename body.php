@@ -272,7 +272,7 @@
                       <!-- List-->
                       <li class="clearfix">
                         <div class="feed d-flex justify-content-between">
-                          <div class="feed-body d-flex justify-content-between"><a href="#" class="feed-profile"><img src="img/avatar-1.jpg" alt="person" class="img-fluid rounded-circle"></a>
+                          <div class="feed-body d-flex justify-content-between"><a href="#" class="feed-profile"><img src="img/2.png" alt="person" class="img-fluid rounded-circle"></a>
                             <div class="content"><strong>Pham Hoai An</strong><small>Project Manager </small>
                               <div class="full-date"><small>CDM</small></div>
                             </div>
