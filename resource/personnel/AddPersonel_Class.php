@@ -39,9 +39,11 @@ if(isset($_POST['btnAdd']))
 		}
     if(in_array($_POST["slPersonnal"],$listPerClassAsPer)) {
 			echo '<script> alert("Available code of Personnal in the database!");</script>';
-		} else if(in_array($_POST["slClass"],$listPerClassAsClass)) {
-			echo '<script> alert("Available code of Class in the database!");</script>';
-		} else {
+		}
+		// else if(in_array($_POST["slClass"],$listPerClassAsClass)) {
+		// 	echo '<script> alert("Available code of Class in the database!");</script>';
+		// }
+		else {
 			$idPersonnal = $_POST['slPersonnal'];
 	    $idClass = $_POST['slClass'];
 	    $sqlInsert ="INSERT INTO Personel_Class(ClassId, PersonnelCode) VALUES ('$idClass','$idPersonnal')";

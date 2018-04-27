@@ -32,7 +32,7 @@ if(isset($_POST['btnAdd']))
           <div class="form-group">
             <label for="roleGroup">DETAILS</label><br  />
             <input type="checkbox" onClick="toggle(this)" id="roleGroup"> Check All
-            <input type="checkbox" name='add[]' value="fullcontrol" onClick="toggle(this)"> Full Control
+            <!-- <input type="checkbox" name='add[]' value="fullcontrol" onClick="toggle(this)"> Full Control -->
             <table class="table" border="0">
               <thead>
                 <tr>
@@ -59,6 +59,7 @@ if(isset($_POST['btnAdd']))
                 </tr>
                 <tr>
                   <td><input type="checkbox" name='add[]' value="schoolyears"> School Years Access</td>
+                  <td><input type="checkbox" name='add[]' value="upgrade"> Upgrade Class Access</td>
                   <td></td>
                   <td></td>
                 </tr>

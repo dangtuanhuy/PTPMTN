@@ -48,7 +48,7 @@ if(isset($_POST["btnEdit"])){
         <div class="form-group">
           <label for="roleGroup">DETAILS</label><br  />
           <input type="checkbox" onClick="toggle(this)" id="roleGroup"> Check All
-          <input type="checkbox" name='add[]' value="fullcontrol"<?php if(in_array("fullcontrol",$roledetails)){echo " checked";}?> onClick="toggle(this)"> Full Control
+          <!-- <input type="checkbox" name='add[]' value="fullcontrol"<?php if(in_array("fullcontrol",$roledetails)){echo " checked";}?> onClick="toggle(this)"> Full Control -->
           <table class="table" border="0">
             <thead>
               <tr>
@@ -75,6 +75,7 @@ if(isset($_POST["btnEdit"])){
               </tr>
               <tr>
                 <td><input type="checkbox" name='add[]' value="schoolyears"<?php if(in_array("schoolyears",$roledetails)){echo " checked";}?>> School Years Access</td>
+                <td><input type="checkbox" name='add[]' value="upgrade"<?php if(in_array("upgrade",$roledetails)){echo " checked";}?>> Upgrade Class Access</td>
                 <td></td>
                 <td></td>
               </tr>

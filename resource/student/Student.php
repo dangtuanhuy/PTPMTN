@@ -74,7 +74,12 @@ if (isset($_POST['btnDelete'])&&isset($_POST['checkbox']))
 						<td><?php echo $num ?></td>
 						<td><?php echo $row["StudentCode"] ?></td>
                         <td><?php echo $row["StudentName"] ?></td>
-                        <td><?php echo $row["StudentBirth"] ?></td>
+                        <td>
+													<?php //echo $row["StudentBirth"] ?>
+													<?php echo date('Y',strtotime($row["StudentBirth"])) ?>-
+													<?php echo date('m',strtotime($row["StudentBirth"])) ?>-
+													<?php echo date('d',strtotime($row["StudentBirth"])) ?>
+												</td>
                         <td><?php echo $row["StudentGender"]== 0 ? "Male" : "Female" ?></td>
                         <td><?php echo $row["StudentAddress"] ?></td>
                         <td><?php echo $row["YourFatherName"] ?></td>
