@@ -280,6 +280,10 @@ if(isset($_GET['page']))
   {
     include_once("resource/student/UpdateStudent.php");
   }
+	if($page=="UpdateStudentClass")
+  {
+    include_once("resource/student/UpdateClass.php");
+  }
   if(isset($_GET['page'])&& $_GET['page']=="ActiveStudent"){
 
     if($_GET['StudentStatus'] == 0){
