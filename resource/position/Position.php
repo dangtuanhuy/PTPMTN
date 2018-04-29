@@ -11,7 +11,7 @@
 </script>
 <!-- Lệnh Delete -->
 
-<?php 
+<?php
 if(isset($_GET["ma"]))
 {
 	$PositionId = $_GET["ma"];
@@ -19,9 +19,9 @@ if(isset($_GET["ma"]))
 }
 ?>
 <?php
-if (isset($_POST['btnDelete'])&&isset($_POST['checkbox'])) 
+if (isset($_POST['btnDelete'])&&isset($_POST['checkbox']))
 {
-	for ($i = 0; $i < count($_POST['checkbox']); $i++) 
+	for ($i = 0; $i < count($_POST['checkbox']); $i++)
 	{
 		$PositionId1 = $_POST['checkbox'][$i];
 		mysqli_query($conn, "DELETE FROM `Position` WHERE `PositionId`=$PositionId1");
@@ -43,16 +43,17 @@ if (isset($_POST['btnDelete'])&&isset($_POST['checkbox']))
 					<th ><strong>Choice</strong></th>
 					<th ><strong>No</strong></th>
 					<th ><strong>Position Names</strong></th>
-                    <th class='col-md-8'><strong>Position Details</strong></th>
-                    <th class='col-md-3'><strong>Department Names</strong></th>
+					<th ><strong>Position Expertise</strong></th>
+          <th class='col-md-6'><strong>Position Details</strong></th>
+          <th class='col-md-3'><strong>Department Names</strong></th>
 					<th class='col-md-1'><strong>Delete</strong></th>
 					<th class='col-md-1'><strong>Update</strong></th>
 				</tr>
 			</thead>
 			<tbody>
-				<?php 
+				<?php
 				$num=1;
-				$result = mysqli_query($conn,"SELECT `PositionId`,`PositionName`,`PositionDetails`,`DepartmentName` FROM `Position`
+				$result = mysqli_query($conn,"SELECT `PositionId`,`PositionName`,`PositionExpertise`,`PositionDetails`,`DepartmentName` FROM `Position`
                 JOIN Department ON Position.DepartmentId = Department.DepartmentId");
 				while($row=mysqli_fetch_array($result, MYSQLI_ASSOC))
 				{
@@ -61,8 +62,9 @@ if (isset($_POST['btnDelete'])&&isset($_POST['checkbox']))
 						<td><input name="checkbox[]" type="checkbox" id="checkbox[]" class="form-control" value="<?php echo $row["PositionId"] ?>"></td>
 						<td><?php echo $num ?></td>
 						<td><?php echo $row["PositionName"] ?></td>
-                        <td><?php echo $row["PositionDetails"] ?></td>
-                        <td><?php echo $row["DepartmentName"] ?></td>
+						<td><?php echo $row["PositionExpertise"] ?></td>
+            <td><?php echo $row["PositionDetails"] ?></td>
+            <td><?php echo $row["DepartmentName"] ?></td>
 						<td align='center'>
 							<a class="btn btn-default"   href="?page=Position&ma=<?php echo $row['PositionId']; ?>" onclick="return deleteConfirm()">
 								<i class="fa fa-remove"></i></a>

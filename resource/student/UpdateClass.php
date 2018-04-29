@@ -34,7 +34,6 @@ if(isset($_POST["btnUpgrade"])){
 					}
 				?>
 			</select>
-			<!-- <input type="text" name="txtGradeNames" id="txtGradeNames" class="form-control" required placeholder="Grade Names" value='<?php echo $gradename; ?>' /> -->
 		</div>
 			<input type="submit"  class="btn btn-primary" name="btnUpgrade" id="btnUpgrade" value="Change"/>
 			<input type="reset" class="btn btn-primary" name="btnCancel"  id="btnCancel" value="Cancel"  />

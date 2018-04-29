@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 29, 2018 at 12:30 AM
+-- Generation Time: Apr 29, 2018 at 01:48 AM
 -- Server version: 5.6.37
 -- PHP Version: 5.6.31
 
@@ -92,9 +92,9 @@ CREATE TABLE IF NOT EXISTS `Grade` (
 INSERT INTO `Grade` (`GradeId`, `GradeName`) VALUES
 (1, 'Group24'),
 (2, 'Group36'),
-(3, 'Pre3'),
-(4, 'Pre4'),
-(5, 'Pre5'),
+(3, 'Pre1'),
+(4, 'Pre2'),
+(5, 'Pre3'),
 (6, '1'),
 (7, '2'),
 (13, '3'),
@@ -221,19 +221,23 @@ INSERT INTO `Personnel` (`PersonnelCode`, `PersonnelName`, `PersonnelPass`, `Per
 CREATE TABLE IF NOT EXISTS `Position` (
   `PositionId` int(11) NOT NULL,
   `PositionName` varchar(140) NOT NULL,
+  `PositionExpertise` varchar(50) DEFAULT NULL,
   `PositionDetails` text,
   `DepartmentId` int(4) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `Position`
 --
 
-INSERT INTO `Position` (`PositionId`, `PositionName`, `PositionDetails`, `DepartmentId`) VALUES
-(1, 'Principal', '<p>The Rector is the head of a school (Elementary, secondary, College, University, etc.), management decisions for the school that 1</p>\r\n', 3),
-(2, 'The ministers', 'The Rector is the head of a school (Elementary, secondary, College, University, etc.), management decisions for the school that', 1),
-(3, 'Labor', 'The Rector is the head of a school (Elementary, secondary, College, University, etc.), management decisions for the school that', 7),
-(4, 'Teacher', 'The Rector is the head of a school (Elementary, secondary, College, University, etc.), management decisions for the school that', 4);
+INSERT INTO `Position` (`PositionId`, `PositionName`, `PositionExpertise`, `PositionDetails`, `DepartmentId`) VALUES
+(1, 'Principal', 'Management', '<p>The Rector is the head of a school (Elementary, secondary, College, University, etc.), management decisions for the school that 1</p>\r\n', 3),
+(2, 'The ministers', 'Human Resouce', '<p>The Rector is the head of a school (Elementary, secondary, College, University, etc.), management decisions for the school that</p>\r\n', 1),
+(3, 'Labor', NULL, 'The Rector is the head of a school (Elementary, secondary, College, University, etc.), management decisions for the school that', 7),
+(4, 'Teacher-Kindergarten', 'Kindergarten', '<p>The Rector is the head of a school (Elementary, secondary, College, University, etc.), management decisions for the school that</p>\r\n', 4),
+(5, ' Teacher ', 'Preschool LV1', '<p>The Rector is the head of a school (Elementary, secondary, College, University, etc.), management decisions for the school that</p>\r\n', 4),
+(6, ' Teacher ', 'Preschool LV2', '<p>The Rector is the head of a school (Elementary, secondary, College, University, etc.), management decisions for the school that</p>\r\n', 4),
+(7, ' Teacher ', 'Preschool LV3 ', '<p>The Rector is the head of a school (Elementary, secondary, College, University, etc.), management decisions for the school that</p>\r\n', 4);
 
 -- --------------------------------------------------------
 
@@ -449,7 +453,7 @@ ALTER TABLE `ImgStudent`
 -- AUTO_INCREMENT for table `Position`
 --
 ALTER TABLE `Position`
-  MODIFY `PositionId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `PositionId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `Role`
 --

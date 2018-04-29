@@ -128,17 +128,17 @@ if (isset($_POST['btnDelete'])&&isset($_POST['checkbox']))
 															echo '<td><a class="btn btn-warning" href="?page=UpdateStudentClass&ma='. $row['StudentCode'] . '&id='. $row['ClassId'] . '" title="Please the transition to group of 24 to 36 month old!">'.$row["ClassName"].'</a></td>';
 														} else if(monthOld($row["StudentBirth"]) < 36 && ($row["GradeName"] == 'Group36')) {
 															echo '<td>'.$row["ClassName"].'</td>';
-														} else if(monthOld($row["StudentBirth"]) < 48 && ($row["GradeName"] != 'Pre3')) {
+														} else if(monthOld($row["StudentBirth"]) < 48 && ($row["GradeName"] != 'Pre1')) {
 															echo '<td><a class="btn btn-warning" href="?page=UpdateStudentClass&ma='. $row['StudentCode'] . '&id='. $row['ClassId'] . '" title="Please the transition to preschool I!">'.$row["ClassName"].'</a></td>';
-														} else if(monthOld($row["StudentBirth"]) < 48 && ($row["GradeName"] == 'Pre3')) {
+														} else if(monthOld($row["StudentBirth"]) < 48 && ($row["GradeName"] == 'Pre1')) {
 															echo '<td>'.$row["ClassName"].'</td>';
-														} else if(monthOld($row["StudentBirth"]) < 60 && ($row["GradeName"] != 'Pre4')) {
+														} else if(monthOld($row["StudentBirth"]) < 60 && ($row["GradeName"] != 'Pre2')) {
 															echo '<td><a class="btn btn-warning" href="?page=UpdateStudentClass&ma='. $row['StudentCode'] . '&id='. $row['ClassId'] . '" title="Please the transition to preschool II!">'.$row["ClassName"].'</a></td>';
-														} else if(monthOld($row["StudentBirth"]) < 60 && ($row["GradeName"] == 'Pre4')) {
+														} else if(monthOld($row["StudentBirth"]) < 60 && ($row["GradeName"] == 'Pre2')) {
 															echo '<td>'.$row["ClassName"].'</td>';
-														} else if(monthOld($row["StudentBirth"]) < 72 && ($row["GradeName"] != 'Pre5')) {
+														} else if(monthOld($row["StudentBirth"]) < 72 && ($row["GradeName"] != 'Pre3')) {
 															echo '<td><a class="btn btn-warning" href="?page=UpdateStudentClass&ma='. $row['StudentCode'] . '&id='. $row['ClassId'] . '&id='. $row['ClassId'] . '" title="Please the transition to preschool III!">'.$row["ClassName"].'</a></td>';
-														} else if(monthOld($row["StudentBirth"]) < 72 && ($row["GradeName"] == 'Pre5')) {
+														} else if(monthOld($row["StudentBirth"]) < 72 && ($row["GradeName"] == 'Pre3')) {
 															echo '<td>'.$row["ClassName"].'</td>';
 														} else if(monthOld($row["StudentBirth"]) > 72) {
 															echo '<td><a class="btn btn-danger" href="?page=UpdateStudentClass&ma='. $row['StudentCode'] . '&id='. $row['ClassId'] . '" title="Please inform the parent of this child about the transition to primary school age!">'.$row["ClassName"].'</a></td>';
