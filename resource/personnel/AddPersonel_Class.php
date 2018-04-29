@@ -1,29 +1,20 @@
 <?php
 function blindPersonnelList($conn)
 {
-	$sqlSelect ="
-	SELECT * FROM `Personnel` ";
+	$sqlSelect = "SELECT * FROM `Personnel` ";
 	$result = mysqli_query($conn,$sqlSelect);
-	echo "<select class='form-control' name='slPersonnal'>
-	<option value='0'>Choice Personnal</option>";
 	while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-		echo "
-		<option value='".$row['PersonnelCode']."'>".$row['PersonnelName']."</option>";
+		echo "<option value='".$row['PersonnelCode']."'>".$row['PersonnelName']."</option>";
 	}
-	echo "</select>";
 }
 function blindClassList($conn)
 {
-	$sqlSelect ="
-	SELECT * FROM `Class`";
+	$sqlSelect = "SELECT * FROM `Class`";
 	$result = mysqli_query($conn,$sqlSelect);
-	echo "<select class='form-control' name='slClass'>
-	<option value='0'>Choice Class</option>";
 	while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 		echo "
 		<option value='".$row['ClassId']."'>".$row['ClassName']."</option>";
 	}
-	echo "</select>";
 }
 $idPersonnal = "";
 $idClass = "";
@@ -40,9 +31,6 @@ if(isset($_POST['btnAdd']))
     if(in_array($_POST["slPersonnal"],$listPerClassAsPer)) {
 			echo '<script> alert("Available code of Personnal in the database!");</script>';
 		}
-		// else if(in_array($_POST["slClass"],$listPerClassAsClass)) {
-		// 	echo '<script> alert("Available code of Class in the database!");</script>';
-		// }
 		else {
 			$idPersonnal = $_POST['slPersonnal'];
 	    $idClass = $_POST['slClass'];
@@ -55,18 +43,23 @@ if(isset($_POST['btnAdd']))
 ?>
 
 <div class="container">
-
     <form method="post" class="form-horizontal">
         <div class="form-group">
             <h4 class="text-center">ADD Class - Personnal</h4>
         </div>
         <div class="form-group">
             <label for="slPersonnal">Personnel: </label>
-            <?php blindPersonnelList($conn) ?>
+						<select class='form-control' name='slPersonnal' id='slPersonnal'>
+							<option value='0'>Choice Personnal</option>
+            	<?php blindPersonnelList($conn) ?>
+						</select>
         </div>
         <div class="form-group">
             <label for="slClass">Class: </label>
-            <?php blindClassList($conn) ?>
+						<select class='form-control' name='slClass' id='slClass'>
+							<option value='0'>Choice Class</option>
+            	<?php blindClassList($conn) ?>
+						</select>
         </div>
         <input type="submit" class="btn btn-primary" name="btnAdd" value="Add"/>
         <input type="reset" name="btnReset" value="Cancel" class="btn btn-info" />

@@ -356,11 +356,11 @@ if(isset($_GET['page']))
   //Personal_class
   if($page=="Personel_Class")
   {
-    include_once("resource/personnel/Personel_Class.php");
+		include_once("resource/personnel/Personel_Class.php");
   }
   if($page=="AddPersonel_Class")
   {
-    include_once("resource/personnel/AddPersonel_Class.php");
+    include_once("resource/personnel/AddPersonel_Class.php");	
   }
   if($page=="UpdatePersonel_Class")
   {
