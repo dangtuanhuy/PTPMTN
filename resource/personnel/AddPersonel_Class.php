@@ -1,4 +1,13 @@
 <?php
+// $sql_find_teacher = "SELECT PositionName FROM Position po, Personnel pe, Personel_Class pc WHERE pc.PersonnelCode = pe.PersonnelCode AND pe.PositionId = po.PositionId AND pc.ClassId = 2";
+// $result_find_teacher = mysqli_query($conn,$sql_find_teacher);
+// $num_teacher = mysqli_num_rows($result_find_teacher);
+// $teacher = array();
+// while ($row_teacher = mysqli_fetch_array($result_find_teacher)) {
+// 	array_push($teacher,$row_teacher[0]);
+// }
+// print_r($teacher);
+
 function blindPersonnelList($conn)
 {
 	$sqlSelect = "SELECT * FROM `Personnel` ";
@@ -12,8 +21,12 @@ function blindPersonnel($conn,$code)
 {
 	$sqlSelect = "SELECT * FROM `Personnel` WHERE PersonnelCode = '{$code}'";
 	$result = mysqli_query($conn,$sqlSelect);
-	while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-		echo "<option value='".$row['PersonnelCode']."'>".$row['PersonnelName']."</option>";
+	while ($row = mysqli_fetch_array($result)) {
+		if($code == $row['PersonnelCode']) {
+			echo "<option value='".$row['PersonnelCode']."' selected>".$row['PersonnelName']."</option>";
+		} else {
+			echo "<option value='".$row['PersonnelCode']."'>".$row['PersonnelName']."</option>";
+		}
 	}
 }
 
@@ -107,8 +120,7 @@ function blindClassList($conn)
 	$sqlSelect = "SELECT * FROM `Class`";
 	$result = mysqli_query($conn,$sqlSelect);
 	while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-		echo "
-		<option value='".$row['ClassId']."'>".$row['ClassName']."</option>";
+		echo "<option value='".$row['ClassId']."'>".$row['ClassName']."</option>";
 	}
 }
 
@@ -116,9 +128,12 @@ function blindClass($conn,$id)
 {
 	$sqlSelect = "SELECT * FROM `Class` WHERE ClassId = {$id}";
 	$result = mysqli_query($conn,$sqlSelect);
-	while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-		echo "
-		<option value='".$row['ClassId']."'>".$row['ClassName']."</option>";
+	while ($row = mysqli_fetch_array($result)) {
+		if($id == $row['ClassId']) {
+			echo "<option value='".$row['ClassId']."' selected>".$row['ClassName']."</option>";
+		} else {
+			echo "<option value='".$row['ClassId']."'>".$row['ClassName']."</option>";
+		}
 	}
 }
 
