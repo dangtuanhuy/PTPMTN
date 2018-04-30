@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 30, 2018 at 12:36 PM
+-- Generation Time: Apr 30, 2018 at 12:47 PM
 -- Server version: 5.6.37
 -- PHP Version: 5.6.31
 
@@ -207,7 +207,7 @@ CREATE TABLE IF NOT EXISTS `Personnel` (
 --
 
 INSERT INTO `Personnel` (`PersonnelCode`, `PersonnelName`, `PersonnelPass`, `PersonnelBirth`, `PersonnelGender`, `PersonnelAddress`, `PersonnelNum`, `PersonnelEmail`, `PersonnelActive`, `PersonnelNote`, `PositionId`, `RoleId`, `PersonnelStatus`) VALUES
-('CP0809', 'Nguyen Thi Cam Tuyen', 'cbb2e126f7265748e7b6403625431f21', '1994-01-20', 1, 'Thot Not', '09093509', 'ntctuyen@gmail.com', 1, 0, 1, 1, 1),
+('CP0809', 'Nguyen Thi Cam Tuyen', '21232f297a57a5a743894a0e4a801fc3', '1994-01-20', 1, 'Thot Not', '09093509', 'ntctuyen@gmail.com', 1, 0, 7, 2, 1),
 ('CP0810', 'Pham Hoai An', 'abba8340466a1b7ddc56c287821923af', '1996-03-08', 0, 'An Giang', '08779339', 'phan@gmail.com', 0, 1, 2, 1, 1),
 ('CP6969', 'Nguyen Thuc', '21232f297a57a5a743894a0e4a801fc3', '1996-01-01', 0, 'Dong Thap', '0907355924', 'me@ngthuc.com', 1, 0, 7, 2, 1),
 ('CP6970', 'nguyenthuc', '21232f297a57a5a743894a0e4a801fc3', '1996-04-24', 0, 'Dong Thap\n', ' 907355924', 'thuc.edu@gmail.com', 0, 1, 4, 4, 0),
