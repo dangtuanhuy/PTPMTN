@@ -11,7 +11,7 @@
 </script>
 <!-- Lệnh Delete -->
 
-<?php 
+<?php
 if(isset($_GET["PersonnelCode"]) && isset($_GET["ClassId"]))
 {
 	$PersonnelCode = $_GET["PersonnelCode"];
@@ -20,15 +20,10 @@ if(isset($_GET["PersonnelCode"]) && isset($_GET["ClassId"]))
 }
 ?>
 <?php
-if (isset($_POST['btnDelete'])&&isset($_POST['checkbox'])) 
+if (isset($_POST['btnDelete'])&&isset($_POST['checkbox']))
 {
-	// for ($i = 0; $i < count($_POST['checkbox']); $i++) 
-	// {
-	// 	$ClassId1 = $_POST['checkbox'][$i];
-	// 	mysqli_query($conn, "DELETE FROM Personel_Class WHERE ClassId = $ClassId AND  PersonnelCode = {$PersonnelCode}  ");
-    // }
     foreach($_POST['checkbox'] as $key=>$ClassId) {
-		mysqli_query($conn, "DELETE FROM Personel_Class WHERE ClassId = {$ClassId}");        
+		mysqli_query($conn, "DELETE FROM Personel_Class WHERE ClassId = {$ClassId}");
     }
 }
 ?>
@@ -53,11 +48,11 @@ if (isset($_POST['btnDelete'])&&isset($_POST['checkbox']))
                 </tr>
             </thead>
             <tbody>
-                <?php 
+                <?php
                 $num=1;
                 $query= "SELECT * FROM `Personel_Class`
                 JOIN Class ON Class.ClassId = Personel_Class.ClassId
-                JOIN Personnel ON Personnel.PersonnelCode = Personel_Class.PersonnelCode";
+                JOIN Personnel ON Personnel.PersonnelCode = Personel_Class.PersonnelCode ORDER BY Personel_Class.ClassId ASC";
                 $result = mysqli_query($conn,$query);
                 while($row=mysqli_fetch_array($result, MYSQLI_ASSOC))
                 {

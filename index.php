@@ -89,7 +89,7 @@ function PersonnelLogin($conn, $PersonnelCode) {
         <nav class="navbar">
           <div class="container-fluid">
             <div class="navbar-holder d-flex align-items-center justify-content-between">
-              <div class="navbar-header"><a id="toggle-btn" href="index.php" class="menu-btn"><i class="icon-bars"> </i></a><a href="index.php" class="navbar-brand">
+              <div class="navbar-header"><a id="toggle-btn" href="index.php" class="menu-btn"><i class="icon-bars"> </i></a><a href="#" class="navbar-brand">
                   <div class="brand-text d-none d-md-inline-block"><span><h1>CT249</h1> </span><strong class="text-primary"> Dashboard</strong></div></a></div>
               <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
                 <!-- Notifications dropdown-->
@@ -360,7 +360,7 @@ if(isset($_GET['page']))
   }
   if($page=="AddPersonel_Class")
   {
-    include_once("resource/personnel/AddPersonel_Class.php");	
+    include_once("resource/personnel/AddPersonel_Class.php");
   }
   if($page=="UpdatePersonel_Class")
   {

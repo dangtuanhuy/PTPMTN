@@ -141,7 +141,7 @@ function blindClass($conn,$id)
 
 function blindClassFromPersonnel($conn,$code)
 {
-	$sql_find_expertise = "SELECT PositionExpertise FROM Position JOIN Personnel ON Position.PositionId = Personnel.PositionId WHERE Personnel.PersonnelCode = '{$id}'";
+	$sql_find_expertise = "SELECT PositionExpertise FROM Position JOIN Personnel ON Position.PositionId = Personnel.PositionId WHERE Personnel.PersonnelCode = '{$code}'";
 	$result_find_expertise = mysqli_query($conn,$sql_find_expertise);
 
 	while ($row_expertise = mysqli_fetch_array($result_find_expertise)) {
@@ -169,9 +169,8 @@ function blindClassFromPersonnel($conn,$code)
 	} else {
 		$result_class = mysqli_query($conn,"SELECT ClassId, ClassName FROM Class");
 	}
-	while ($row_class = mysqli_fetch_array($result_class, MYSQLI_ASSOC)) {
-		echo "
-		<option value='".$row_class['ClassId']."'>".$row_class['ClassName']."</option>";
+	while ($row_class = mysqli_fetch_array($result_class)) {
+		echo "<option value='".$row_class['ClassId']."'>".$row_class['ClassName']."</option>";
 	}
 }
 $idPersonnal = "";
