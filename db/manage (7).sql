@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 30, 2018 at 12:47 PM
+-- Generation Time: Apr 30, 2018 at 02:58 PM
 -- Server version: 5.6.37
 -- PHP Version: 5.6.31
 
@@ -208,11 +208,11 @@ CREATE TABLE IF NOT EXISTS `Personnel` (
 
 INSERT INTO `Personnel` (`PersonnelCode`, `PersonnelName`, `PersonnelPass`, `PersonnelBirth`, `PersonnelGender`, `PersonnelAddress`, `PersonnelNum`, `PersonnelEmail`, `PersonnelActive`, `PersonnelNote`, `PositionId`, `RoleId`, `PersonnelStatus`) VALUES
 ('CP0809', 'Nguyen Thi Cam Tuyen', '21232f297a57a5a743894a0e4a801fc3', '1994-01-20', 1, 'Thot Not', '09093509', 'ntctuyen@gmail.com', 1, 0, 7, 2, 1),
-('CP0810', 'Pham Hoai An', 'abba8340466a1b7ddc56c287821923af', '1996-03-08', 0, 'An Giang', '08779339', 'phan@gmail.com', 0, 1, 2, 1, 1),
+('CP0810', 'Pham Hoai An', 'abba8340466a1b7ddc56c287821923af', '1996-03-08', 0, 'An Giang', '08779339', 'phan@gmail.com', 0, 1, 8, 1, 1),
 ('CP6969', 'Nguyen Thuc', '21232f297a57a5a743894a0e4a801fc3', '1996-01-01', 0, 'Dong Thap', '0907355924', 'me@ngthuc.com', 1, 0, 7, 2, 1),
 ('CP6970', 'nguyenthuc', '21232f297a57a5a743894a0e4a801fc3', '1996-04-24', 0, 'Dong Thap\n', ' 907355924', 'thuc.edu@gmail.com', 0, 1, 4, 4, 0),
-('CP900', 'Đặng Tuấn Huy', '202cb962ac59075b964b07152d234b70', '1997-01-02', 0, '<p>Ben Tre</p>\r\n', ' 0963505927', 'adobedangtuanhuy@gmail.com', 0, 1, 5, 1, 0),
-('CP912', 'Viet Nam', '202cb962ac59075b964b07152d234b70', '2018-04-15', 0, '<p>122</p>\r\n', ' 0963505927', 'adobedangtuanhuy@gmail.com', 0, 1, 6, 2, 0);
+('CP900', 'Đặng Tuấn Huy', '202cb962ac59075b964b07152d234b70', '1997-01-02', 0, 'Ben Tre\n', ' 0963505927', 'adobedangtuanhuy@gmail.com', 0, 1, 5, 1, 0),
+('CP912', 'Viet Nam', '202cb962ac59075b964b07152d234b70', '2018-04-15', 0, '122\n', ' 0963505927', 'adobedangtuanhuy@gmail.com', 0, 1, 6, 2, 0);
 
 -- --------------------------------------------------------
 
@@ -234,13 +234,13 @@ CREATE TABLE IF NOT EXISTS `Position` (
 
 INSERT INTO `Position` (`PositionId`, `PositionName`, `PositionExpertise`, `PositionDetails`, `DepartmentId`) VALUES
 (1, 'Principal', 'Management', '<p>The Rector is the head of a school (Elementary, secondary, College, University, etc.), management decisions for the school that 1</p>\r\n', 3),
-(2, 'The ministers', 'Human Resouce', '<p>The Rector is the head of a school (Elementary, secondary, College, University, etc.), management decisions for the school that</p>\r\n', 1),
+(2, 'The ministers', 'Human Resource', '<p>The Rector is the head of a school (Elementary, secondary, College, University, etc.), management decisions for the school that</p>\r\n', 1),
 (3, 'Labor', NULL, 'The Rector is the head of a school (Elementary, secondary, College, University, etc.), management decisions for the school that', 7),
 (4, 'Teacher-Kindergarten', 'Kindergarten', '<p>The Rector is the head of a school (Elementary, secondary, College, University, etc.), management decisions for the school that</p>\r\n', 4),
 (5, ' Teacher-Pre1', 'Preschool-I', '<p>The Rector is the head of a school (Elementary, secondary, College, University, etc.), management decisions for the school that</p>\r\n', 4),
 (6, ' Teacher-Pre2', 'Preschool-II', '<p>The Rector is the head of a school (Elementary, secondary, College, University, etc.), management decisions for the school that</p>\r\n', 4),
 (7, ' Teacher-Pre3', 'Preschool-III', '<p>The Rector is the head of a school (Elementary, secondary, College, University, etc.), management decisions for the school that</p>\r\n', 4),
-(8, ' Nanny ', ' Nanny ', '<p>The Rector is the head of a school (Elementary, secondary, College, University, etc.), management decisions for the school that</p>\r\n', 4);
+(8, 'Nanny ', 'Nanny', '<p>The Rector is the head of a school (Elementary, secondary, College, University, etc.), management decisions for the school that</p>\r\n', 4);
 
 -- --------------------------------------------------------
 
