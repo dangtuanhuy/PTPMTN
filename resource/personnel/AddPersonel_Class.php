@@ -17,107 +17,90 @@ function blindPersonnel($conn,$code)
 	}
 }
 
-// function blindPersonnelFromClass($conn,$id)
-// {
-// 	$sql_find_grade = "SELECT GradeName FROM Grade JOIN Class ON Grade.GradeId = Class.GradeId WHERE Class.ClassId = {$id}";
-//
-// 	while ($row_grade = mysqli_fetch_array(mysqli_query($conn,$sql_find_grade))) {
-// 	  $grade = $row_grade[0];
-// 	}
-//
-// 	$sql_find_teacher = "SELECT PositionName FROM Position po, Personnel pe, Personel_Class pc WHERE pc.PersonnelCode = pe.PersonnelCode AND pe.PositionId = po.PositionId AND pc.ClassId = {$id}";
-// 	$num_teacher = mysqli_num_rows(mysqli_query($conn,$sql_find_teacher));
-// 	$teacher = array();
-// 	while ($row_teacher = mysqli_fetch_array(mysqli_query($conn,$sql_find_teacher))) {
-// 	  array_push($teacher,$row_teacher[0]);
-// 	}
-//
-// 	if(!in_array('Nanny',$teacher) && (!in_array('Teacher-Kindergarten',$teacher) || !in_array('Teacher-Pre1',$teacher) || !in_array('Teacher-Pre2',$teacher) || !in_array('Teacher-Pre3',$teacher)) && $num_teacher <= 2) {
-// 		if($grade == 'Group24' || $grade == 'Group36') {
-// 		  // For Kindergarten: Group 18 to 36 month old
-// 		  $sql_qry_personnel = "SELECT * FROM Personnel JOIN Position ON Personnel.PositionId = Position.PositionId WHERE Position.PositionExpertise = 'Kindergarten' OR Position.PositionExpertise = 'Nanny'";
-// 		} else if($grade == 'Pre1') {
-// 		  // For Preschool: 3 years old
-// 		  $sql_qry_personnel = "SELECT * FROM Personnel JOIN Position ON Personnel.PositionId = Position.PositionId WHERE Position.PositionExpertise = 'Preschool-I' OR Position.PositionExpertise = 'Nanny'";
-// 		} else if($grade == 'Pre2') {
-// 		  // For Preschool: 4 years old
-// 		  $sql_qry_personnel = "SELECT * FROM Personnel JOIN Position ON Personnel.PositionId = Position.PositionId WHERE Position.PositionExpertise = 'Preschool-II' OR Position.PositionExpertise = 'Nanny'";
-// 		} else if($grade == 'Pre3') {
-// 		  // For Preschool: 5 years old
-// 		  $sql_qry_personnel = "SELECT * FROM Personnel JOIN Position ON Personnel.PositionId = Position.PositionId WHERE Position.PositionExpertise = 'Preschool-III' OR Position.PositionExpertise = 'Nanny'";
-// 		} else {
-// 		  // No information
-// 		  $sql_qry_personnel = "SELECT * FROM Personnel";
-// 		}
-//
-// 		if(mysqli_num_rows(mysqli_query($conn,$sql_qry_personnel)) >0 ) {
-// 			$result_personnel = mysqli_query($conn,$sql_qry_personnel);
-// 		} else {
-// 			$result_personnel = mysqli_query($conn,"SELECT * FROM Personnel");
-// 		}
-// 		while ($row_personnel = mysqli_fetch_array($result_personnel, MYSQLI_ASSOC)) {
-// 			echo "
-// 			<option value='".$row_personnel['PersonnelCode']."'>".$row_personnel['PersonnelName']."</option>";
-// 		}
-// 	} else if(!in_array('Teacher-Kindergarten',$teacher) || !in_array('Teacher-Pre1',$teacher) || !in_array('Teacher-Pre2',$teacher) || !in_array('Teacher-Pre3',$teacher) && $num_teacher <= 2) {
-// 		if($grade == 'Group24' || $grade == 'Group36') {
-// 		  // For Kindergarten: Group 18 to 36 month old
-// 		  $sql_qry_personnel = "SELECT * FROM Personnel JOIN Position ON Personnel.PositionId = Position.PositionId WHERE Position.PositionExpertise = 'Kindergarten'";
-// 		} else if($grade == 'Pre1') {
-// 		  // For Preschool: 3 years old
-// 		  $sql_qry_personnel = "SELECT * FROM Personnel JOIN Position ON Personnel.PositionId = Position.PositionId WHERE Position.PositionExpertise = 'Preschool-I'";
-// 		} else if($grade == 'Pre2') {
-// 		  // For Preschool: 4 years old
-// 		  $sql_qry_personnel = "SELECT * FROM Personnel JOIN Position ON Personnel.PositionId = Position.PositionId WHERE Position.PositionExpertise = 'Preschool-II'";
-// 		} else if($grade == 'Pre3') {
-// 		  // For Preschool: 5 years old
-// 		  $sql_qry_personnel = "SELECT * FROM Personnel JOIN Position ON Personnel.PositionId = Position.PositionId WHERE Position.PositionExpertise = 'Preschool-III'";
-// 		} else {
-// 		  // No information
-// 		  $sql_qry_personnel = "SELECT * FROM Personnel";
-// 		}
-//
-// 		if(mysqli_num_rows(mysqli_query($conn,$sql_qry_personnel)) >0 ) {
-// 			$result_personnel = mysqli_query($conn,$sql_qry_personnel);
-// 		} else {
-// 			$result_personnel = mysqli_query($conn,"SELECT * FROM Personnel");
-// 		}
-// 		while ($row_personnel = mysqli_fetch_array($result_personnel, MYSQLI_ASSOC)) {
-// 			echo "
-// 			<option value='".$row_personnel['PersonnelCode']."'>".$row_personnel['PersonnelName']."</option>";
-// 		}
-// 	} else if(!in_array('Nanny',$teacher) && $num_teacher <= 2) {
-// 		if($grade == 'Group24' || $grade == 'Group36') {
-// 		  // For Kindergarten: Group 18 to 36 month old
-// 		  $sql_qry_personnel = "SELECT * FROM Personnel JOIN Position ON Personnel.PositionId = Position.PositionId WHERE Position.PositionExpertise = 'Nanny'";
-// 		} else if($grade == 'Pre1') {
-// 		  // For Preschool: 3 years old
-// 		  $sql_qry_personnel = "SELECT * FROM Personnel JOIN Position ON Personnel.PositionId = Position.PositionId WHERE Position.PositionExpertise = 'Nanny'";
-// 		} else if($grade == 'Pre2') {
-// 		  // For Preschool: 4 years old
-// 		  $sql_qry_personnel = "SELECT * FROM Personnel JOIN Position ON Personnel.PositionId = Position.PositionId WHERE Position.PositionExpertise = 'Nanny'";
-// 		} else if($grade == 'Pre3') {
-// 		  // For Preschool: 5 years old
-// 		  $sql_qry_personnel = "SELECT * FROM Personnel JOIN Position ON Personnel.PositionId = Position.PositionId WHERE Position.PositionExpertise = 'Nanny'";
-// 		} else {
-// 		  // No information
-// 		  $sql_qry_personnel = "SELECT * FROM Personnel";
-// 		}
-//
-// 		if(mysqli_num_rows(mysqli_query($conn,$sql_qry_personnel)) >0 ) {
-// 			$result_personnel = mysqli_query($conn,$sql_qry_personnel);
-// 		} else {
-// 			$result_personnel = mysqli_query($conn,"SELECT * FROM Personnel");
-// 		}
-// 		while ($row_personnel = mysqli_fetch_array($result_personnel, MYSQLI_ASSOC)) {
-// 			echo "
-// 			<option value='".$row_personnel['PersonnelCode']."'>".$row_personnel['PersonnelName']."</option>";
-// 		}
-// 	} else {
-// 		echo '<script> alert("Available Teacher and Nanny in Class!");</script>';
-// 		echo '<meta http-equiv="refresh" content="0;URL=?page=Personel_Class"/>';
-// 	}
-// }
+// TO-DO: Cần người chỉnh sửa phần này. Mình bó tay rồi
+function blindPersonnelFromClass($conn,$id)
+{
+	$sql_find_grade = "SELECT GradeName FROM Grade JOIN Class ON Grade.GradeId = Class.GradeId WHERE Class.ClassId = {$id}";
+	$result_find_grade = mysqli_query($conn,$sql_find_grade);
+
+	while ($row_grade = mysqli_fetch_array($result_find_grade)) {
+	  $grade = $row_grade[0];
+	}
+
+	$sql_find_teacher = "SELECT PositionName FROM Position po, Personnel pe, Personel_Class pc WHERE pc.PersonnelCode = pe.PersonnelCode AND pe.PositionId = po.PositionId AND pc.ClassId = {$id}";
+	$result_find_teacher = mysqli_query($conn,$sql_find_teacher);
+	$num_teacher = mysqli_num_rows($result_find_teacher);
+	$teacher = array();
+	while ($row_teacher = mysqli_fetch_array($result_find_teacher)) {
+	  array_push($teacher,$row_teacher[0]);
+	}
+
+	if(!in_array('Nanny',$teacher) && (!in_array('Teacher-Kindergarten',$teacher) || !in_array('Teacher-Pre1',$teacher) || !in_array('Teacher-Pre2',$teacher) || !in_array('Teacher-Pre3',$teacher)) && $num_teacher <= 2) {
+		if($grade == 'Group24' || $grade == 'Group36') {
+		  // For Kindergarten: Group 18 to 36 month old
+		  $sql_qry_personnel = "SELECT * FROM Personnel JOIN Position ON Personnel.PositionId = Position.PositionId WHERE Position.PositionExpertise = 'Kindergarten' OR Position.PositionExpertise = 'Nanny'";
+		} else if($grade == 'Pre1') {
+		  // For Preschool: 3 years old
+		  $sql_qry_personnel = "SELECT * FROM Personnel JOIN Position ON Personnel.PositionId = Position.PositionId WHERE Position.PositionExpertise = 'Preschool-I' OR Position.PositionExpertise = 'Nanny'";
+		} else if($grade == 'Pre2') {
+		  // For Preschool: 4 years old
+		  $sql_qry_personnel = "SELECT * FROM Personnel JOIN Position ON Personnel.PositionId = Position.PositionId WHERE Position.PositionExpertise = 'Preschool-II' OR Position.PositionExpertise = 'Nanny'";
+		} else if($grade == 'Pre3') {
+		  // For Preschool: 5 years old
+		  $sql_qry_personnel = "SELECT * FROM Personnel JOIN Position ON Personnel.PositionId = Position.PositionId WHERE Position.PositionExpertise = 'Preschool-III' OR Position.PositionExpertise = 'Nanny'";
+		} else {
+		  // No information
+		  $sql_qry_personnel = "SELECT * FROM Personnel";
+		}
+	} else if(!in_array('Teacher-Kindergarten',$teacher) || !in_array('Teacher-Pre1',$teacher) || !in_array('Teacher-Pre2',$teacher) || !in_array('Teacher-Pre3',$teacher) && $num_teacher <= 2) {
+		if($grade == 'Group24' || $grade == 'Group36') {
+		  // For Kindergarten: Group 18 to 36 month old
+		  $sql_qry_personnel = "SELECT * FROM Personnel JOIN Position ON Personnel.PositionId = Position.PositionId WHERE Position.PositionExpertise = 'Kindergarten'";
+		} else if($grade == 'Pre1') {
+		  // For Preschool: 3 years old
+		  $sql_qry_personnel = "SELECT * FROM Personnel JOIN Position ON Personnel.PositionId = Position.PositionId WHERE Position.PositionExpertise = 'Preschool-I'";
+		} else if($grade == 'Pre2') {
+		  // For Preschool: 4 years old
+		  $sql_qry_personnel = "SELECT * FROM Personnel JOIN Position ON Personnel.PositionId = Position.PositionId WHERE Position.PositionExpertise = 'Preschool-II'";
+		} else if($grade == 'Pre3') {
+		  // For Preschool: 5 years old
+		  $sql_qry_personnel = "SELECT * FROM Personnel JOIN Position ON Personnel.PositionId = Position.PositionId WHERE Position.PositionExpertise = 'Preschool-III'";
+		} else {
+		  // No information
+		  $sql_qry_personnel = "SELECT * FROM Personnel";
+		}
+	} else if(!in_array('Nanny',$teacher) && $num_teacher <= 2) {
+		if($grade == 'Group24' || $grade == 'Group36') {
+		  // For Kindergarten: Group 18 to 36 month old
+		  $sql_qry_personnel = "SELECT * FROM Personnel JOIN Position ON Personnel.PositionId = Position.PositionId WHERE Position.PositionExpertise = 'Nanny'";
+		} else if($grade == 'Pre1') {
+		  // For Preschool: 3 years old
+		  $sql_qry_personnel = "SELECT * FROM Personnel JOIN Position ON Personnel.PositionId = Position.PositionId WHERE Position.PositionExpertise = 'Nanny'";
+		} else if($grade == 'Pre2') {
+		  // For Preschool: 4 years old
+		  $sql_qry_personnel = "SELECT * FROM Personnel JOIN Position ON Personnel.PositionId = Position.PositionId WHERE Position.PositionExpertise = 'Nanny'";
+		} else if($grade == 'Pre3') {
+		  // For Preschool: 5 years old
+		  $sql_qry_personnel = "SELECT * FROM Personnel JOIN Position ON Personnel.PositionId = Position.PositionId WHERE Position.PositionExpertise = 'Nanny'";
+		} else {
+		  // No information
+		  $sql_qry_personnel = "SELECT * FROM Personnel";
+		}
+	} else {
+		echo '<script> alert("Available Teacher and Nanny in Class!");</script>';
+		echo '<meta http-equiv="refresh" content="0;URL=?page=Personel_Class"/>';
+	}
+
+	$result_qry_personnel = mysqli_query($conn,$sql_qry_personnel);
+	if(mysqli_num_rows($result_qry_personnel) >0 ) {
+		$result_personnel = mysqli_query($conn,$sql_qry_personnel);
+	} else {
+		$result_personnel = mysqli_query($conn,"SELECT * FROM Personnel");
+	}
+	while ($row_personnel = mysqli_fetch_array($result_personnel)) {
+		echo "<option value='".$row_personnel['PersonnelCode']."'>".$row_personnel['PersonnelName']."</option>";
+	}
+}
 
 function blindClassList($conn)
 {
@@ -227,8 +210,12 @@ if(isset($_POST['btnAdd']))
 	        <input type="reset" name="btnReset" value="Cancel" class="btn btn-info" />
 	    </form>
 	</div>
-<?php	} // else if($_GET['action'] == 'class') { ?>
-	<!-- <div class="container">
+<?php	}
+	else if($_GET['action'] == 'class') {
+	// TO-DO: Cần người chỉnh sửa phần này. Mình bó tay rồi
+?>
+<!-- TO-DO: Cần người chỉnh sửa phần này. Mình bó tay rồi -->
+	<div class="container">
 	    <form method="post" class="form-horizontal">
 	        <div class="form-group">
 	            <h4 class="text-center">ADD Class - Personnal</h4>
@@ -249,8 +236,8 @@ if(isset($_POST['btnAdd']))
 	        <input type="submit" class="btn btn-primary" name="btnAdd" value="Add"/>
 	        <input type="reset" name="btnReset" value="Cancel" class="btn btn-info" />
 	    </form>
-	</div> -->
-<?php	// }
+	</div>
+<?php	}
 } else { ?>
 <div class="container">
 	<div class="form-group">
@@ -266,14 +253,14 @@ if(isset($_POST['btnAdd']))
 		</form>
 	</div>
 	<div class="form-group">
-		<!-- <form method="post" action="?page=AddPersonel_Class&action=class" class="form-horizontal"> -->
+		<!-- TO-DO: Cần người chỉnh sửa phần này. Mình bó tay rồi -->
+		<form method="post" action="?page=AddPersonel_Class&action=class" class="form-horizontal">
 			<label for="slClass">Class: </label>
-			<!-- <select class='form-control' name='slClass' id='slClass' onchange='this.form.submit()'> -->
-			<select class='form-control' name='slClass' id='slClass' disabled>
+			<select class='form-control' name='slClass' id='slClass' onchange='this.form.submit()'>
 				<option value='0'>Choice Class</option>
 				<?php blindClassList($conn) ?>
 			</select>
-		<!-- </form> -->
+		</form>
 	</div>
 	<input type="submit" class="btn btn-primary" name="btnAdd" value="Add"/>
 	<input type="reset" name="btnReset" value="Cancel" class="btn btn-info" />
