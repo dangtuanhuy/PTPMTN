@@ -49,7 +49,7 @@
           }
           else
           {
-            echo '<script> alert("Usernames and Password Erro or Role is limit");</script>';
+            echo '<script> alert("The username or password is incorrect");</script>';
           }
         }
         ?>
