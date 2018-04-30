@@ -148,22 +148,29 @@ function blindClassFromPersonnel($conn,$code)
 	  $expertise = $row_expertise[0];
 	}
 
-	if($expertise == 'Kindergarten') {
-	  // For Kindergarten: Group 18 to 36 month old
-	  $sql_qry_class = "SELECT ClassId, ClassName FROM Class JOIN Grade ON Class.GradeId = Grade.GradeId WHERE Grade.GradeName = 'Group24' OR Grade.GradeName = 'Group36'";
-	} else if($expertise == 'Preschool-I') {
-	  // For Preschool: 3 years old
-	  $sql_qry_class = "SELECT ClassId, ClassName FROM Class JOIN Grade ON Class.GradeId = Grade.GradeId WHERE Grade.GradeName = 'Pre1'";
-	} else if($expertise == 'Preschool-II') {
-	  // For Preschool: 4 years old
-	  $sql_qry_class = "SELECT ClassId, ClassName FROM Class JOIN Grade ON Class.GradeId = Grade.GradeId WHERE Grade.GradeName = 'Pre2'";
-	} else if($expertise == 'Preschool-III') {
-	  // For Preschool: 5 years old
-	  $sql_qry_class = "SELECT ClassId, ClassName FROM Class JOIN Grade ON Class.GradeId = Grade.GradeId WHERE Grade.GradeName = 'Pre3'";
-	} else {
-	  // No information
-	  $sql_qry_class = "SELECT ClassId, ClassName FROM Class";
+	switch ($expertise) {
+		case 'Kindergarten':
+			// For Kindergarten: Group 18 to 36 month old
+			$sql_qry_class = "SELECT ClassId, ClassName FROM Class JOIN Grade ON Class.GradeId = Grade.GradeId WHERE Grade.GradeName = 'Group24' OR Grade.GradeName = 'Group36'";
+			break;
+		case 'Preschool-I':
+			// For Preschool: 3 years old
+		  $sql_qry_class = "SELECT ClassId, ClassName FROM Class JOIN Grade ON Class.GradeId = Grade.GradeId WHERE Grade.GradeName = 'Pre1'";
+			break;
+		case 'Preschool-II':
+			// For Preschool: 4 years old
+		  $sql_qry_class = "SELECT ClassId, ClassName FROM Class JOIN Grade ON Class.GradeId = Grade.GradeId WHERE Grade.GradeName = 'Pre2'";
+			break;
+		case 'Preschool-III':
+			// For Preschool: 5 years old
+		  $sql_qry_class = "SELECT ClassId, ClassName FROM Class JOIN Grade ON Class.GradeId = Grade.GradeId WHERE Grade.GradeName = 'Pre3'";
+			break;
+		default:
+			// No information
+			$sql_qry_class = "SELECT ClassId, ClassName FROM Class";
+			break;
 	}
+
 	if(mysqli_num_rows(mysqli_query($conn,$sql_qry_class)) >0 ) {
 		$result_class = mysqli_query($conn,$sql_qry_class);
 	} else {
