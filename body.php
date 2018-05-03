@@ -195,7 +195,7 @@
         <!-- Recent Updates Widget          -->
         <div id="daily-feeds" class="card updates daily-feeds">
           <div id="feeds-header" class="card-header d-flex justify-content-between align-items-center">
-            <h2 class="h5 display"><a data-toggle="collapse" data-parent="#daily-feeds" href="#tda-box" aria-expanded="true" aria-controls="tda-box">Team Analyst A</a></h2>
+            <h2 class="h5 display"><a data-toggle="collapse" data-parent="#daily-feeds" href="#tda-box" aria-expanded="true" aria-controls="tda-box">Team CDM/Usecase</a></h2>
             <div class="right-column">
               <div class="badge badge-primary">5 members</div><a data-toggle="collapse" data-parent="#daily-feeds" href="#tda-box" aria-expanded="true" aria-controls="tda-box"><i class="fa fa-angle-down"></i></a>
             </div>
@@ -263,7 +263,7 @@
         <!-- Daily Feed Widget-->
         <div id="daily-feeds" class="card updates daily-feeds">
           <div id="feeds-header" class="card-header d-flex justify-content-between align-items-center">
-            <h2 class="h5 display"><a data-toggle="collapse" data-parent="#daily-feeds" href="#td-box" aria-expanded="true" aria-controls="td-box">Team Development</a></h2>
+            <h2 class="h5 display"><a data-toggle="collapse" data-parent="#daily-feeds" href="#td-box" aria-expanded="true" aria-controls="td-box">Team Web App</a></h2>
             <div class="right-column">
               <div class="badge badge-primary">3 members</div><a data-toggle="collapse" data-parent="#daily-feeds" href="#td-box" aria-expanded="true" aria-controls="td-box"><i class="fa fa-angle-down"></i></a>
             </div>
@@ -311,19 +311,19 @@
         <!-- Daily Feed Widget-->
         <div id="daily-feeds" class="card updates daily-feeds">
           <div id="feeds-header" class="card-header d-flex justify-content-between align-items-center">
-            <h2 class="h5 display"><a data-toggle="collapse" data-parent="#daily-feeds" href="#tu-box" aria-expanded="true" aria-controls="tu-box">Team Analyst B</a></h2>
+            <h2 class="h5 display"><a data-toggle="collapse" data-parent="#daily-feeds" href="#dfd-box" aria-expanded="true" aria-controls="dfd-box">Team DFD</a></h2>
             <div class="right-column">
-              <div class="badge badge-primary">3 members</div><a data-toggle="collapse" data-parent="#daily-feeds" href="#tu-box" aria-expanded="true" aria-controls="tu-box"><i class="fa fa-angle-down"></i></a>
+              <div class="badge badge-primary">5 members</div><a data-toggle="collapse" data-parent="#daily-feeds" href="#dfd-box" aria-expanded="true" aria-controls="dfd-box"><i class="fa fa-angle-down"></i></a>
             </div>
           </div>
-          <div id="tu-box" role="tabpanel" class="collapse show">
+          <div id="dfd-box" role="tabpanel" class="collapse show">
             <div class="feed-box">
               <ul class="feed-elements list-unstyled">
                 <!-- List-->
                 <li class="clearfix">
                   <div class="feed d-flex justify-content-between">
-                    <div class="feed-body d-flex justify-content-between"><a href="#" class="feed-profile"><img src="img/avatar-6.jpg" alt="person" class="img-fluid rounded-circle"></a>
-                      <div class="content"><strong>Nguyen Dinh Trong</strong><small>Analyst </small>
+                    <div class="feed-body d-flex justify-content-between"><a href="#" class="feed-profile"><img src="img/avatar-2.jpg" alt="person" class="img-fluid rounded-circle"></a>
+                      <div class="content"><strong>Dang Tuan Huy</strong><small>DFD Analyst Team Leader </small>
                         <div class="full-date"><small>DFD</small></div>
                       </div>
                     </div>
@@ -332,8 +332,8 @@
                 <!-- List-->
                 <li class="clearfix">
                   <div class="feed d-flex justify-content-between">
-                    <div class="feed-body d-flex justify-content-between"><a href="#" class="feed-profile"><img src="img/avatar-6.jpg" alt="person" class="img-fluid rounded-circle"></a>
-                      <div class="content"><strong>Nguyen Tan Phat</strong><small>Analyst </small>
+                    <div class="feed-body d-flex justify-content-between"><a href="#" class="feed-profile"><img src="img/avatar-2.jpg" alt="person" class="img-fluid rounded-circle"></a>
+                      <div class="content"><strong>Le Nguyen Thuc</strong><small>Analyst </small>
                         <div class="full-date"><small>DFD</small></div>
                       </div>
                     </div>
@@ -342,8 +342,28 @@
                 <!-- List-->
                 <li class="clearfix">
                   <div class="feed d-flex justify-content-between">
-                    <div class="feed-body d-flex justify-content-between"><a href="#" class="feed-profile"><img src="img/avatar-6.jpg" alt="person" class="img-fluid rounded-circle"></a>
-                      <div class="content"><strong>Huynh Trong Thanh</strong><small>Analyst </small>
+                    <div class="feed-body d-flex justify-content-between"><a href="#" class="feed-profile"><img src="img/avatar-3.jpg" alt="person" class="img-fluid rounded-circle"></a>
+                      <div class="content"><strong>Nguyen Thi Cam Tuyen</strong><small>Analyst </small>
+                        <div class="full-date"><small>DFD</small></div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <!-- List-->
+                <li class="clearfix">
+                  <div class="feed d-flex justify-content-between">
+                    <div class="feed-body d-flex justify-content-between"><a href="#" class="feed-profile"><img src="img/avatar-5.jpg" alt="person" class="img-fluid rounded-circle"></a>
+                      <div class="content"><strong>Nguyen Thi Minh Tuyet</strong><small>Analyst </small>
+                        <div class="full-date"><small>DFD</small></div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <!-- List-->
+                <li class="clearfix">
+                  <div class="feed d-flex justify-content-between">
+                    <div class="feed-body d-flex justify-content-between"><a href="#" class="feed-profile"><img src="img/avatar-5.jpg" alt="person" class="img-fluid rounded-circle"></a>
+                      <div class="content"><strong>Vo Thi Thanh Quy</strong><small>Analyst </small>
                         <div class="full-date"><small>DFD</small></div>
                       </div>
                     </div>
