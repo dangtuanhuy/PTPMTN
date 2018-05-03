@@ -275,7 +275,7 @@
                 <li class="clearfix">
                   <div class="feed d-flex justify-content-between">
                     <div class="feed-body d-flex justify-content-between"><a href="#" class="feed-profile"><img src="img/avatar-2.jpg" alt="person" class="img-fluid rounded-circle"></a>
-                      <div class="content"><strong>Dang Tuan Huy</strong><small>Web App Team Leader </small>
+                      <div class="content"><strong>Le Nguyen Thuc</strong><small>Web App Developer  </small>
                         <div class="full-date"><small>Web App</small></div>
                       </div>
                     </div>
@@ -285,7 +285,7 @@
                 <li class="clearfix">
                   <div class="feed d-flex justify-content-between">
                     <div class="feed-body d-flex justify-content-between"><a href="#" class="feed-profile"><img src="img/avatar-2.jpg" alt="person" class="img-fluid rounded-circle"></a>
-                      <div class="content"><strong>Le Nguyen Thuc</strong><small>Web App Developer </small>
+                      <div class="content"><strong>Dang Tuan Huy</strong><small>Web App Developer </small>
                         <div class="full-date"><small>Web App</small></div>
                       </div>
                     </div>
@@ -323,7 +323,7 @@
                 <li class="clearfix">
                   <div class="feed d-flex justify-content-between">
                     <div class="feed-body d-flex justify-content-between"><a href="#" class="feed-profile"><img src="img/avatar-2.jpg" alt="person" class="img-fluid rounded-circle"></a>
-                      <div class="content"><strong>Dang Tuan Huy</strong><small>DFD Analyst Team Leader </small>
+                      <div class="content"><strong>Le Nguyen Thuc</strong><small>DFD Analyst </small>
                         <div class="full-date"><small>DFD</small></div>
                       </div>
                     </div>
@@ -333,7 +333,7 @@
                 <li class="clearfix">
                   <div class="feed d-flex justify-content-between">
                     <div class="feed-body d-flex justify-content-between"><a href="#" class="feed-profile"><img src="img/avatar-2.jpg" alt="person" class="img-fluid rounded-circle"></a>
-                      <div class="content"><strong>Le Nguyen Thuc</strong><small>Analyst </small>
+                      <div class="content"><strong>Dang Tuan Huy</strong><small>Analyst </small>
                         <div class="full-date"><small>DFD</small></div>
                       </div>
                     </div>
