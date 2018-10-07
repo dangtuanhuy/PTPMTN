@@ -1,3 +1,17 @@
+<?php
+session_start();
+if(!isset($_SESSION['Username'])):
+	echo '<meta http-equiv="refresh" content="0; URL=login.php"/>';
+else:
+
+function PersonnelLogin($conn, $PersonnelCode) {
+  $sql_query_Personnel = "SELECT PersonnelName FROM `Personnel` WHERE `PersonnelCode` = '{$PersonnelCode}'";
+  $sql_result_Personnel = mysqli_query($conn,$sql_query_Personnel)  or die(mysql_error());
+  while ($row = $sql_result_Personnel->fetch_assoc()) {
+    echo $row['PersonnelName'];
+}
+}
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -23,7 +37,7 @@
     <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="css/custom.css">
-    
+
     <!-- Favicon-->
     <link rel="shortcut icon" href="img/favicon.ico">
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
@@ -31,9 +45,14 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
   </head>
   <body>
-  
+
   <?php
-  include_once('config/connect.php'); 
+  include_once('config/connect.php');
+	$_user = $_SESSION['Username'];
+	$sql_query_role = "SELECT RoleDetail FROM `Role` JOIN `Personnel` ON Role.RoleId = Personnel.RoleId WHERE Personnel.PersonnelCode = '{$_user}'";
+	$result_role = mysqli_query($conn,$sql_query_role);
+	$row_role_details = mysqli_fetch_array($result_role);
+	$role_details_arr = explode(',',$row_role_details[0]);
   ?>
     <!-- Side Navbar -->
     <nav class="side-navbar">
@@ -41,8 +60,8 @@
         <!-- Sidebar Header    -->
         <div class="sidenav-header d-flex align-items-center justify-content-center">
           <!-- User Info-->
-          <div class="sidenav-header-inner text-center"><img src="img/avatar-1.jpg" alt="person" class="img-fluid rounded-circle">
-            <h2 class="h5">Software Development Work </h2>
+          <div class="sidenav-header-inner text-center"><img src="img/logo.png" alt="person" class="img-fluid rounded-circle">
+            <h2 class="h5">Management School </h2>
           </div>
           <!-- Small Brand information, appears on minimized sidebar-->
           <div class="sidenav-header-logo"><a href="index.php" class="brand-small text-center"> <strong>B</strong><strong class="text-primary">D</strong></a></div>
@@ -50,37 +69,18 @@
         <!-- Sidebar Navigation Menus-->
         <div class="main-menu">
           <h5 class="sidenav-heading">Main</h5>
-          <ul id="side-main-menu" class="side-menu list-unstyled">                  
-            <li><a href="index.php"> <i class="icon-home"></i>Home                             </a></li>
-            <li><a href="?page=grade"> <i class="fa fa-clipboard"></i>Grade</a></li>
-            <li><a href="charts.html"> <i class="	fa fa-briefcase"></i>Class</a></li>
-            <li><a href="tables.html"> <i class="fa fa-child"></i>Student</a></li>
-            <li><a href="#"> <i class="fa fa-fort-awesome"></i>Department</a></li>
-            <li><a href="#"> <i class="fa fa-institution"></i>Position</a></li>
-            <li><a href="#"> <i class="fa fa-group"></i>Personnel</a></li>
-            <li><a href="#"> <i class="fa fa-cogs"></i>Role</a></li>
-            <!-- <li><a href="#" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Example dropdown </a> -->
-              <!-- <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
-                <li><a href="#">Page</a></li>
-                <li><a href="#">Page</a></li>
-                <li><a href="#">Page</a></li>
-              </ul> -->
-            <!-- </li> -->
-            <!-- <li><a href="login.php"> <i class="icon-interface-windows"></i>Login page                             </a></li>
-            <li> <a href="#"> <i class="icon-user"></i>Role
-                <div class="badge badge-warning">6 New</div></a></li> -->
+          <ul id="side-main-menu" class="side-menu list-unstyled">
+						<?php if(in_array('home', $role_details_arr)) echo '<li><a href="index.php"> <i class="icon-home"></i>Home</a></li>'; ?>
+						<?php if(in_array('grade', $role_details_arr)) echo '<li><a href="?page=grade"> <i class="fa fa-clipboard"></i>Grade</a></li>'; ?>
+						<?php if(in_array('schoolyears', $role_details_arr)) echo '<li><a href="?page=SchoolYears"> <i class="fa fa-calendar"></i>School Years</a></li>'; ?>
+						<?php if(in_array('class', $role_details_arr)) echo '<li><a href="?page=Class"> <i class="	fa fa-briefcase"></i>Class</a></li>'; ?>
+						<?php if(in_array('student', $role_details_arr)) echo '<li><a href="?page=Student"> <i class="fa fa-child"></i>Student</a></li>'; ?>
+						<?php if(in_array('department', $role_details_arr)) echo '<li><a href="?page=Department"> <i class="fa fa-fort-awesome"></i>Department</a></li>'; ?>
+						<?php if(in_array('position', $role_details_arr)) echo '<li><a href="?page=Position"> <i class="fa fa-institution"></i>Position</a></li>'; ?>
+						<?php if(in_array('personnel', $role_details_arr)) echo '<li><a href="?page=Personnel"> <i class="fa fa-group"></i>Personnel</a></li>'; ?>
+						<?php if(in_array('role', $role_details_arr)) echo '<li><a href="?page=Role"> <i class="fa fa-cogs"></i>Role</a></li>'; ?>
           </ul>
         </div>
-        <!-- <div class="admin-menu">
-          <h5 class="sidenav-heading">Second menu</h5>
-          <ul id="side-admin-menu" class="side-menu list-unstyled"> 
-            <li> <a href="#"> <i class="icon-screen"> </i>Demo</a></li>
-            <li> <a href="#"> <i class="icon-flask"> </i>Demo
-                <div class="badge badge-info">Special</div></a></li>
-            <li> <a href=""> <i class="icon-flask"> </i>Demo</a></li>
-            <li> <a href=""> <i class="icon-picture"> </i>Demo</a></li>
-          </ul>
-        </div> -->
       </div>
     </nav>
     <div class="page">
@@ -89,28 +89,28 @@
         <nav class="navbar">
           <div class="container-fluid">
             <div class="navbar-holder d-flex align-items-center justify-content-between">
-              <div class="navbar-header"><a id="toggle-btn" href="#" class="menu-btn"><i class="icon-bars"> </i></a><a href="index.php" class="navbar-brand">
-                  <div class="brand-text d-none d-md-inline-block"><span>Bootstrap </span><strong class="text-primary">Dashboard</strong></div></a></div>
+              <div class="navbar-header"><a id="toggle-btn" href="index.php" class="menu-btn"><i class="icon-bars"> </i></a><a href="#" class="navbar-brand">
+                  <div class="brand-text d-none d-md-inline-block"><span><h1>CT249</h1> </span><strong class="text-primary"> Dashboard</strong></div></a></div>
               <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
                 <!-- Notifications dropdown-->
-                <li class="nav-item dropdown"> <a id="notifications" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-bell"></i><span class="badge badge-warning">12</span></a>
+                <li class="nav-item dropdown">
                   <ul aria-labelledby="notifications" class="dropdown-menu">
-                    <li><a rel="nofollow" href="#" class="dropdown-item"> 
+                    <li><a rel="nofollow" href="#" class="dropdown-item">
                         <div class="notification d-flex justify-content-between">
                           <div class="notification-content"><i class="fa fa-envelope"></i>You have 6 new messages </div>
                           <div class="notification-time"><small>4 minutes ago</small></div>
                         </div></a></li>
-                    <li><a rel="nofollow" href="#" class="dropdown-item"> 
+                    <li><a rel="nofollow" href="#" class="dropdown-item">
                         <div class="notification d-flex justify-content-between">
                           <div class="notification-content"><i class="fa fa-twitter"></i>You have 2 followers</div>
                           <div class="notification-time"><small>4 minutes ago</small></div>
                         </div></a></li>
-                    <li><a rel="nofollow" href="#" class="dropdown-item"> 
+                    <li><a rel="nofollow" href="#" class="dropdown-item">
                         <div class="notification d-flex justify-content-between">
                           <div class="notification-content"><i class="fa fa-upload"></i>Server Rebooted</div>
                           <div class="notification-time"><small>4 minutes ago</small></div>
                         </div></a></li>
-                    <li><a rel="nofollow" href="#" class="dropdown-item"> 
+                    <li><a rel="nofollow" href="#" class="dropdown-item">
                         <div class="notification d-flex justify-content-between">
                           <div class="notification-content"><i class="fa fa-twitter"></i>You have 2 followers</div>
                           <div class="notification-time"><small>10 minutes ago</small></div>
@@ -119,19 +119,19 @@
                   </ul>
                 </li>
                 <!-- Messages dropdown-->
-                <li class="nav-item dropdown"> <a id="messages" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-envelope"></i><span class="badge badge-info">10</span></a>
+                <li class="nav-item dropdown">
                   <ul aria-labelledby="notifications" class="dropdown-menu">
-                    <li><a rel="nofollow" href="#" class="dropdown-item d-flex"> 
+                    <li><a rel="nofollow" href="#" class="dropdown-item d-flex">
                         <div class="msg-profile"> <img src="img/avatar-1.jpg" alt="..." class="img-fluid rounded-circle"></div>
                         <div class="msg-body">
                           <h3 class="h5">Jason Doe</h3><span>sent you a direct message</span><small>3 days ago at 7:58 pm - 10.06.2014</small>
                         </div></a></li>
-                    <li><a rel="nofollow" href="#" class="dropdown-item d-flex"> 
+                    <li><a rel="nofollow" href="#" class="dropdown-item d-flex">
                         <div class="msg-profile"> <img src="img/avatar-2.jpg" alt="..." class="img-fluid rounded-circle"></div>
                         <div class="msg-body">
                           <h3 class="h5">Frank Williams</h3><span>sent you a direct message</span><small>3 days ago at 7:58 pm - 10.06.2014</small>
                         </div></a></li>
-                    <li><a rel="nofollow" href="#" class="dropdown-item d-flex"> 
+                    <li><a rel="nofollow" href="#" class="dropdown-item d-flex">
                         <div class="msg-profile"> <img src="img/avatar-3.jpg" alt="..." class="img-fluid rounded-circle"></div>
                         <div class="msg-body">
                           <h3 class="h5">Ashley Wood</h3><span>sent you a direct message</span><small>3 days ago at 7:58 pm - 10.06.2014</small>
@@ -140,14 +140,15 @@
                   </ul>
                 </li>
                 <!-- Languages dropdown    -->
-                <li class="nav-item dropdown"><a id="languages" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link language dropdown-toggle"><img src="img/flags/16/GB.png" alt="English"><span class="d-none d-sm-inline-block">English</span></a>
-                  <ul aria-labelledby="languages" class="dropdown-menu">
-                    <li><a rel="nofollow" href="#" class="dropdown-item"> <img src="img/flags/16/DE.png" alt="English" class="mr-2"><span>German</span></a></li>
-                    <li><a rel="nofollow" href="#" class="dropdown-item"> <img src="img/flags/16/FR.png" alt="English" class="mr-2"><span>French                                                         </span></a></li>
-                  </ul>
+                <?php
+                if (isset($_SESSION['Username']) && $_SESSION['Username'] != "")
+                {
+                ?>
+                <li class="nav-item "><a id="languages" rel="nofollow"  href="?page=UpdatePersonnel"  aria-haspopup="true" aria-expanded="false" class="nav-link language dropdown-toggle"><span class="d-none d-sm-inline-block">Update</span></a>
+                <?php }?>
                 </li>
                 <!-- Log out-->
-                <li class="nav-item"><a href="login.php" class="nav-link logout"> <span class="d-none d-sm-inline-block">Logout</span><i class="fa fa-sign-out"></i></a></li>
+                <li class="nav-item"><a href="logout.php" class="nav-link logout"> <span class="d-none d-sm-inline-block"><?php if(isset($_SESSION["Username"])){PersonnelLogin($conn, $_SESSION["Username"]); echo "  <i class='fa fa-power-off text-danger'></i>"; }?></span></a></li>
               </ul>
             </div>
           </div>
@@ -163,9 +164,211 @@ if(isset($_GET['page']))
   {
     include_once("resource/grade/Grade.php");
   }
+  if($page=="addGrade")
+  {
+    include_once("resource/grade/AddGrade.php");
+  }
+  if($page=="updateGrade")
+  {
+    include_once("resource/grade/UpdateGrade.php");
+  }
+  //School Years
+  if($page=="SchoolYears")
+  {
+    include_once("resource/schoolyears/SchoolYears.php");
+  }
+  if($page=="AddSchoolYears")
+  {
+    include_once("resource/schoolyears/AddSchoolYears.php");
+  }
+  if($page=="UpdateSchoolYears")
+  {
+    include_once("resource/schoolyears/UpdateSchoolYears.php");
+  }
+  //Class
+  if($page=="Class")
+  {
+    include_once("resource/class/Class.php");
+  }
+  if($page=="AddClass")
+  {
+    include_once("resource/class/AddClass.php");
+  }
+  if($page=="UpdateClass")
+  {
+    include_once("resource/class/UpdateClass.php");
+  }
+  if(isset($_GET['page'])&& $_GET['page']=="ActiveClass"){
+
+    if($_GET['ClassStatus'] == 0){
+      $active = 1;
+    }
+    else{
+      $active = 0;
+    }
+    $updateStatus = "UPDATE `Class` SET `ClassStatus`=".$active." where `ClassId` = '".$_GET['ClassId']."'";
+    mysqli_query($conn,$updateStatus);
+    echo "<script>window.location.href='?page=Class'</script>";
+  }
+  //School Years_Class
+  if($page=="Years_Class")
+  {
+    include_once("resource/schoolyears/Years_Class.php");
+  }
+  if($page=="AddYears_Class")
+  {
+    include_once("resource/schoolyears/AddYears_Class.php");
+  }
+  if($page=="UpdateYears_Class")
+  {
+    include_once("resource/schoolyears/UpdateYears_Class.php");
+  }
+  //Department
+  if($page=="Department")
+  {
+    include_once("resource/department/Department.php");
+  }
+  if($page=="AddDepartment")
+  {
+    include_once("resource/department/AddDepartment.php");
+  }
+  if($page=="UpdateDepartment")
+  {
+    include_once("resource/department/UpdateDepartment.php");
+  }
+  //Position
+  if($page=="Position")
+  {
+    include_once("resource/position/Position.php");
+  }
+  if($page=="AddPosition")
+  {
+    include_once("resource/position/AddPosition.php");
+  }
+  if($page=="UpdatePosition")
+  {
+    include_once("resource/position/UpdatePosition.php");
+  }
+  //Role
+  if($page=="Role")
+  {
+    include_once("resource/role/Role.php");
+  }
+  if($page=="AddRole")
+  {
+    include_once("resource/role/AddRole.php");
+  }
+  if($page=="UpdateRole")
+  {
+    include_once("resource/role/UpdateRole.php");
+  }
+  // Import Export
+  if($page=="ie")
+  {
+    include_once("resource/immigration/ImmigrationController.php");
+  }
+  //Student
+  if($page=="Student")
+  {
+    include_once("resource/student/Student.php");
+  }
+  if($page=="AddStudent")
+  {
+    include_once("resource/student/AddStudent.php");
+  }
+  if($page=="UpdateStudent")
+  {
+    include_once("resource/student/UpdateStudent.php");
+  }
+	if($page=="UpdateStudentClass")
+  {
+    include_once("resource/student/UpdateClass.php");
+  }
+  if(isset($_GET['page'])&& $_GET['page']=="ActiveStudent"){
+
+    if($_GET['StudentStatus'] == 0){
+      $active = 1;
+    }
+    else{
+      $active = 0;
+    }
+    $updateStatus = "UPDATE `Student` SET `StudentStatus`=".$active." where `StudentCode` = '".$_GET['StudentCode']."'";
+    mysqli_query($conn,$updateStatus);
+    echo "<script>window.location.href='?page=Student'</script>";
+  }
+  //Personnel
+  if($page=="Personnel")
+  {
+    include_once("resource/personnel/Personnel.php");
+  }
+  if($page=="AddPersonnel")
+  {
+    include_once("resource/personnel/AddPersonnel.php");
+  }
+  if($page=="UpdatePersonnel")
+  {
+    include_once("resource/personnel/UpdatePersonnel.php");
+  }
+
+  if($page=="DeleteImgPersonnel"){
+     include_once("resource/personnel/DeleteImgPersonnel.php");
+  }
+  if(isset($_GET['page'])&& $_GET['page']=="ActiveNote"){
+
+    if($_GET['PersonnelNote'] == 0){
+      $active = 1;
+    }
+    else{
+      $active = 0;
+    }
+    $updateStatus = "UPDATE `Personnel` SET `PersonnelNote`=".$active." where `PersonnelCode` = '".$_GET['PersonnelCode']."'";
+    mysqli_query($conn,$updateStatus);
+    echo "<script>window.location.href='?page=Personnel'</script>";
+  }
+  if(isset($_GET['page'])&& $_GET['page']=="ActivePersonnel"){
+
+    if($_GET['PersonnelActive'] == 0){
+      $active = 1;
+    }
+    else{
+      $active = 0;
+    }
+    $updateStatus = "UPDATE `Personnel` SET `PersonnelActive`=".$active." where `PersonnelCode` = '".$_GET['PersonnelCode']."'";
+    mysqli_query($conn,$updateStatus);
+    echo "<script>window.location.href='?page=Personnel'</script>";
+  }
+  if(isset($_GET['page'])&& $_GET['page']=="OpenClose"){
+
+    if($_GET['PersonnelStatus'] == 0){
+      $active = 1;
+    }
+    else{
+      $active = 0;
+    }
+    $updateStatus = "UPDATE `Personnel` SET `PersonnelStatus`=".$active." where `PersonnelCode` = '".$_GET['PersonnelCode']."'";
+    mysqli_query($conn,$updateStatus);
+    echo "<script>window.location.href='?page=Personnel'</script>";
+  }
+  if($page=="imgs")
+  {
+    include_once("resource/personnel/ImgPersonnel.php");
+  }
+  //Personal_class
+  if($page=="Personel_Class")
+  {
+		include_once("resource/personnel/Personel_Class.php");
+  }
+  if($page=="AddPersonel_Class")
+  {
+    include_once("resource/personnel/AddPersonel_Class.php");
+  }
+  if($page=="UpdatePersonel_Class")
+  {
+    include_once("resource/personnel/UpdatePersonel_Class.php");
+  }
 }
 else
-include_once('body.php') 
+include_once('body.php')
 ?>
       <footer class="main-footer">
         <div class="container-fluid">
@@ -174,14 +377,14 @@ include_once('body.php')
               <p>CT249 Team 3 &copy; 2017-2018</p>
             </div>
             <div class="col-sm-6 text-right">
-              <p>Design by <a href="Index.php" class="external">Teams 3</a></p>
+              <p>Design by <a href="Index.php" class="external">Team 3</a></p>
               <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions and it helps me to run Bootstrapious. Thank you for understanding :)-->
             </div>
           </div>
         </div>
       </footer>
     </div>
-    
+
     <!-- JavaScript files-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/popper.js/umd/popper.min.js"> </script>
@@ -207,6 +410,12 @@ include_once('body.php')
                                     // "emptyTable": "Chưa có dữ liệu nào",
                                     // "processing": "Đang xử lý...",
                                     // "search": "Tìm kiếm:",
+                                    "infoEmpty": "Empty data",
+                                    "emptyTable": "Data not available",
+                                    "processing": "Processing...",
+                                    "search": "Search:",
+                                    "loadingRecords": "Loading data...",
+                                    "zeroRecords": "Data not found",
                                     // "loadingRecords": "Đang load dữ liệu...",
                                     // "zeroRecords": "không tìm thấy dữ liệu",
                                     // "infoFiltered": "(Được từ tổng số _MAX_ dòng dữ liệu)",
@@ -220,7 +429,46 @@ include_once('body.php')
                                   "lengthMenu": [[10, 15, 20, 25, 30, -1], [10, 15, 20, 25, 30, "All"]]
                                 } );
         //new $.fn.dataTable.FixedHeader( table );
-      } );    
-    </script>  
+      } );
+    </script>
+    <script language="javascript">
+                              $(document).ready(function() {
+                                var table = $('#myTable1').DataTable( {
+                                  responsive: true,
+                                  "language": {
+                                    // "lengthMenu": "Hiển thị _MENU_ dòng dữ liệu trên một trang",
+                                    // "info": "Hiển thị _START_ trong tổng số _TOTAL_ dòng dữ liệu",
+                                    // "infoEmpty": "Dữ liệu rỗng",
+                                    // "emptyTable": "Chưa có dữ liệu nào",
+                                    // "processing": "Đang xử lý...",
+                                    // "search": "Tìm kiếm:",
+                                    "infoEmpty": "Empty data",
+                                    "emptyTable": "Data not available",
+                                    "processing": "Processing...",
+                                    "search": "Search:",
+                                    "loadingRecords": "Loading data...",
+                                    "zeroRecords": "Data not found",
+                                    // "loadingRecords": "Đang load dữ liệu...",
+                                    // "zeroRecords": "không tìm thấy dữ liệu",
+                                    // "infoFiltered": "(Được từ tổng số _MAX_ dòng dữ liệu)",
+                                    "paginate": {
+                                      "first": "|<",
+                                      "last": ">|",
+                                      "next": ">>",
+                                      "previous": "<<"
+                                    }
+                                  },
+                                  "lengthMenu": [[10, 15, 20, 25, 30, -1], [10, 15, 20, 25, 30, "All"]]
+                                } );
+        //new $.fn.dataTable.FixedHeader( table );
+      } );
+    </script>
+    <script type="text/javascript" src="library/Ckeditor/ckeditor.js"></script>
+    <script type="text/javascript">
+      CKEDITOR.replace('ckeditor');
+    </script>
   </body>
 </html>
+<?php
+endif;
+?>
